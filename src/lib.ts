@@ -29,14 +29,41 @@ function rango(b: Block): [number, number] {
   return [s, e]
 }
 
+/**
+ * Bloque en curso.
+ *
+ * Cada día arranca con un bloque comodín "Sueño (viene de anoche)" que cubre
+ * desde las 00:00, y termina con los bloques de madrugada reales (snack de
+ * caseína, cierre, sueño). A la 01:35 ambos coinciden, así que devolver el
+ * primero que encaje mostraba "estás durmiendo" justo cuando tocaba el tvorog
+ * —cuatro noches por semana—. Se elige el de INICIO MÁS TARDÍO, que siempre es
+ * el más específico; el comodín queda como respaldo cuando no hay nada mejor.
+ */
 export function bloqueActual(blocks: Block[], ahora = minutosAhora()): number {
-  for (let i = 0; i < blocks.length; i++) {
-    const [s, e] = rango(blocks[i])
-    if (ahora >= s && ahora < e) return i
-    // Bloque que cruzó medianoche: comprobar también el día anterior.
-    if (e > 1440 && ahora + 1440 >= s && ahora + 1440 < e) return i
-  }
-  return -1
+  let mejor = -1
+  let mejorInicio = -Infinity
+  blocks.forEach((b, i) => {
+    const [s, e] = rango(b)
+    // Ventana dentro del día en curso.
+    if (ahora >= s && ahora < e && s > mejorInicio) {
+      mejor = i
+      mejorInicio = s
+    }
+    // Ventana abierta ayer que cruzó la medianoche: su inicio real es anterior
+    // a cualquier bloque de hoy, así que compite con s − 1440.
+    if (e > 1440 && ahora + 1440 >= s && ahora + 1440 < e && s - 1440 > mejorInicio) {
+      mejor = i
+      mejorInicio = s - 1440
+    }
+  })
+  return mejor
+}
+
+/** ¿Este bloque ya terminó? Tiene en cuenta los que cruzan la medianoche. */
+export function yaTermino(b: Block, ahora = minutosAhora()): boolean {
+  const [s, e] = rango(b)
+  if (e > 1440) return false // sigue abierto o pertenece a la madrugada
+  return ahora >= e && ahora >= s
 }
 
 export function proximoBloque(blocks: Block[], ahora = minutosAhora()): number {

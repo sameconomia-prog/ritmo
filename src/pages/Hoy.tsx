@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { KIND_META, NOMBRE_DIA, RESUMEN_DIA, SEMANA, type Block } from '../data/plan'
 import { RECIPES, MENU_SEMANAL } from '../data/recipes'
 import { WORKOUTS } from '../data/workouts'
 import { MEDITACIONES, PROTOCOLOS_ESTUDIO, leccionDelDia, ANKI_URL } from '../data/content'
 import { db, hoyISO, toggleBlock } from '../db'
-import { aMin, bloqueActual, duracionMin, progresoBloque, proximoBloque, semanaDelPrograma } from '../lib'
+import { aMin, bloqueActual, duracionMin, progresoBloque, proximoBloque, semanaDelPrograma, yaTermino } from '../lib'
 import { Btn, Card, Pill, Porque, Section } from '../ui'
 import { IconAjustes } from '../icons'
 
 export default function Hoy() {
+  const navegar = useNavigate()
   const [tick, setTick] = useState(0)
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 30_000)
@@ -101,11 +102,11 @@ export default function Hoy() {
       <Section title={`Plan del día · ${resumen.kcal} kcal`}>
         <div className="space-y-1.5">
           {blocks.map((b, i) => {
-            if (b.kind === 'sueño' && b.start === '00:00') return null
             const esActual = i === idxActual
-            const pasado = !esActual && aMin(b.end) <= aMin(`${String(ahora.getHours()).padStart(2, '0')}:${String(ahora.getMinutes()).padStart(2, '0')}`)
+            const pasado = !esActual && yaTermino(b)
             const hecho = hechos.has(i)
             const meta = KIND_META[b.kind]
+            const destino = destinoDeBloque(b)
             return (
               <div
                 key={i}
@@ -129,15 +130,23 @@ export default function Hoy() {
                 <div className="w-[42px] shrink-0 pt-0.5 text-[11px] font-semibold tabular-nums text-[var(--color-ink-dim)]">
                   {b.start}
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className={`text-sm leading-snug ${hecho ? 'text-[var(--color-ink-dim)] line-through' : 'font-medium'}`}>
-                    <span className="mr-1.5">{meta.icon}</span>
-                    {b.title}
+                <button
+                  type="button"
+                  disabled={!destino}
+                  onClick={() => destino && navegar(destino)}
+                  className={`min-w-0 flex-1 text-left ${destino ? 'active:opacity-60' : 'cursor-default'}`}
+                >
+                  <p className={`flex items-start gap-1.5 text-sm leading-snug ${hecho ? 'text-[var(--color-ink-dim)] line-through' : 'font-medium'}`}>
+                    <span>{meta.icon}</span>
+                    <span className="flex-1">{b.title}</span>
+                    {destino && !hecho && (
+                      <span className="mt-px shrink-0 text-[13px] leading-none text-[var(--color-ink-dim)]">›</span>
+                    )}
                   </p>
                   {b.detail && !hecho && (
                     <p className="mt-1 text-[12px] leading-relaxed text-[var(--color-ink-dim)]">{b.detail}</p>
                   )}
-                </div>
+                </button>
               </div>
             )
           })}
@@ -152,6 +161,29 @@ function minutosHasta(b: Block) {
   const ahora = d.getHours() * 60 + d.getMinutes()
   const s = aMin(b.start)
   return s >= ahora ? s - ahora : s + 1440 - ahora
+}
+
+/**
+ * A dónde lleva tocar un bloque del plan.
+ * Devuelve null si el bloque no tiene una pantalla con más detalle
+ * (trabajo, tiempo libre, traslados sin contenido, sueño).
+ */
+export function destinoDeBloque(b: Block): string | null {
+  if (b.kind === 'metricas') return '/progreso'
+  const r = b.ref
+  if (!r) return null
+  switch (r.type) {
+    case 'receta':
+      return `/comida?slot=${r.slot}`
+    case 'entreno':
+      return '/entreno'
+    case 'meditacion':
+      return `/estudio?tab=mente&med=${r.id}`
+    case 'ruso':
+      return '/estudio?tab=ruso'
+    case 'protocolo':
+      return '/estudio?tab=doctorado'
+  }
 }
 
 /** Tarjeta grande y accionable del bloque en curso. */

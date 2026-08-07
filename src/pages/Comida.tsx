@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { useSearchParams } from 'react-router-dom'
 import { COMPRA_SEMANAL, MENU_SEMANAL, RECIPES, SUPLEMENTOS, type Recipe } from '../data/recipes'
 import { RESUMEN_DIA } from '../data/plan'
 import { db, hoyISO, toggleMeal } from '../db'
+import { calcularNutricion, tendenciaSemanal } from '../lib'
 import { Btn, Card, Pill, Porque, Section } from '../ui'
 
 const ORDEN: { slot: string; label: string; hora: string }[] = [
@@ -15,6 +17,9 @@ const ORDEN: { slot: string; label: string; hora: string }[] = [
 ]
 
 export default function Comida() {
+  const [params] = useSearchParams()
+  // Cuando llegas desde el plan del día, abre directamente esa comida.
+  const slotPedido = params.get('slot')
   const [tab, setTab] = useState<'hoy' | 'compra' | 'supl'>('hoy')
   const dia = new Date().getDay()
   const fecha = hoyISO()
@@ -40,6 +45,15 @@ export default function Comida() {
   const consumido = comidasHoy
     .filter((c) => hechas.has(c.slot))
     .reduce((acc, c) => acc + c.receta.kcal, 0)
+
+  // El objetivo real sale del peso registrado, no de un número fijo:
+  // es la misma fuente que usa el motor de auto-ajuste en Progreso.
+  const pesos = useLiveQuery(() => db.weights.toArray(), []) ?? []
+  const ajuste = useLiveQuery(async () => ((await db.meta.get('ajuste'))?.value as number) ?? 0) ?? 0
+  const pesoActual = [...pesos].sort((a, b) => a.date.localeCompare(b.date)).at(-1)?.kg ?? 62
+  const tendencia = tendenciaSemanal(pesos)
+  const hayTendencia = tendencia !== null
+  const objetivo = calcularNutricion(pesoActual, 176, 33, 1.55, tendencia, ajuste).objetivo
 
   return (
     <div className="rise">
@@ -88,6 +102,34 @@ export default function Comida() {
                 style={{ width: `${total.kcal ? (consumido / total.kcal) * 100 : 0}%` }}
               />
             </div>
+            <p className="mt-2.5 text-[12px] leading-relaxed text-[var(--color-ink-dim)]">
+              {!hayTendencia ? (
+                <>
+                  Este menú es el <strong className="text-[var(--color-ink)]">punto de partida</strong>. La
+                  estimación teórica da {objetivo} kcal, pero ninguna fórmula acierta el gasto real de una
+                  persona. Pésate esta semana y deja que la báscula decida: el objetivo se ajusta solo.
+                </>
+              ) : Math.abs(total.kcal - objetivo) < 150 ? (
+                <>
+                  Objetivo ajustado a tu peso real:{' '}
+                  <strong className="text-[var(--color-ink)]">{objetivo} kcal</strong>. El menú de hoy está en
+                  rango.
+                </>
+              ) : total.kcal > objetivo ? (
+                <>
+                  Objetivo ajustado a tu peso real:{' '}
+                  <strong className="text-[var(--color-ink)]">{objetivo} kcal</strong>. Hoy el menú trae{' '}
+                  {total.kcal - objetivo} de más: recorta primero el batido, o baja 20 g de avena y 20 g de
+                  arroz.
+                </>
+              ) : (
+                <>
+                  Objetivo ajustado a tu peso real:{' '}
+                  <strong className="text-[var(--color-ink)]">{objetivo} kcal</strong>. Hoy el menú se queda{' '}
+                  {objetivo - total.kcal} corto: añade un plátano con una cucharada de crema de cacahuate.
+                </>
+              )}
+            </p>
             <div className="mt-3 grid grid-cols-3 gap-2 text-center">
               {[
                 ['Proteína', `${total.p} g`],
@@ -110,6 +152,7 @@ export default function Comida() {
                 label={c.label}
                 hora={c.hora}
                 hecha={hechas.has(c.slot)}
+                destacada={c.slot === slotPedido}
                 onToggle={() => toggleMeal(fecha, c.slot)}
               />
             ))}
@@ -190,17 +233,30 @@ function RecetaCard({
   label,
   hora,
   hecha,
+  destacada,
   onToggle,
 }: {
   receta: Recipe
   label: string
   hora: string
   hecha: boolean
+  destacada?: boolean
   onToggle: () => void
 }) {
-  const [abierto, setAbierto] = useState(false)
+  const [abierto, setAbierto] = useState(!!destacada)
+  const ref = useRef<HTMLDivElement>(null)
+
+  // Si vienes desde el plan del día, esta receta se abre y se centra en pantalla.
+  useEffect(() => {
+    if (!destacada) return
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [destacada])
+
   return (
-    <Card className="overflow-hidden p-0">
+    <Card
+      ref={ref}
+      className={`overflow-hidden p-0 ${destacada ? 'border-[var(--color-accent)]/50' : ''}`}
+    >
       <div className="flex items-start gap-3 p-4">
         <button
           onClick={onToggle}

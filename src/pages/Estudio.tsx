@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { useSearchParams } from 'react-router-dom'
 import {
   ANKI_URL,
   MEDITACIONES,
@@ -12,7 +13,13 @@ import { semanaDelPrograma } from '../lib'
 import { Btn, Card, Pill, Porque } from '../ui'
 
 export default function Estudio() {
-  const [tab, setTab] = useState<'ruso' | 'mente' | 'doctorado'>('ruso')
+  const [params] = useSearchParams()
+  // Al llegar desde el plan del día, abre la pestaña y la práctica que tocaba.
+  const tabPedida = params.get('tab') as 'ruso' | 'mente' | 'doctorado' | null
+  const medPedida = params.get('med')
+  const [tab, setTab] = useState<'ruso' | 'mente' | 'doctorado'>(
+    tabPedida && ['ruso', 'mente', 'doctorado'].includes(tabPedida) ? tabPedida : 'ruso',
+  )
   const dia = new Date().getDay()
   const inicio = useLiveQuery(async () => (await db.meta.get('inicio'))?.value as string | undefined)
   const semana = inicio ? semanaDelPrograma(inicio) : 1
@@ -120,7 +127,7 @@ export default function Estudio() {
       {tab === 'mente' && (
         <div className="space-y-3">
           {Object.values(MEDITACIONES).map((m) => (
-            <MeditacionCard key={m.id} med={m} />
+            <MeditacionCard key={m.id} med={m} destacada={m.id === medPedida} />
           ))}
         </div>
       )}
@@ -172,10 +179,16 @@ function RegistroEstudio({ tipo, minutos }: { tipo: 'ruso' | 'doctorado'; minuto
   )
 }
 
-function MeditacionCard({ med }: { med: Meditacion }) {
+function MeditacionCard({ med, destacada }: { med: Meditacion; destacada?: boolean }) {
   const [activo, setActivo] = useState(false)
   const [paso, setPaso] = useState(0)
   const [seg, setSeg] = useState(0)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!destacada) return
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [destacada])
 
   useEffect(() => {
     if (!activo) return
@@ -227,7 +240,7 @@ function MeditacionCard({ med }: { med: Meditacion }) {
   }
 
   return (
-    <Card className="p-4">
+    <Card ref={ref} className={`p-4 ${destacada ? 'border-[var(--color-accent)]/50' : ''}`}>
       <div className="flex items-start justify-between gap-2">
         <div>
           <p className="font-semibold">{med.nombre}</p>

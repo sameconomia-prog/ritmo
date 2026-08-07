@@ -4,7 +4,7 @@ import { EXERCISES, WORKOUTS, EQUIPO_RECOMENDADO, type WorkoutItem } from '../da
 import { SEMANA } from '../data/plan'
 import { db, hoyISO, ultimaSesion } from '../db'
 import { sugerirProgresion } from '../lib'
-import { Btn, Card, Empty, Pill, Porque, Section } from '../ui'
+import { Btn, Card, Pill, Porque, Section } from '../ui'
 
 export default function Entreno() {
   const dia = new Date().getDay()
@@ -353,5 +353,3 @@ function Registro({
     </div>
   )
 }
-
-export { Empty }

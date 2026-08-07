@@ -1,16 +1,20 @@
-import type { ReactNode } from 'react'
+import type { ReactNode, Ref } from 'react'
 
 export function Card({
   children,
   className = '',
   onClick,
+  ref,
 }: {
   children: ReactNode
   className?: string
   onClick?: () => void
+  /** React 19 acepta ref como prop normal en componentes de función. */
+  ref?: Ref<HTMLDivElement>
 }) {
   return (
     <div
+      ref={ref}
       onClick={onClick}
       className={`rounded-2xl border border-[var(--color-line)] bg-[var(--color-surface)] ${
         onClick ? 'cursor-pointer active:scale-[0.99] transition-transform' : ''
