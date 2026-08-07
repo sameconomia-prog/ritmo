@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-base: #0b0f14;
+  --color-surface: #131a23;
+  --color-surface-2: #1b2430;
+  --color-line: #26303d;
+  --color-ink: #e8eef5;
+  --color-ink-dim: #8fa0b3;
+  --color-accent: #ff7a1a;
+  --color-accent-soft: #ffa45c;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--color-base);
+  color: var(--color-ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
+}
+
+/* Respeta el notch y la barra inferior del iPhone */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgb(255 122 26 / 0.45); }
+  70% { box-shadow: 0 0 0 12px rgb(255 122 26 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(255 122 26 / 0); }
+}
+.ring-live {
+  animation: pulse-ring 2.4s infinite;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise {
+  animation: rise 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}

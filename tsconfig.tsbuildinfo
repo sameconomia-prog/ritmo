@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/db.ts","./src/lib.ts","./src/main.tsx","./src/ui.tsx","./src/data/content.ts","./src/data/plan.ts","./src/data/recipes.ts","./src/data/workouts.ts","./src/pages/ajustes.tsx","./src/pages/comida.tsx","./src/pages/entreno.tsx","./src/pages/estudio.tsx","./src/pages/hoy.tsx","./src/pages/progreso.tsx"],"version":"5.9.3"}
