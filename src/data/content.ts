@@ -270,6 +270,30 @@ export interface Meditacion {
 }
 
 export const MEDITACIONES: Record<string, Meditacion> = {
+  columpio: {
+    id: 'columpio',
+    nombre: 'Meditación en el columpio',
+    minutos: 25,
+    cuando: 'Cada mañana, al aire libre, antes de desayunar. Es el ancla de todo el día.',
+    proposito:
+      'Alinear tu reloj biológico con luz real y usar el balanceo para bajar de revoluciones antes de que empiece el día.',
+    ciencia:
+      'Que se sienta "mágico" no es casualidad: estás activando tres mecanismos a la vez. (1) LUZ MATINAL — Crowley et al. 2014: 30 minutos de luz brillante al despertar producen el 75 % del ajuste circadiano que se logra con 2 horas. Trabajando de noche, tu reloj tiende a desfasarse, y esta es la herramienta más potente que tienes para volver a anclarlo. (2) BALANCEO RÍTMICO — Perrault et al. 2019 (Current Biology) demostró que un mecerse suave a ~0.25 Hz sincroniza las oscilaciones cerebrales, un fenómeno llamado arrastre neural; Kompotis et al. 2019 confirmó que el efecto depende del sistema vestibular del oído interno. El columpio funciona como un metrónomo externo al que tu cerebro se acopla. (3) EXTERIOR — el aire frío de Siberia y el espacio abierto amplifican el despertar sin cafeína. Lo descubriste por intuición; la fisiología te da la razón.',
+    guion: [
+      { texto: 'Siéntate en el columpio. No te impulses todavía. Solo llega y quédate.', segundos: 30 },
+      { texto: 'Levanta la cara hacia el cielo, aunque esté nublado. Deja que la luz te dé en los ojos unos segundos. Esto es lo que le dice a tu cuerpo que el día empezó.', segundos: 45 },
+      { texto: 'Tres respiraciones profundas. Nota la temperatura del aire al entrar por la nariz.', segundos: 45 },
+      { texto: 'Empieza a balancearte MUY despacio. Un vaivén completo cada 4 segundos, aproximadamente. Lento, sin esfuerzo.', segundos: 60 },
+      { texto: 'Sincroniza la respiración con el movimiento: inhalas cuando subes, exhalas cuando bajas. Deja que el columpio marque el ritmo por ti.', segundos: 120 },
+      { texto: 'Suelta el control del conteo. Solo balanceo y respiración. Si la mente se va, el movimiento la trae de vuelta.', segundos: 180 },
+      { texto: 'Amplía la atención: escucha lo más lejano que puedas oír. Después lo más cercano. Después los dos a la vez.', segundos: 150 },
+      { texto: 'Nota el cuerpo en el aire. La ingravidez breve en cada extremo del arco. No hay nada que resolver en este momento.', segundos: 180 },
+      { texto: 'Pregúntate: ¿cuál es LA cosa que si hago hoy, el día vale la pena? No la busques con esfuerzo. Deja que aparezca.', segundos: 90 },
+      { texto: 'Visualiza tu entrenamiento de hoy. Verte haciéndolo aumenta la probabilidad real de que lo hagas.', segundos: 60 },
+      { texto: 'Deja que el columpio se detenga solo. No frenes con los pies.', segundos: 60 },
+      { texto: 'Quédate quieto unos segundos más antes de levantarte. Ya alineaste tu reloj, bajaste el pulso y decidiste tu día. Ahora sí: a desayunar.', segundos: 45 },
+    ],
+  },
   box: {
     id: 'box',
     nombre: 'Respiración cuadrada',
@@ -355,10 +379,10 @@ export const MEDITACIONES: Record<string, Meditacion> = {
   },
   intencion: {
     id: 'intencion',
-    nombre: 'Intención matutina',
+    nombre: 'Intención matutina (versión interior)',
     minutos: 4,
-    cuando: 'Al despertar, después del agua y antes del desayuno.',
-    proposito: 'Empezar el día decidiendo, no reaccionando.',
+    cuando: 'Los días que no puedas salir al parque: ventisca, −30 °C, o se te hizo tarde.',
+    proposito: 'Reemplazo de emergencia para la meditación en el columpio. Peor, pero infinitamente mejor que saltarse la mañana.',
     guion: [
       { texto: 'Siéntate en la orilla de la cama. Pies en el piso. No tomes el teléfono.', segundos: 20 },
       { texto: 'Tres respiraciones lentas y profundas.', segundos: 40 },
