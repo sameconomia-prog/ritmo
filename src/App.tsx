@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react'
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
+import { aplicarActualizacion, iniciarActualizaciones } from './pwa'
 import Hoy from './pages/Hoy'
 import Entreno from './pages/Entreno'
 import Comida from './pages/Comida'
@@ -16,8 +18,29 @@ const TABS = [
 ]
 
 export default function App() {
+  const [hayVersion, setHayVersion] = useState(false)
+
+  useEffect(() => {
+    iniciarActualizaciones(() => setHayVersion(true))
+  }, [])
+
   return (
     <div className="mx-auto flex min-h-full max-w-lg flex-col">
+      {hayVersion && (
+        <button
+          onClick={aplicarActualizacion}
+          className="rise fixed inset-x-4 top-3 z-[60] mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-[var(--color-accent)]/40 bg-[var(--color-surface-2)] px-4 py-3 text-left shadow-lg"
+        >
+          <span className="flex h-2 w-2 shrink-0 rounded-full bg-[var(--color-accent)] ring-live" />
+          <span className="flex-1 text-[13px] leading-snug">
+            Hay una versión nueva de RITMO lista.
+          </span>
+          <span className="shrink-0 text-[13px] font-semibold text-[var(--color-accent)]">
+            Actualizar
+          </span>
+        </button>
+      )}
+
       <main className="safe-top flex-1 px-4 pb-28 pt-5">
         <Routes>
           <Route path="/" element={<Navigate to="/hoy" replace />} />

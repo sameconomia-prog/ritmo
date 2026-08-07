@@ -163,6 +163,21 @@ Ajustar el plan es editar esos archivos: no hay lógica escondida en los compone
 `git push` a `main` dispara el workflow de GitHub Actions que construye y publica en
 GitHub Pages. La ruta base se resuelve sola a partir del nombre del repositorio.
 
+### Cómo llega la actualización al teléfono
+
+El service worker usa `skipWaiting` + `clientsClaim`, así que descarga la versión nueva en
+segundo plano. Pero eso por sí solo no basta: la página ya renderizada sigue ejecutando el
+bundle viejo y los cambios aparecerían hasta la *siguiente* apertura — la app iría siempre
+una visita atrás. `src/pwa.ts` cierra ese hueco:
+
+- Busca versión nueva al abrir, al volver a primer plano y cada hora.
+- Si aparece con la app en segundo plano o sin nada a medio escribir → **recarga sola**.
+- Si aparece mientras estás usándola → muestra un aviso y espera, para no interrumpirte a
+  media serie ni borrar un campo a medio llenar.
+
+Las actualizaciones **nunca tocan tus datos**: viven en IndexedDB y solo se reemplaza el
+código de la app.
+
 ---
 
 ## Privacidad
