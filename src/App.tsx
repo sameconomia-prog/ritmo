@@ -5,13 +5,14 @@ import Comida from './pages/Comida'
 import Estudio from './pages/Estudio'
 import Progreso from './pages/Progreso'
 import Ajustes from './pages/Ajustes'
+import { IconComida, IconEntreno, IconEstudio, IconHoy, IconProgreso } from './icons'
 
 const TABS = [
-  { to: '/hoy', icon: '◎', label: 'Hoy' },
-  { to: '/entreno', icon: '⬛', label: 'Entreno' },
-  { to: '/comida', icon: '◍', label: 'Comida' },
-  { to: '/estudio', icon: '◆', label: 'Estudio' },
-  { to: '/progreso', icon: '▲', label: 'Progreso' },
+  { to: '/hoy', Icon: IconHoy, label: 'Hoy' },
+  { to: '/entreno', Icon: IconEntreno, label: 'Entreno' },
+  { to: '/comida', Icon: IconComida, label: 'Comida' },
+  { to: '/estudio', Icon: IconEstudio, label: 'Estudio' },
+  { to: '/progreso', Icon: IconProgreso, label: 'Progreso' },
 ]
 
 export default function App() {
@@ -30,22 +31,33 @@ export default function App() {
         </Routes>
       </main>
 
-      <nav className="safe-bottom fixed inset-x-0 bottom-0 z-50 mx-auto max-w-lg border-t border-[var(--color-line)] bg-[var(--color-base)]/90 backdrop-blur-xl">
-        <div className="flex items-stretch justify-around px-1 pt-1.5 pb-1">
-          {TABS.map((t) => (
+      <nav className="safe-bottom fixed inset-x-0 bottom-0 z-50 mx-auto max-w-lg border-t border-[var(--color-line)] bg-[var(--color-base)]/92 backdrop-blur-xl">
+        <div className="flex items-stretch justify-around px-1 pt-2 pb-1.5">
+          {TABS.map(({ to, Icon, label }) => (
             <NavLink
-              key={t.to}
-              to={t.to}
+              key={to}
+              to={to}
               className={({ isActive }) =>
-                `flex flex-1 flex-col items-center gap-0.5 rounded-xl py-2 text-[10px] font-medium transition ${
+                `relative flex flex-1 flex-col items-center gap-1 rounded-xl py-1 transition-colors duration-200 ${
                   isActive
                     ? 'text-[var(--color-accent)]'
                     : 'text-[var(--color-ink-dim)] active:text-[var(--color-ink)]'
                 }`
               }
             >
-              <span className="text-[15px] leading-none">{t.icon}</span>
-              {t.label}
+              {({ isActive }) => (
+                <>
+                  <Icon active={isActive} />
+                  <span className={`text-[10px] leading-none ${isActive ? 'font-semibold' : 'font-medium'}`}>
+                    {label}
+                  </span>
+                  <span
+                    className={`absolute -top-[9px] h-[2.5px] rounded-full bg-[var(--color-accent)] transition-all duration-300 ${
+                      isActive ? 'w-7 opacity-100' : 'w-0 opacity-0'
+                    }`}
+                  />
+                </>
+              )}
             </NavLink>
           ))}
         </div>

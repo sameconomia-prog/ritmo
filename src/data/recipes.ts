@@ -197,7 +197,7 @@ export const RECIPES: Record<string, Recipe> = {
       'Sirve: arroz, carne encima, remolacha al lado.',
     ],
     tip: 'La remolacha ya viene cocida y empacada al vacío en cualquier Пятёрочка (свёкла варёная). Ahorra 40 minutos de cocción.',
-    why: 'Los nitratos de la remolacha mejoran la eficiencia del oxígeno y el rendimiento de resistencia. Ideal el día antes de tus 4.5 h de salsa del domingo.',
+    why: 'Los nitratos de la remolacha mejoran la eficiencia del oxígeno y el rendimiento de resistencia. Ideal el sábado, antes del domingo largo de baile.',
   },
   c3: {
     id: 'c3',
@@ -426,7 +426,7 @@ export const RECIPES: Record<string, Recipe> = {
       'Llena una botella de 700 ml con agua + 1 pizca de sal + jugo de limón. Es tu bebida durante el baile.',
     ],
     tip: 'Termina de desayunar al menos 90 minutos antes de bailar, o vas a sentirte pesado en los giros.',
-    why: 'Dos horas de salsa queman 600–800 kcal; el domingo, 4.5 h queman 1 200–1 600. Sin esta carga previa entras en déficit y el baile te consume músculo en vez de construirlo.',
+    why: 'Una hora de clase quema ~350 kcal; el domingo, entre las dos academias y 3 h de traslados, el gasto pasa de 1 100 kcal. Sin esta carga previa entras en déficit y el baile te consume músculo en vez de construirlo.',
   },
 }
 

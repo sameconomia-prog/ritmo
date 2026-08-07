@@ -31,7 +31,7 @@ export default function Entreno() {
             Estabas corriendo 1.2 km todos los días. El meta-análisis de Wilson (2012, 21 estudios) encontró
             que combinar fuerza con CARRERA —no con bicicleta— reduce de forma significativa tanto la
             hipertrofia como la fuerza, y que el daño escala con la FRECUENCIA del aeróbico. Sumado a tus
-            6.5 h de salsa, estabas en interferencia máxima. Ese cansancio que sentiste no era falta de
+            3 h 20 min de baile, estabas en interferencia máxima. Ese cansancio que sentiste no era falta de
             carácter: era exceso de volumen aeróbico sin recuperación.
           </Porque>
         </Card>

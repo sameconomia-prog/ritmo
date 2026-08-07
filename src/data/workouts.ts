@@ -11,8 +11,8 @@
  *    hipertrofia. Lundberg et al. 2022 lo confirma a nivel de fibra: efecto
  *    negativo en fibras tipo I cuando el aeróbico es corriendo (SMD -0.81).
  *    → Correr 1.2 km TODOS LOS DÍAS es la peor variable posible para tu meta:
- *      frecuencia máxima + modalidad de mayor interferencia + ya haces 6.5 h
- *      de salsa el fin de semana. Tu cansancio no es debilidad: es exceso de
+ *      frecuencia máxima + modalidad de mayor interferencia + ya haces 3 h 20
+ *      min de baile el fin de semana. Tu cansancio no es debilidad: es exceso de
  *      volumen aeróbico sin superávit calórico ni descanso.
  *
  * 2) PESO CORPORAL SÍ CONSTRUYE MÚSCULO (agosto, antes del gym)

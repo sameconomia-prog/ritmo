@@ -8,6 +8,7 @@ import { MEDITACIONES, PROTOCOLOS_ESTUDIO, leccionDelDia, ANKI_URL } from '../da
 import { db, hoyISO, toggleBlock } from '../db'
 import { aMin, bloqueActual, duracionMin, progresoBloque, proximoBloque, semanaDelPrograma } from '../lib'
 import { Btn, Card, Pill, Porque, Section } from '../ui'
+import { IconAjustes } from '../icons'
 
 export default function Hoy() {
   const [tick, setTick] = useState(0)
@@ -51,8 +52,12 @@ export default function Hoy() {
             <h1 className="mt-0.5 text-[28px] font-bold leading-tight">{resumen.titulo}</h1>
             <p className="text-sm text-[var(--color-ink-dim)]">{resumen.foco}</p>
           </div>
-          <Link to="/ajustes" className="rounded-lg px-2 py-1 text-lg text-[var(--color-ink-dim)]">
-            ⚙
+          <Link
+            to="/ajustes"
+            aria-label="Ajustes"
+            className="rounded-lg p-1.5 text-[var(--color-ink-dim)] active:text-[var(--color-ink)]"
+          >
+            <IconAjustes />
           </Link>
         </div>
 

@@ -66,7 +66,7 @@ Correr 1.2 km todos los días era el problema, no la solución.
 - **Lundberg et al. 2022** lo confirma a nivel de fibra muscular: efecto negativo en fibras
   tipo I cuando el aeróbico es corriendo (SMD −0.81).
 
-Sumado a 6.5 h de salsa el fin de semana, era interferencia máxima. Se sustituye por
+Sumado a 3 h 20 min de baile el fin de semana, era interferencia máxima. Se sustituye por
 caminata en los días de recuperación: aporta gasto y circulación sin bloquear la hipertrofia.
 
 ### 2. Peso corporal sí construye músculo — si se lleva cerca del fallo
