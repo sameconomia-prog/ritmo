@@ -1,0 +1,3 @@
+# El estándar iCalendar (RFC 5545) exige finales de línea CRLF.
+# Sin esto, Git los normaliza a LF y iOS rechaza el calendario.
+*.ics -text
