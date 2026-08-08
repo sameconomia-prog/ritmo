@@ -30,6 +30,25 @@ en el teléfono, sin cuentas ni servidores.
 | **Comida** | El menú del día con recetas paso a paso, macros, costo en rublos y nombres en ruso. Más lista de compra semanal y suplementos. |
 | **Estudio** | Currículo de ruso A1 de 4 semanas, enlace a tu Anki de 3 000 palabras, 5 meditaciones guiadas con temporizador y protocolos de trabajo profundo. |
 | **Progreso** | Peso con gráfica de tendencia, **motor de calorías que se auto-ajusta**, progresión de fuerza por ejercicio y circunferencias corporales. |
+| **Fotos** | Comparador lado a lado por pose y fecha. Las imágenes se quedan en IndexedDB, nunca salen del teléfono. |
+
+---
+
+## Notificaciones sin backend
+
+Un PWA en iOS no puede programar alarmas locales, y el push real exigiría un servidor con
+VAPID más un cron. La salida: **un calendario suscribible**.
+
+`scripts/build-ics.ts` genera `public/ritmo.ics` en cada build a partir del mismo plan que
+ves en la app, así que no pueden desincronizarse. Se suscribe una vez desde **Ajustes →
+Notificaciones** y iOS dispara sus alarmas nativas; cuando cambia el plan y se hace push,
+el calendario se actualiza solo.
+
+Solo llevan alarma los bloques marcados con `avisar` en `plan.ts` — 38 eventos semanales,
+unos 5 al día. Si todo avisara, el calendario acabaría silenciado y no serviría de nada.
+
+> Al suscribir, iOS pregunta si eliminar las alertas. Hay que decir que **no**: sin ellas el
+> calendario aparece pero nunca avisa.
 
 ---
 

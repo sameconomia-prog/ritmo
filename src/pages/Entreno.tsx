@@ -1,14 +1,15 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { EXERCISES, WORKOUTS, EQUIPO_RECOMENDADO, type WorkoutItem } from '../data/workouts'
-import { SEMANA } from '../data/plan'
+import { planDelDia } from '../data/plan'
 import { db, hoyISO, ultimaSesion } from '../db'
 import { sugerirProgresion } from '../lib'
 import { Btn, Card, Pill, Porque, Section } from '../ui'
 
 export default function Entreno() {
+  const fase = useLiveQuery(async () => ((await db.meta.get('fase'))?.value as 1 | 2) ?? 1, []) ?? 1
   const dia = new Date().getDay()
-  const bloqueEntreno = SEMANA[dia].find((b) => b.ref?.type === 'entreno')
+  const bloqueEntreno = planDelDia(dia, fase).find((b) => b.ref?.type === 'entreno')
   const workoutId = bloqueEntreno?.ref?.type === 'entreno' ? bloqueEntreno.ref.workoutId : null
   const [manual, setManual] = useState<string | null>(null)
   const activo = manual ?? workoutId
@@ -39,7 +40,7 @@ export default function Entreno() {
         <Section title="Abrir otra sesión">
           <div className="grid grid-cols-2 gap-2">
             {Object.values(WORKOUTS)
-              .filter((w) => w.phase === 1)
+              .filter((w) => w.phase === fase)
               .map((w) => (
                 <Card key={w.id} className="p-3" onClick={() => setManual(w.id)}>
                   <p className="text-sm font-semibold">{w.name.replace('Fase 1 · ', '')}</p>
@@ -259,6 +260,7 @@ function Registro({
   const fecha = hoyISO()
   const [reps, setReps] = useState('')
   const [peso, setPeso] = useState('')
+  const [lado, setLado] = useState<'izq' | 'der'>('izq')
   const [descanso, setDescanso] = useState<number | null>(null)
 
   useEffect(() => {
@@ -283,10 +285,31 @@ function Registro({
       reps: r,
       weightKg: Number(peso) || 0,
       rir: item.rx.rir,
+      ...(item.rx.unilateral ? { side: lado } : {}),
     })
     setReps('')
-    setDescanso(item.rx.rest)
+    if (item.rx.unilateral) {
+      // Alterna solo: registras izquierda, queda lista la derecha.
+      setLado((l) => (l === 'izq' ? 'der' : 'izq'))
+      // El descanso va después de completar AMBOS lados.
+      if (lado === 'der') setDescanso(item.rx.rest)
+    } else {
+      setDescanso(item.rx.rest)
+    }
   }
+
+  // Comparación entre lados: revela asimetrías que el trabajo unilateral existe para corregir.
+  const porLado = item.rx.unilateral
+    ? (['izq', 'der'] as const).map((l) => ({
+        lado: l,
+        total: seriesHoy.filter((s) => s.side === l).reduce((n, s) => n + s.reps, 0),
+        series: seriesHoy.filter((s) => s.side === l).length,
+      }))
+    : null
+  const asimetria =
+    porLado && porLado[0].series > 0 && porLado[1].series > 0
+      ? Math.abs(porLado[0].total - porLado[1].total)
+      : 0
 
   return (
     <div className="mt-4">
@@ -302,9 +325,42 @@ function Registro({
               onClick={() => s.id && db.sets.delete(s.id)}
               className="rounded-lg bg-[var(--color-surface-2)] px-2.5 py-1.5 text-[12px] font-semibold tabular-nums"
             >
-              <span className="text-[var(--color-ink-dim)]">S{i + 1}</span>{' '}
+              <span className="text-[var(--color-ink-dim)]">
+                {s.side ? (s.side === 'izq' ? 'I' : 'D') : `S${i + 1}`}
+              </span>{' '}
               {s.reps}
               {s.weightKg ? ` × ${s.weightKg}kg` : ''}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {porLado && (
+        <div className="mb-2.5 flex items-center gap-2 rounded-xl bg-[var(--color-surface-2)] px-3 py-2 text-[12px]">
+          <span className="tabular-nums">
+            Izq <strong>{porLado[0].total}</strong> · Der <strong>{porLado[1].total}</strong> reps
+          </span>
+          {asimetria > 0 && (
+            <Pill tone={asimetria >= 3 ? 'warn' : 'neutral'}>
+              {asimetria >= 3 ? `${asimetria} de diferencia` : 'equilibrado'}
+            </Pill>
+          )}
+        </div>
+      )}
+
+      {item.rx.unilateral && (
+        <div className="mb-2 flex gap-1.5">
+          {(['izq', 'der'] as const).map((l) => (
+            <button
+              key={l}
+              onClick={() => setLado(l)}
+              className={`flex-1 rounded-xl py-2 text-[13px] font-semibold transition ${
+                lado === l
+                  ? 'bg-[var(--color-accent)] text-black'
+                  : 'bg-[var(--color-surface-2)] text-[var(--color-ink-dim)]'
+              }`}
+            >
+              {l === 'izq' ? 'Izquierda' : 'Derecha'}
             </button>
           ))}
         </div>

@@ -79,6 +79,47 @@ export default function Ajustes() {
         </Card>
       </Section>
 
+      <Section title="Notificaciones">
+        <Card className="p-4">
+          <p className="text-sm font-semibold">Suscribe el plan a tu Calendario</p>
+          <p className="mt-1.5 text-[13px] leading-relaxed text-[var(--color-ink-dim)]">
+            Un PWA en iPhone no puede programar alarmas por su cuenta. Pero si suscribes este calendario,
+            iOS dispara <strong className="text-[var(--color-ink)]">sus alarmas nativas</strong> con los
+            bloques que se te pueden pasar: despertar, columpio, entreno, ruso, proyecto, el snack de
+            caseína y la salida del dormitorio los fines de semana. Cinco o seis al día, no más.
+          </p>
+
+          <a href="webcal://sameconomia-prog.github.io/ritmo/ritmo.ics" className="mt-3 block">
+            <Btn className="w-full">Suscribir en el Calendario de iOS</Btn>
+          </a>
+
+          <div className="mt-3 rounded-xl bg-[var(--color-surface-2)] p-3">
+            <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-accent)]">
+              Al suscribirte
+            </p>
+            <p className="mt-1 text-[13px] leading-relaxed">
+              iOS te va a preguntar si quieres <strong>eliminar las alertas</strong>. Di que{' '}
+              <strong className="text-[var(--color-accent)]">NO</strong>: si las eliminas, el calendario
+              aparece pero nunca te avisa, que es justo lo que buscamos.
+            </p>
+            <p className="mt-2 text-[12px] leading-relaxed text-[var(--color-ink-dim)]">
+              Si el botón no abre nada, ve a Ajustes de iOS → Apps → Calendario → Cuentas → Añadir cuenta →
+              Otra → Añadir calendario suscrito, y pega:
+              <br />
+              <code className="mt-1 inline-block break-all text-[11px] text-[var(--color-ink)]">
+                https://sameconomia-prog.github.io/ritmo/ritmo.ics
+              </code>
+            </p>
+          </div>
+
+          <Porque>
+            El calendario se regenera en cada despliegue a partir del mismo plan que ves en la app, así que
+            no pueden desincronizarse. Y iOS lo refresca solo: cuando yo ajuste un horario, tus alarmas se
+            actualizan sin que hagas nada.
+          </Porque>
+        </Card>
+      </Section>
+
       <Section title="Equipo recomendado">
         <div className="space-y-2">
           {EQUIPO_RECOMENDADO.map((e) => (

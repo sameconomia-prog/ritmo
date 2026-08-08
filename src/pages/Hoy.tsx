@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { Link, useNavigate } from 'react-router-dom'
-import { KIND_META, NOMBRE_DIA, RESUMEN_DIA, SEMANA, type Block } from '../data/plan'
+import { KIND_META, NOMBRE_DIA, RESUMEN_DIA, planDelDia, type Block } from '../data/plan'
 import { RECIPES, MENU_SEMANAL } from '../data/recipes'
 import { WORKOUTS } from '../data/workouts'
 import { MEDITACIONES, PROTOCOLOS_ESTUDIO, leccionDelDia, ANKI_URL } from '../data/content'
-import { db, hoyISO, toggleBlock } from '../db'
+import { asegurarInicio, db, hoyISO, toggleBlock, toggleSupplement } from '../db'
 import { aMin, bloqueActual, duracionMin, progresoBloque, proximoBloque, semanaDelPrograma, yaTermino } from '../lib'
 import { Btn, Card, Pill, Porque, Section } from '../ui'
 import { IconAjustes } from '../icons'
@@ -18,9 +18,18 @@ export default function Hoy() {
     return () => clearInterval(t)
   }, [])
 
+  // Arranca el contador de semanas solo, sin depender de un botón en Ajustes.
+  useEffect(() => {
+    asegurarInicio()
+  }, [])
+
+  // La fase decide el calendario: Fase 1 entrena Lun/Mié/Vie en casa,
+  // Fase 2 pasa a Upper/Lower de gimnasio Lun/Mar/Jue/Vie.
+  const fase = useLiveQuery(async () => ((await db.meta.get('fase'))?.value as 1 | 2) ?? 1, []) ?? 1
+
   const ahora = new Date()
   const dia = ahora.getDay()
-  const blocks = SEMANA[dia]
+  const blocks = planDelDia(dia, fase)
   const fecha = hoyISO()
   const resumen = RESUMEN_DIA[dia]
 
@@ -74,6 +83,8 @@ export default function Hoy() {
           </span>
         </div>
       </header>
+
+      <RegistroRapido fecha={fecha} />
 
       {/* AHORA */}
       {actual ? (
@@ -153,6 +164,86 @@ export default function Hoy() {
         </div>
       </Section>
     </div>
+  )
+}
+
+/**
+ * Los dos datos que el plan necesita a diario y que antes costaban navegar:
+ * el peso, que alimenta el motor de calorías, y la creatina, que solo funciona
+ * si se toma TODOS los días (Kreider et al. 2017 — su efecto viene de la
+ * saturación muscular sostenida, no de la dosis puntual).
+ */
+function RegistroRapido({ fecha }: { fecha: string }) {
+  const [valor, setValor] = useState('')
+  const [abierto, setAbierto] = useState(false)
+  const peso = useLiveQuery(() => db.weights.get(fecha), [fecha])
+  const supl = useLiveQuery(() => db.supplements.where('date').equals(fecha).toArray(), [fecha]) ?? []
+  const tomados = new Set(supl.filter((s) => s.done).map((s) => s.supp))
+
+  const DIARIOS = [
+    { id: 'creatina', label: 'Creatina' },
+    { id: 'vitD', label: 'Vit. D3' },
+    { id: 'magnesio', label: 'Magnesio' },
+  ]
+
+  return (
+    <Card className="mb-6 p-3.5">
+      <button
+        onClick={() => setAbierto((v) => !v)}
+        className="flex w-full items-baseline gap-2 text-left"
+      >
+        <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-ink-dim)]">
+          Peso de hoy
+        </span>
+        {peso ? (
+          <span className="text-lg font-bold tabular-nums text-[var(--color-accent)]">{peso.kg} kg</span>
+        ) : (
+          <span className="text-[13px] text-[var(--color-accent)]">registrar →</span>
+        )}
+      </button>
+
+      <div className="mt-2.5 flex gap-1.5">
+        {DIARIOS.map((s) => (
+          <button
+            key={s.id}
+            onClick={() => toggleSupplement(fecha, s.id)}
+            className={`flex-1 rounded-lg py-2 text-[11px] font-semibold transition ${
+              tomados.has(s.id)
+                ? 'bg-[var(--color-accent)] text-black'
+                : 'bg-[var(--color-surface-2)] text-[var(--color-ink-dim)]'
+            }`}
+          >
+            {tomados.has(s.id) ? '✓ ' : ''}
+            {s.label}
+          </button>
+        ))}
+      </div>
+
+      {abierto && (
+        <div className="mt-3 flex gap-2">
+          <input
+            type="number"
+            inputMode="decimal"
+            step="0.1"
+            autoFocus
+            value={valor}
+            onChange={(e) => setValor(e.target.value)}
+            placeholder={peso ? String(peso.kg) : '62.0'}
+            className="w-0 flex-1 rounded-xl border border-[var(--color-line)] bg-[var(--color-base)] px-3 py-2.5 text-center text-lg font-bold outline-none focus:border-[var(--color-accent)]"
+          />
+          <Btn
+            disabled={!valor}
+            onClick={() => {
+              db.weights.put({ date: fecha, kg: Number(valor) })
+              setValor('')
+              setAbierto(false)
+            }}
+          >
+            Guardar
+          </Btn>
+        </div>
+      )}
+    </Card>
   )
 }
 

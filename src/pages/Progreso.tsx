@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { db, hoyISO, type Measurement } from '../db'
 import { EXERCISES } from '../data/workouts'
@@ -55,6 +56,12 @@ export default function Progreso() {
             {l}
           </button>
         ))}
+        <Link
+          to="/fotos"
+          className="rounded-xl bg-[var(--color-surface-2)] px-3.5 py-2 text-[13px] font-semibold text-[var(--color-ink-dim)]"
+        >
+          Fotos
+        </Link>
       </div>
 
       {tab === 'peso' && (

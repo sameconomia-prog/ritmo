@@ -59,6 +59,12 @@ export interface Block {
     | { type: 'ruso' }
     | { type: 'protocolo'; id: string }
   flexible?: boolean
+  /**
+   * Minutos de antelación de la alarma en el calendario suscrito.
+   * Solo lo llevan los bloques que de verdad se te pueden pasar: si todo
+   * avisara, silenciarías el calendario y no serviría de nada.
+   */
+  avisar?: number
 }
 
 export const KIND_META: Record<BlockKind, { label: string; icon: string; color: string }> = {
@@ -78,6 +84,13 @@ export const KIND_META: Record<BlockKind, { label: string; icon: string; color: 
   prep:         { label: 'Preparación',  icon: '🧺', color: 'stone' },
   cierre:       { label: 'Cierre',       icon: '🕯️', color: 'purple' },
   metricas:     { label: 'Métricas',     icon: '📊', color: 'blue' },
+}
+
+/** Suma minutos a una hora "HH:MM". Mantiene los días cuadrados al cambiar de fase. */
+function sumar(hhmm: string, min: number): string {
+  const [h, m] = hhmm.split(':').map(Number)
+  const t = h * 60 + m + min
+  return `${String(Math.floor(t / 60) % 24).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -100,7 +113,7 @@ const trasNocheTrabajo = (): Block[] => [
     detail: 'Son las 10:20–12:00 en México.' },
   { start: '01:00', end: '01:30', kind: 'trabajo', title: 'Junta con México',
     detail: 'Mediodía en México: tu franja habitual de juntas. Si hoy no hay, cierra antes y gana sueño.', flexible: true },
-  { start: '01:30', end: '01:50', kind: 'comida', title: 'Snack nocturno de caseína',
+  { start: '01:30', end: '01:50', kind: 'comida', title: 'Snack nocturno de caseína', avisar: 0,
     detail: 'El hábito que no se salta: trabaja mientras duermes.', ref: { type: 'receta', slot: 'nocturno' } },
   { start: '01:50', end: '02:00', kind: 'cierre', title: 'Ritual de cierre',
     detail: 'Magnesio 400 mg. Pantallas fuera. Ducha tibia terminando en fría. Cuarto a 18–20 °C, oscuridad total.',
@@ -112,7 +125,7 @@ const trasNocheTrabajo = (): Block[] => [
 /** Madrugada del lunes, que viene de la noche del domingo. */
 const trasNocheDomingo = (): Block[] => [
   { start: '00:00', end: '01:00', kind: 'libre', title: 'Tiempo personal', flexible: true },
-  { start: '01:00', end: '01:20', kind: 'comida', title: 'Snack nocturno de caseína',
+  { start: '01:00', end: '01:20', kind: 'comida', title: 'Snack nocturno de caseína', avisar: 0,
     ref: { type: 'receta', slot: 'nocturno' } },
   { start: '01:20', end: '02:00', kind: 'cierre', title: 'Ritual de cierre',
     detail: 'Hoy vuelve el horario de trabajo. Te acuestas a las 02:00 para retomar el ritmo sin choque.',
@@ -122,11 +135,11 @@ const trasNocheDomingo = (): Block[] => [
 
 /** El ritual matinal: despertar → parque → columpio → volver. */
 const ritualMatinal = (): Block[] => [
-  { start: '09:30', end: '09:45', kind: 'despertar', title: 'Despertar sin teléfono',
+  { start: '09:30', end: '09:45', kind: 'despertar', title: 'Despertar sin teléfono', avisar: 0,
     detail: 'Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina D3. Nada de pantallas: lo primero que ven tus ojos hoy debe ser luz real, no una notificación.' },
   { start: '09:45', end: '10:00', kind: 'caminata', title: 'Caminata al parque',
     detail: 'Sin audífonos. El trayecto es parte de la práctica.' },
-  { start: '10:00', end: '10:30', kind: 'meditacion', title: 'Meditación en el columpio',
+  { start: '10:00', end: '10:30', kind: 'meditacion', title: 'Meditación en el columpio', avisar: 5,
     detail: 'Luz matinal + balanceo rítmico. El bloque más valioso del día para alguien con horario nocturno.',
     ref: { type: 'meditacion', id: 'columpio' } },
   { start: '10:30', end: '10:45', kind: 'caminata', title: 'Regreso caminando' },
@@ -145,23 +158,29 @@ const trabajoNoche = (): Block[] => [
 
 // ── DÍA DE ENTRENO (Lunes · Miércoles · Viernes) ─────────────
 
-const diaEntreno = (workoutId: string, nombre: string, madrugada: Block[]): Block[] => [
+const diaEntreno = (
+  workoutId: string,
+  nombre: string,
+  madrugada: Block[],
+  /** Fin del entreno. Fase 1 son 65 min en casa; Fase 2, 75 con el gimnasio. */
+  fin = '13:20',
+): Block[] => [
   ...madrugada,
   ...ritualMatinal(),
-  { start: '11:15', end: '12:00', kind: 'ruso', title: 'Ruso · Anki + lección',
+  { start: '11:15', end: '12:00', kind: 'ruso', title: 'Ruso · Anki + lección', avisar: 0,
     detail: 'Aprovecha la digestión del desayuno. Cuando termines llevarás una hora despierto y comido: momento ideal para entrenar.',
     ref: { type: 'ruso' } },
   { start: '12:00', end: '12:15', kind: 'prep', title: 'Calentamiento dinámico',
     detail: 'Entrenar de mañana exige un calentamiento un poco más largo: la temperatura corporal aún está subiendo. 5 minutos bien hechos igualan tu rendimiento al de la tarde.' },
-  { start: '12:15', end: '13:20', kind: 'entreno', title: nombre, ref: { type: 'entreno', workoutId } },
-  { start: '13:20', end: '13:50', kind: 'comida', title: 'Batido post-entreno + ducha', ref: { type: 'receta', slot: 'postEntreno' } },
-  { start: '13:50', end: '14:35', kind: 'comida', title: 'Comida principal', ref: { type: 'receta', slot: 'comida' } },
-  { start: '14:35', end: '16:05', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo',
+  { start: '12:15', end: fin, kind: 'entreno', title: nombre, avisar: 10, ref: { type: 'entreno', workoutId } },
+  { start: fin, end: sumar(fin, 30), kind: 'comida', title: 'Batido post-entreno + ducha', ref: { type: 'receta', slot: 'postEntreno' } },
+  { start: sumar(fin, 30), end: sumar(fin, 75), kind: 'comida', title: 'Comida principal', ref: { type: 'receta', slot: 'comida' } },
+  { start: sumar(fin, 75), end: sumar(fin, 165), kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5,
     detail: 'Define el entregable ANTES de empezar. Sin clases que te estructuren, este bloque es lo único que hace avanzar la tesis.',
     ref: { type: 'protocolo', id: 'ultradiano' } },
-  { start: '16:05', end: '16:25', kind: 'libre', title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
-  { start: '16:25', end: '17:25', kind: 'doctorado', title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo', id: 'pomodoro' } },
-  { start: '17:25', end: '18:30', kind: 'libre', title: 'Recados / compras / personal', flexible: true },
+  { start: sumar(fin, 165), end: sumar(fin, 185), kind: 'libre', title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
+  { start: sumar(fin, 185), end: sumar(fin, 245), kind: 'doctorado', title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo', id: 'pomodoro' } },
+  { start: sumar(fin, 245), end: '18:30', kind: 'libre', title: 'Recados / compras / personal', flexible: true },
   { start: '18:30', end: '19:15', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
   { start: '19:15', end: '20:15', kind: 'libre', title: 'Tiempo personal', flexible: true },
   ...trabajoNoche(),
@@ -172,14 +191,14 @@ const diaEntreno = (workoutId: string, nombre: string, madrugada: Block[]): Bloc
 const diaRecuperacion = (medId: string): Block[] => [
   ...trasNocheTrabajo(),
   ...ritualMatinal(),
-  { start: '11:15', end: '12:00', kind: 'ruso', title: 'Ruso · Anki + lección', ref: { type: 'ruso' } },
-  { start: '12:00', end: '12:45', kind: 'caminata', title: 'Caminata larga · 45 min sin audífonos',
+  { start: '11:15', end: '12:00', kind: 'ruso', title: 'Ruso · Anki + lección', avisar: 0, ref: { type: 'ruso' } },
+  { start: '12:00', end: '12:45', kind: 'caminata', title: 'Caminata larga · 45 min sin audífonos', avisar: 5,
     detail: 'Esto REEMPLAZA a correr. Recupera sin interferir con la hipertrofia. Sin podcasts ni música: deja que la mente divague, ahí aparecen las ideas del proyecto. Lleva una libreta.',
     ref: { type: 'protocolo', id: 'recuperacion' } },
   { start: '12:45', end: '13:05', kind: 'movilidad', title: 'Movilidad',
     detail: 'Cadera, tobillo, columna torácica y hombro. 3 minutos por zona. Es lo que te mantendrá sin lesiones bailando.' },
   { start: '13:05', end: '13:50', kind: 'comida', title: 'Comida principal', ref: { type: 'receta', slot: 'comida' } },
-  { start: '13:50', end: '15:20', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo',
+  { start: '13:50', end: '15:20', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5,
     detail: 'Sin entreno hoy, este es tu día de mayor capacidad cognitiva. Úsalo en lo más difícil de la tesis.',
     ref: { type: 'protocolo', id: 'ultradiano' } },
   { start: '15:20', end: '15:40', kind: 'libre', title: 'Descanso real' },
@@ -196,19 +215,19 @@ const diaRecuperacion = (medId: string): Block[] => [
 const VIERNES: Block[] = [
   ...trasNocheTrabajo(),
   ...ritualMatinal(),
-  { start: '11:15', end: '12:00', kind: 'ruso', title: 'Ruso · Anki + lección', ref: { type: 'ruso' } },
+  { start: '11:15', end: '12:00', kind: 'ruso', title: 'Ruso · Anki + lección', avisar: 0, ref: { type: 'ruso' } },
   { start: '12:00', end: '12:15', kind: 'prep', title: 'Calentamiento dinámico' },
   { start: '12:15', end: '13:20', kind: 'entreno', title: 'Entreno C · Full body volumen', ref: { type: 'entreno', workoutId: 'f1c' } },
   { start: '13:20', end: '13:50', kind: 'comida', title: 'Batido post-entreno + ducha', ref: { type: 'receta', slot: 'postEntreno' } },
   { start: '13:50', end: '14:35', kind: 'comida', title: 'Comida principal', ref: { type: 'receta', slot: 'comida' } },
-  { start: '14:35', end: '16:05', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', ref: { type: 'protocolo', id: 'ultradiano' } },
+  { start: '14:35', end: '16:05', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5, ref: { type: 'protocolo', id: 'ultradiano' } },
   { start: '16:05', end: '16:25', kind: 'libre', title: 'Descanso real' },
   { start: '16:25', end: '17:25', kind: 'doctorado', title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo', id: 'pomodoro' } },
   { start: '17:25', end: '18:45', kind: 'libre', title: 'Tiempo libre', flexible: true },
   { start: '18:45', end: '19:30', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
   { start: '19:30', end: '23:30', kind: 'libre', title: 'Noche libre · sin trabajo',
     detail: 'Tu única noche sin jornada laboral. Úsala: social, cine, descanso. Recuperar la vida también es parte del plan.' },
-  { start: '23:30', end: '23:50', kind: 'comida', title: 'Snack nocturno de caseína', ref: { type: 'receta', slot: 'nocturno' } },
+  { start: '23:30', end: '23:50', kind: 'comida', title: 'Snack nocturno de caseína', avisar: 0, ref: { type: 'receta', slot: 'nocturno' } },
   { start: '23:50', end: '00:00', kind: 'cierre', title: 'Ritual de cierre',
     detail: 'Te acuestas antes porque mañana hay clase a las 11:00 y el traslado es de una hora.',
     ref: { type: 'meditacion', id: 'cierre' } },
@@ -222,10 +241,10 @@ const SABADO: Block[] = [
   { start: '07:50', end: '08:05', kind: 'despertar', title: 'Despertar', detail: 'Agua, creatina, vitamina D3. Hoy sales temprano: el traslado a la academia es de una hora.' },
   { start: '08:05', end: '08:50', kind: 'comida', title: 'Desayuno de carga pre-baile',
     detail: 'Terminas 2 h antes de bailar: digestión completa y energía disponible.', ref: { type: 'receta', slot: 'preBaile' } },
-  { start: '08:50', end: '09:20', kind: 'meditacion', title: 'Meditación en el columpio',
+  { start: '08:50', end: '09:20', kind: 'meditacion', title: 'Meditación en el columpio', avisar: 5,
     detail: 'La luz matinal del fin de semana es la que impide que tu reloj se desfase. No la saltes por ir con prisa.',
     ref: { type: 'meditacion', id: 'columpio' } },
-  { start: '09:20', end: '10:00', kind: 'prep', title: 'Preparación y salida del dormitorio',
+  { start: '09:20', end: '10:00', kind: 'prep', title: 'Preparación y salida del dormitorio', avisar: 10,
     detail: 'Botella de 700 ml: agua + pizca de sal + jugo de limón. Ropa de cambio. Movilidad de cadera y tobillo 5 min.' },
   { start: '10:00', end: '11:00', kind: 'ruso', title: 'Traslado · 1 h de ruso',
     detail: 'Una hora de camino cada sentido son 2 h semanales de tiempo muerto. Conviértelas en tu mejor bloque de Anki y escucha: no requiere escritorio ni silencio.',
@@ -240,7 +259,7 @@ const SABADO: Block[] = [
   { start: '16:45', end: '18:30', kind: 'libre', title: 'Tiempo personal / social', flexible: true },
   { start: '18:30', end: '19:30', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
   { start: '19:30', end: '23:15', kind: 'libre', title: 'Noche libre', flexible: true },
-  { start: '23:15', end: '23:35', kind: 'comida', title: 'Snack nocturno de caseína', ref: { type: 'receta', slot: 'nocturno' } },
+  { start: '23:15', end: '23:35', kind: 'comida', title: 'Snack nocturno de caseína', avisar: 0, ref: { type: 'receta', slot: 'nocturno' } },
   { start: '23:35', end: '00:00', kind: 'cierre', title: 'Ritual de cierre',
     detail: 'Mañana es tu día más largo: sales a las 10:00 y regresas después de las 18:00.',
     ref: { type: 'meditacion', id: 'cierre' } },
@@ -251,13 +270,13 @@ const SABADO: Block[] = [
 const DOMINGO: Block[] = [
   { start: '00:00', end: '00:10', kind: 'cierre', title: 'Ritual de cierre', ref: { type: 'meditacion', id: 'cierre' } },
   { start: '00:10', end: '07:50', kind: 'sueño', title: 'Sueño · 7.7 h' },
-  { start: '07:50', end: '08:05', kind: 'despertar', title: 'Despertar', detail: 'Agua, creatina, vitamina D3.' },
+  { start: '07:50', end: '08:05', kind: 'despertar', title: 'Despertar', detail: 'Agua, creatina, vitamina D3.', avisar: 0 },
   { start: '08:05', end: '08:50', kind: 'comida', title: 'Desayuno de carga · día largo de baile',
     detail: 'Hoy bailas 3 h 20 min repartidas en dos academias y pasas 8 horas fuera. Sin esta carga entras en déficit y el baile te consume músculo.',
     ref: { type: 'receta', slot: 'preBaile' } },
-  { start: '08:50', end: '09:20', kind: 'meditacion', title: 'Meditación en el columpio',
+  { start: '08:50', end: '09:20', kind: 'meditacion', title: 'Meditación en el columpio', avisar: 5,
     ref: { type: 'meditacion', id: 'columpio' } },
-  { start: '09:20', end: '10:00', kind: 'prep', title: 'Preparación y salida del dormitorio',
+  { start: '09:20', end: '10:00', kind: 'prep', title: 'Preparación y salida del dormitorio', avisar: 10,
     detail: 'Hoy sales por 8 horas: botella de 700 ml con electrolitos, ropa de cambio, y algo de dinero para la comida del mediodía.' },
   { start: '10:00', end: '11:00', kind: 'ruso', title: 'Traslado · 1 h de ruso', ref: { type: 'ruso' } },
   { start: '11:00', end: '12:00', kind: 'baile', title: 'Salsa y bachata · academia 1', detail: '1 hora de clase. ~350 kcal.' },
@@ -274,17 +293,20 @@ const DOMINGO: Block[] = [
     detail: 'En cuanto llegues al dormitorio. Tras 3 h 20 min de baile, esta es la reposición más urgente del día.',
     ref: { type: 'receta', slot: 'postEntreno' } },
   { start: '18:30', end: '19:00', kind: 'libre', title: 'Ducha y descanso' },
-  { start: '19:00', end: '20:00', kind: 'prep', title: 'MEAL PREP de la semana',
+  { start: '19:00', end: '20:00', kind: 'prep', title: 'MEAL PREP de la semana', avisar: 5,
     detail: 'La hora más rentable de tu semana. Estofado de res (3 cenas) + 300 g de гречка + 8 huevos cocidos + verduras cortadas. Te ahorra ~5 horas de lunes a viernes.' },
   { start: '20:00', end: '20:45', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
   { start: '20:45', end: '21:25', kind: 'ruso', title: 'Ruso · auto-test semanal', ref: { type: 'ruso' } },
-  { start: '21:25', end: '22:05', kind: 'metricas', title: 'Revisión semanal',
+  { start: '21:25', end: '22:05', kind: 'metricas', title: 'Revisión semanal', avisar: 5,
     detail: 'Peso promedio de la semana, fotos si toca, adherencia. Planea la semana que entra. Aquí se ajusta el plan con datos, no con sensaciones.' },
   { start: '22:05', end: '00:00', kind: 'libre', title: 'Tiempo personal', flexible: true },
 ]
 
-/** 0 = domingo … 6 = sábado (igual que Date.getDay()). */
-export const SEMANA: Record<number, Block[]> = {
+// ─────────────────────────────────────────────────────────────
+// FASE 1 · Peso corporal · Lun · Mié · Vie (full body 3×/semana)
+// ─────────────────────────────────────────────────────────────
+
+const FASE_1: Record<number, Block[]> = {
   0: DOMINGO,
   1: diaEntreno('f1a', 'Entreno A · Empuje + Cuádriceps', trasNocheDomingo()),
   2: diaRecuperacion('escaneo'),
@@ -293,6 +315,49 @@ export const SEMANA: Record<number, Block[]> = {
   5: VIERNES,
   6: SABADO,
 }
+
+// ─────────────────────────────────────────────────────────────
+// FASE 2 · Gimnasio · Lun · Mar · Jue · Vie (Upper/Lower)
+//
+// Currier et al. 2023: 2 sesiones semanales por grupo muscular es la
+// prescripción mejor rankeada para hipertrofia. El orden respeta tu semana:
+//  · Lunes EMPUJE, no piernas — el domingo bailas 3 h 20 y llegas con las
+//    piernas fatigadas.
+//  · Jueves la última sesión de pierna, para llegar al sábado con 48 h de
+//    recuperación antes de bailar.
+//  · Miércoles queda como día de recuperación activa.
+// ─────────────────────────────────────────────────────────────
+
+const FASE_2: Record<number, Block[]> = {
+  0: DOMINGO,
+  1: diaEntreno('f2ua', 'Empuje · Pecho · Hombros · Tríceps', trasNocheDomingo(), '13:30'),
+  2: diaEntreno('f2la', 'Pierna A · Cuádriceps dominante', trasNocheTrabajo(), '13:30'),
+  3: diaRecuperacion('escaneo'),
+  4: diaEntreno('f2lb', 'Pierna B · Cadena posterior', trasNocheTrabajo(), '13:30'),
+  5: VIERNES.map((b) =>
+    b.kind === 'entreno'
+      ? { ...b, title: 'Tracción · Espalda · Bíceps', ref: { type: 'entreno' as const, workoutId: 'f2ub' } }
+      : b,
+  ),
+  6: SABADO,
+}
+
+/**
+ * Plan del día según la fase activa.
+ *
+ * Antes SEMANA era una constante con los entrenos de peso corporal escritos a
+ * fuego, así que el selector de fase en Ajustes guardaba el valor pero no
+ * cambiaba nada: en septiembre habrías entrado al gimnasio y la app te habría
+ * seguido dando flexiones.
+ *
+ * @param dia 0 = domingo … 6 = sábado (igual que Date.getDay())
+ */
+export function planDelDia(dia: number, fase: 1 | 2 = 1): Block[] {
+  return (fase === 2 ? FASE_2 : FASE_1)[dia]
+}
+
+/** Compatibilidad: la Fase 1 sigue siendo el plan por defecto. */
+export const SEMANA = FASE_1
 
 export const NOMBRE_DIA = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado']
 

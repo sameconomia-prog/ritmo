@@ -6,6 +6,7 @@ import Entreno from './pages/Entreno'
 import Comida from './pages/Comida'
 import Estudio from './pages/Estudio'
 import Progreso from './pages/Progreso'
+import Fotos from './pages/Fotos'
 import Ajustes from './pages/Ajustes'
 import { IconComida, IconEntreno, IconEstudio, IconHoy, IconProgreso } from './icons'
 
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="/comida" element={<Comida />} />
           <Route path="/estudio" element={<Estudio />} />
           <Route path="/progreso" element={<Progreso />} />
+          <Route path="/fotos" element={<Fotos />} />
           <Route path="/ajustes" element={<Ajustes />} />
           <Route path="*" element={<Navigate to="/hoy" replace />} />
         </Routes>

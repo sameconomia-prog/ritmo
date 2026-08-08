@@ -1,0 +1,573 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RITMO//Plan diario//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RITMO
+X-WR-TIMEZONE:Asia/Novosibirsk
+X-PUBLISHED-TTL:PT1H
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+BEGIN:VTIMEZONE
+TZID:Asia/Novosibirsk
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0700
+TZOFFSETTO:+0700
+TZNAME:+07
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:ritmo-0-2-0750@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260809T075000
+DTEND;TZID=Asia/Novosibirsk:20260809T080500
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:Despertar
+DESCRIPTION:Agua\, creatina\, vitamina D3.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Despertar
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-0-4-0850@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260809T085000
+DTEND;TZID=Asia/Novosibirsk:20260809T092000
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:Meditación en el columpio
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Meditación en el columpio
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-0-5-0920@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260809T092000
+DTEND;TZID=Asia/Novosibirsk:20260809T100000
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:Preparación y salida del dormitorio
+DESCRIPTION:Hoy sales por 8 horas: botella de 700 ml con electrolitos\, r
+ opa de cambio\, y algo de dinero para la comida del mediodía.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Preparación y salida del dormitorio
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-0-14-1900@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260809T190000
+DTEND;TZID=Asia/Novosibirsk:20260809T200000
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:MEAL PREP de la semana
+DESCRIPTION:La hora más rentable de tu semana. Estofado de res (3 cenas)
+  + 300 g de гречка + 8 huevos cocidos + verduras cortadas. Te ahor
+ ra ~5 horas de lunes a viernes.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:MEAL PREP de la semana
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-0-17-2125@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260809T212500
+DTEND;TZID=Asia/Novosibirsk:20260809T220500
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:Revisión semanal
+DESCRIPTION:Peso promedio de la semana\, fotos si toca\, adherencia. Plan
+ ea la semana que entra. Aquí se ajusta el plan con datos\, no con sensa
+ ciones.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Revisión semanal
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-1-1-0100@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260803T010000
+DTEND;TZID=Asia/Novosibirsk:20260803T012000
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:Snack nocturno de caseína
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Snack nocturno de caseína
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-1-4-0930@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260803T093000
+DTEND;TZID=Asia/Novosibirsk:20260803T094500
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:Despertar sin teléfono
+DESCRIPTION:Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina
+  D3. Nada de pantallas: lo primero que ven tus ojos hoy debe ser luz rea
+ l\, no una notificación.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Despertar sin teléfono
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-1-6-1000@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260803T100000
+DTEND;TZID=Asia/Novosibirsk:20260803T103000
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:Meditación en el columpio
+DESCRIPTION:Luz matinal + balanceo rítmico. El bloque más valioso del d
+ ía para alguien con horario nocturno.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Meditación en el columpio
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-1-9-1115@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260803T111500
+DTEND;TZID=Asia/Novosibirsk:20260803T120000
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:Ruso · Anki + lección
+DESCRIPTION:Aprovecha la digestión del desayuno. Cuando termines llevar
+ ás una hora despierto y comido: momento ideal para entrenar.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Ruso · Anki + lección
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-1-11-1215@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260803T121500
+DTEND;TZID=Asia/Novosibirsk:20260803T132000
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:Entreno A · Empuje + Cuádriceps
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Entreno A · Empuje + Cuádriceps
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-1-14-1435@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260803T143500
+DTEND;TZID=Asia/Novosibirsk:20260803T160500
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:Proyecto doctoral · bloque profundo
+DESCRIPTION:Define el entregable ANTES de empezar. Sin clases que te estr
+ ucturen\, este bloque es lo único que hace avanzar la tesis.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Proyecto doctoral · bloque profundo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-2-2-0130@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260804T013000
+DTEND;TZID=Asia/Novosibirsk:20260804T015000
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:Snack nocturno de caseína
+DESCRIPTION:El hábito que no se salta: trabaja mientras duermes.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Snack nocturno de caseína
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-2-5-0930@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260804T093000
+DTEND;TZID=Asia/Novosibirsk:20260804T094500
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:Despertar sin teléfono
+DESCRIPTION:Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina
+  D3. Nada de pantallas: lo primero que ven tus ojos hoy debe ser luz rea
+ l\, no una notificación.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Despertar sin teléfono
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-2-7-1000@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260804T100000
+DTEND;TZID=Asia/Novosibirsk:20260804T103000
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:Meditación en el columpio
+DESCRIPTION:Luz matinal + balanceo rítmico. El bloque más valioso del d
+ ía para alguien con horario nocturno.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Meditación en el columpio
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-2-10-1115@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260804T111500
+DTEND;TZID=Asia/Novosibirsk:20260804T120000
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:Ruso · Anki + lección
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Ruso · Anki + lección
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-2-11-1200@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260804T120000
+DTEND;TZID=Asia/Novosibirsk:20260804T124500
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:Caminata larga · 45 min sin audífonos
+DESCRIPTION:Esto REEMPLAZA a correr. Recupera sin interferir con la hiper
+ trofia. Sin podcasts ni música: deja que la mente divague\, ahí aparec
+ en las ideas del proyecto. Lleva una libreta.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Caminata larga · 45 min sin audífonos
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-2-14-1350@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260804T135000
+DTEND;TZID=Asia/Novosibirsk:20260804T152000
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:Proyecto doctoral · bloque profundo
+DESCRIPTION:Sin entreno hoy\, este es tu día de mayor capacidad cognitiv
+ a. Úsalo en lo más difícil de la tesis.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Proyecto doctoral · bloque profundo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-3-2-0130@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260805T013000
+DTEND;TZID=Asia/Novosibirsk:20260805T015000
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:Snack nocturno de caseína
+DESCRIPTION:El hábito que no se salta: trabaja mientras duermes.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Snack nocturno de caseína
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-3-5-0930@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260805T093000
+DTEND;TZID=Asia/Novosibirsk:20260805T094500
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:Despertar sin teléfono
+DESCRIPTION:Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina
+  D3. Nada de pantallas: lo primero que ven tus ojos hoy debe ser luz rea
+ l\, no una notificación.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Despertar sin teléfono
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-3-7-1000@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260805T100000
+DTEND;TZID=Asia/Novosibirsk:20260805T103000
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:Meditación en el columpio
+DESCRIPTION:Luz matinal + balanceo rítmico. El bloque más valioso del d
+ ía para alguien con horario nocturno.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Meditación en el columpio
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-3-10-1115@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260805T111500
+DTEND;TZID=Asia/Novosibirsk:20260805T120000
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:Ruso · Anki + lección
+DESCRIPTION:Aprovecha la digestión del desayuno. Cuando termines llevar
+ ás una hora despierto y comido: momento ideal para entrenar.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Ruso · Anki + lección
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-3-12-1215@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260805T121500
+DTEND;TZID=Asia/Novosibirsk:20260805T132000
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:Entreno B · Tracción + Cadena posterior
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Entreno B · Tracción + Cadena posterior
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-3-15-1435@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260805T143500
+DTEND;TZID=Asia/Novosibirsk:20260805T160500
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:Proyecto doctoral · bloque profundo
+DESCRIPTION:Define el entregable ANTES de empezar. Sin clases que te estr
+ ucturen\, este bloque es lo único que hace avanzar la tesis.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Proyecto doctoral · bloque profundo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-4-2-0130@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260806T013000
+DTEND;TZID=Asia/Novosibirsk:20260806T015000
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:Snack nocturno de caseína
+DESCRIPTION:El hábito que no se salta: trabaja mientras duermes.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Snack nocturno de caseína
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-4-5-0930@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260806T093000
+DTEND;TZID=Asia/Novosibirsk:20260806T094500
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:Despertar sin teléfono
+DESCRIPTION:Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina
+  D3. Nada de pantallas: lo primero que ven tus ojos hoy debe ser luz rea
+ l\, no una notificación.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Despertar sin teléfono
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-4-7-1000@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260806T100000
+DTEND;TZID=Asia/Novosibirsk:20260806T103000
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:Meditación en el columpio
+DESCRIPTION:Luz matinal + balanceo rítmico. El bloque más valioso del d
+ ía para alguien con horario nocturno.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Meditación en el columpio
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-4-10-1115@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260806T111500
+DTEND;TZID=Asia/Novosibirsk:20260806T120000
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:Ruso · Anki + lección
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Ruso · Anki + lección
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-4-11-1200@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260806T120000
+DTEND;TZID=Asia/Novosibirsk:20260806T124500
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:Caminata larga · 45 min sin audífonos
+DESCRIPTION:Esto REEMPLAZA a correr. Recupera sin interferir con la hiper
+ trofia. Sin podcasts ni música: deja que la mente divague\, ahí aparec
+ en las ideas del proyecto. Lleva una libreta.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Caminata larga · 45 min sin audífonos
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-4-14-1350@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260806T135000
+DTEND;TZID=Asia/Novosibirsk:20260806T152000
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:Proyecto doctoral · bloque profundo
+DESCRIPTION:Sin entreno hoy\, este es tu día de mayor capacidad cognitiv
+ a. Úsalo en lo más difícil de la tesis.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Proyecto doctoral · bloque profundo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-5-2-0130@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T013000
+DTEND;TZID=Asia/Novosibirsk:20260807T015000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Snack nocturno de caseína
+DESCRIPTION:El hábito que no se salta: trabaja mientras duermes.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Snack nocturno de caseína
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-5-5-0930@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T093000
+DTEND;TZID=Asia/Novosibirsk:20260807T094500
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Despertar sin teléfono
+DESCRIPTION:Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina
+  D3. Nada de pantallas: lo primero que ven tus ojos hoy debe ser luz rea
+ l\, no una notificación.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Despertar sin teléfono
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-5-7-1000@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T100000
+DTEND;TZID=Asia/Novosibirsk:20260807T103000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Meditación en el columpio
+DESCRIPTION:Luz matinal + balanceo rítmico. El bloque más valioso del d
+ ía para alguien con horario nocturno.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Meditación en el columpio
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-5-10-1115@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T111500
+DTEND;TZID=Asia/Novosibirsk:20260807T120000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Ruso · Anki + lección
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Ruso · Anki + lección
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-5-15-1435@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T143500
+DTEND;TZID=Asia/Novosibirsk:20260807T160500
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Proyecto doctoral · bloque profundo
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Proyecto doctoral · bloque profundo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-5-21-2330@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T233000
+DTEND;TZID=Asia/Novosibirsk:20260807T235000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Snack nocturno de caseína
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Snack nocturno de caseína
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-6-4-0850@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260808T085000
+DTEND;TZID=Asia/Novosibirsk:20260808T092000
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:Meditación en el columpio
+DESCRIPTION:La luz matinal del fin de semana es la que impide que tu relo
+ j se desfase. No la saltes por ir con prisa.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Meditación en el columpio
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-6-5-0920@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260808T092000
+DTEND;TZID=Asia/Novosibirsk:20260808T100000
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:Preparación y salida del dormitorio
+DESCRIPTION:Botella de 700 ml: agua + pizca de sal + jugo de limón. Ropa
+  de cambio. Movilidad de cadera y tobillo 5 min.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Preparación y salida del dormitorio
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-6-15-2315@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260808T231500
+DTEND;TZID=Asia/Novosibirsk:20260808T233500
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:Snack nocturno de caseína
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Snack nocturno de caseína
+END:VALARM
+END:VEVENT
+END:VCALENDAR
