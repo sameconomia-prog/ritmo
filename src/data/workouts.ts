@@ -3,31 +3,45 @@
  *
  * FUNDAMENTO CIENTÍFICO DEL DISEÑO
  * ---------------------------------
- * 1) EL PROBLEMA DE CORRER A DIARIO (por qué te sentiste agotado)
- *    Wilson et al. 2012 (meta-análisis, 21 estudios): el entrenamiento de fuerza
- *    combinado con CARRERA — pero no con bicicleta — produce descensos
- *    significativos en hipertrofia Y fuerza. Correlaciones negativas entre
- *    FRECUENCIA de aeróbico (-0.26 a -0.35) y DURACIÓN (-0.29 a -0.75) con la
- *    hipertrofia. Lundberg et al. 2022 lo confirma a nivel de fibra: efecto
- *    negativo en fibras tipo I cuando el aeróbico es corriendo (SMD -0.81).
- *    → Correr 1.2 km TODOS LOS DÍAS es la peor variable posible para tu meta:
- *      frecuencia máxima + modalidad de mayor interferencia + ya haces 3 h 20
- *      min de baile el fin de semana. Tu cansancio no es debilidad: es exceso de
- *      volumen aeróbico sin superávit calórico ni descanso.
+ * 1) LA EXCÉNTRICA ES EL MAYOR PALANCA PARA TUS BRAZOS
+ *    Sato et al. 2022 (EJAP) entrenó FLEXORES DEL CODO —tu músculo objetivo—
+ *    2x/semana durante 5 semanas comparando tres protocolos. Grosor muscular:
+ *      · Excéntrico + concéntrico ... +10.6 %
+ *      · Solo EXCÉNTRICO .......... +9.7 %  (¡con la MITAD del volumen!)
+ *      · Solo concéntrico ..........  +2.5 %  (no significativo)
+ *    Conclusión textual: "las contracciones concéntricas contribuyeron poco".
+ *    → Hacer dominadas rápidas tira a la basura casi todo el estímulo. Bajar en
+ *      3 segundos contados no es un refinamiento: para el bíceps ES el ejercicio.
+ *    Yagiz et al. 2022 (revisión sistemática) confirma además que el trabajo
+ *    directo de flexión de codo tiene efecto grande (g = 0.93): los curls no
+ *    sobran, complementan a las dominadas.
  *
- * 2) PESO CORPORAL SÍ CONSTRUYE MÚSCULO (agosto, antes del gym)
+ * 2) EL TROTE DE 1 200 m COMO CALENTAMIENTO: ESTÁ BIEN
+ *    Panissa et al. 2021 (revisión de interferencia aguda): un volumen aeróbico
+ *    BAJO —3 km, ~18 min— NO reduce el rendimiento de fuerza posterior; el
+ *    perjuicio aparece a partir de 5 y 7 km (~30 y ~42 min). Con 1 200 m estás
+ *    muy por debajo del umbral.
+ *    OJO — esto NO contradice el problema original: correr 1.2 km TODOS LOS DÍAS
+ *    como sesión propia, sin superávit calórico ni descanso, sí era excesivo
+ *    (Wilson et al. 2012: la interferencia crónica escala con la FRECUENCIA del
+ *    aeróbico, r = -0.26 a -0.35, y con su duración, r = -0.29 a -0.75).
+ *    Trotar suave 3 veces por semana antes de levantar es otra cosa: es
+ *    calentamiento. Mantenlo, pero suave y sin sprints — Panissa señala que el
+ *    trabajo interválico de alta intensidad sí penaliza las series siguientes.
+ *
+ * 3) PESO CORPORAL SÍ CONSTRUYE MÚSCULO (agosto, antes del gym)
  *    Schoenfeld et al. 2017 y Lopez et al. 2020: la hipertrofia es
  *    LOAD-INDEPENDENT — cargas bajas igualan a cargas altas — CON UNA CONDICIÓN:
  *    las series deben llevarse al fallo o muy cerca. La fuerza máxima sí
  *    requiere carga alta, pero el tamaño muscular no.
  *
- * 3) CERCANÍA AL FALLO (RIR)
+ * 4) CERCANÍA AL FALLO (RIR)
  *    Robinson et al. 2024 (meta-regresión): la hipertrofia mejora conforme las
  *    series terminan MÁS CERCA del fallo; la fuerza es indiferente al RIR.
  *    → Con peso corporal (carga baja) hay que ir a RIR 0-1. Con barra pesada
  *      (Fase 2) basta RIR 1-2 en compuestos por seguridad.
  *
- * 4) FRECUENCIA Y SERIES
+ * 5) FRECUENCIA Y SERIES
  *    Currier et al. 2023 (network meta-análisis bayesiano, 119 estudios):
  *    la prescripción mejor rankeada para HIPERTROFIA es multi-serie, 2x/semana
  *    por grupo muscular. Como principiante, full-body 3x/semana da 3 estímulos
@@ -57,6 +71,12 @@ export interface Prescription {
   rest: number
   /** Si es unilateral, el logger pide izquierda y derecha. */
   unilateral?: boolean
+  /**
+   * Segundos de BAJADA (fase excéntrica). Sato et al. 2022: en flexores del
+   * codo, el trabajo excéntrico produjo +9.7 % de grosor muscular frente a
+   * +2.5 % del concéntrico. Es el ajuste con mayor retorno para tus brazos.
+   */
+  tempo?: number
 }
 
 export interface WorkoutItem {
@@ -79,7 +99,98 @@ export interface Workout {
 // ─────────────────────────────────────────────────────────────
 
 export const EXERCISES: Record<string, Exercise> = {
-  // ── FASE 1: PESO CORPORAL ──
+  // ── FASE 1: PARQUE CON BARRAS ──
+  dominadaSupina: {
+    id: 'dominadaSupina',
+    name: 'Dominada supina (agarre cerrado)',
+    muscle: 'Bíceps · Dorsales',
+    cue: 'Palmas hacia ti, manos a la anchura de los hombros. Sube hasta que la barbilla pase la barra y BAJA EN 3 SEGUNDOS contando.',
+    error: 'Subir y bajar rápido, que es lo que estabas haciendo. La bajada rápida te roba la mitad del estímulo: es en la fase excéntrica donde el músculo genera más tensión y más daño mecánico.',
+    progression: [
+      'Con banda elástica o pies apoyados (asistida)',
+      'Solo la bajada: saltas arriba y bajas en 5 s',
+      'Completa, 3 s de bajada ← tu objetivo ahora',
+      'Completa con pausa de 1 s con la barbilla arriba',
+      'Con lastre (mochila cargada)',
+    ],
+    video: 'chin up close grip slow eccentric',
+  },
+  dominadaProna: {
+    id: 'dominadaProna',
+    name: 'Dominada prona',
+    muscle: 'Dorsales · Espalda alta',
+    cue: 'Palmas al frente, manos algo más anchas que los hombros. Piensa en llevar los CODOS al suelo, no en subir la barbilla.',
+    error: 'Encoger los hombros hacia las orejas al colgar. Antes de tirar, hunde los omóplatos.',
+    progression: [
+      'Con banda elástica (asistida)',
+      'Negativas de 5 s',
+      'Completa',
+      'Completa con pausa arriba',
+      'Con lastre',
+    ],
+    video: 'pull up form scapular depression',
+  },
+  fondoParalelas: {
+    id: 'fondoParalelas',
+    name: 'Fondos en paralelas',
+    muscle: 'Tríceps · Pecho inferior · Hombro',
+    cue: 'Torso casi vertical para cargar tríceps. Baja hasta que el hombro quede a la altura del codo, sin pasarte. Bajada de 3 s.',
+    error: 'Bajar demasiado. Por debajo del paralelo el hombro entra en una posición vulnerable y no ganas nada extra.',
+    progression: [
+      'Fondos con pies apoyados en el suelo (asistidos)',
+      'Negativas de 5 s',
+      'Completos, 8–10 reps ← donde estás',
+      'Completos con pausa abajo',
+      'Con lastre',
+    ],
+    video: 'parallel bar dips triceps form',
+  },
+  remoBarraBaja: {
+    id: 'remoBarraBaja',
+    name: 'Remo en barra baja',
+    muscle: 'Espalda media · Bíceps',
+    cue: 'Cuerpo recto bajo la barra. Jala llevando el ESTERNÓN a la barra y aprieta los omóplatos 1 s arriba.',
+    error: 'Doblar la cadera para acortar el recorrido. De talones a hombros, una sola línea.',
+    progression: [
+      'Rodillas flexionadas, torso muy inclinado',
+      'Piernas extendidas, cuerpo a 45°',
+      'Piernas extendidas, cuerpo casi horizontal',
+      'Pies elevados en banco',
+      'A un brazo',
+    ],
+    video: 'inverted row bar horizontal pull',
+  },
+  curlBarraBaja: {
+    id: 'curlBarraBaja',
+    name: 'Curl en barra baja',
+    muscle: 'Bíceps',
+    cue: 'Colgado bajo la barra con agarre supino y cerrado, cuerpo recto. Solo se doblan los codos: el cuerpo sube en arco hacia la barra.',
+    error: 'Convertirlo en remo empujando con la espalda. Los codos se quedan fijos apuntando al frente.',
+    progression: [
+      'Cuerpo muy inclinado (fácil)',
+      'Cuerpo a 45°',
+      'Cuerpo casi horizontal',
+      'Pies elevados',
+    ],
+    video: 'bodyweight bicep curl low bar',
+  },
+  flexionInclinada: {
+    id: 'flexionInclinada',
+    name: 'Flexión en plancha inclinada',
+    muscle: 'Pecho · Tríceps',
+    cue: 'Manos en la plancha, cuerpo recto. Cuanto más BAJA la plancha, más difícil. Baja en 3 s, sube con intención.',
+    error: 'Media repetición. El pecho debe rozar la superficie en cada una.',
+    progression: [
+      'Plancha alta (casi de pie)',
+      'Plancha media',
+      'Plancha baja',
+      'En el suelo',
+      'Pies elevados (declinada)',
+    ],
+    video: 'incline push up progression',
+  },
+
+  // ── FASE 1: EN CASA (respaldo para días de mal clima) ──
   bulgara: {
     id: 'bulgara',
     name: 'Sentadilla búlgara',
@@ -395,47 +506,53 @@ export const EXERCISES: Record<string, Exercise> = {
 export const WORKOUTS: Record<string, Workout> = {
   f1a: {
     id: 'f1a',
-    name: 'Fase 1 · Sesión A',
+    name: 'Parque · Tracción y Bíceps',
     phase: 1,
-    focus: 'Empuje + Cuádriceps',
-    durationMin: 50,
+    focus: 'Espalda · Bíceps · Cuádriceps',
+    durationMin: 55,
     items: [
-      { exerciseId: 'bulgara', rx: { sets: 3, reps: '8-12', rir: 1, rest: 90, unilateral: true }, note: 'Si haces 12 limpias en las 3 series, agrega mochila la próxima vez.' },
-      { exerciseId: 'flexion', rx: { sets: 4, reps: 'AMRAP', rir: 0, rest: 120 }, note: 'Llévalas casi al fallo. Con peso corporal, la cercanía al fallo ES el estímulo.' },
-      { exerciseId: 'filaInvertida', rx: { sets: 3, reps: 'AMRAP', rir: 0, rest: 90 }, note: 'Tu espalda es la prioridad nº1. Bajo la mesa del comedor funciona.' },
-      { exerciseId: 'puenteGluteo', rx: { sets: 3, reps: '10-15', rir: 1, rest: 60, unilateral: true } },
-      { exerciseId: 'flexionPica', rx: { sets: 3, reps: '6-12', rir: 1, rest: 75 } },
-      { exerciseId: 'plancha', rx: { sets: 3, reps: '40-60 s', rir: 1, rest: 45 } },
+      { exerciseId: 'dominadaSupina', rx: { sets: 4, reps: 'AMRAP', rir: 0, rest: 150, tempo: 3 },
+        note: 'BAJA EN 3 SEGUNDOS CONTANDO. Venías haciéndolas rápido: la bajada lenta es la mitad del estímulo que te estabas perdiendo. Con 3 s harás menos repeticiones que antes — es normal y es mejor.' },
+      { exerciseId: 'remoBarraBaja', rx: { sets: 3, reps: '8-12', rir: 1, rest: 105, tempo: 2 } },
+      { exerciseId: 'bulgara', rx: { sets: 3, reps: '8-12', rir: 1, rest: 90, unilateral: true },
+        note: 'Si haces 12 limpias en las 3 series, carga la mochila la próxima vez.' },
+      { exerciseId: 'curlBarraBaja', rx: { sets: 3, reps: '8-12', rir: 0, rest: 75, tempo: 3 } },
+      { exerciseId: 'plancha', rx: { sets: 3, reps: '45-60 s', rir: 1, rest: 45 } },
     ],
   },
   f1b: {
     id: 'f1b',
-    name: 'Fase 1 · Sesión B',
+    name: 'Parque · Empuje y Tríceps',
     phase: 1,
-    focus: 'Tracción + Cadena posterior',
-    durationMin: 50,
+    focus: 'Pecho · Hombros · Tríceps',
+    durationMin: 55,
     items: [
-      { exerciseId: 'nordico', rx: { sets: 3, reps: '5-8', rir: 1, rest: 120 }, note: 'El femoral es tu punto más débil por correr. Excéntricas lentas.' },
-      { exerciseId: 'filaInvertida', rx: { sets: 4, reps: 'AMRAP', rir: 0, rest: 120 }, note: 'Hoy es el ejercicio principal. Sube el nivel de progresión si haces +15.' },
-      { exerciseId: 'sentadillaUna', rx: { sets: 3, reps: '6-10', rir: 1, rest: 90, unilateral: true } },
-      { exerciseId: 'flexionDiamante', rx: { sets: 3, reps: 'AMRAP', rir: 0, rest: 75 } },
-      { exerciseId: 'curlMochila', rx: { sets: 3, reps: '10-15', rir: 0, rest: 60 } },
+      { exerciseId: 'fondoParalelas', rx: { sets: 4, reps: '6-10', rir: 1, rest: 150, tempo: 3 },
+        note: 'Torso casi vertical para cargar tríceps. Bajada de 3 s. No bajes por debajo del paralelo.' },
+      { exerciseId: 'flexionInclinada', rx: { sets: 3, reps: 'AMRAP', rir: 0, rest: 105, tempo: 2 },
+        note: 'Baja la plancha un nivel cuando pases de 15 repeticiones.' },
+      { exerciseId: 'flexionPica', rx: { sets: 3, reps: '6-12', rir: 1, rest: 90 } },
+      { exerciseId: 'zancada', rx: { sets: 3, reps: '10-12', rir: 1, rest: 90, unilateral: true } },
+      { exerciseId: 'flexionDiamante', rx: { sets: 3, reps: 'AMRAP', rir: 0, rest: 60 } },
       { exerciseId: 'hollow', rx: { sets: 3, reps: '20-40 s', rir: 1, rest: 45 } },
     ],
   },
   f1c: {
     id: 'f1c',
-    name: 'Fase 1 · Sesión C',
+    name: 'Parque · Piernas y Espalda',
     phase: 1,
-    focus: 'Full body · Volumen',
-    durationMin: 55,
+    focus: 'Full body · Cadena posterior',
+    durationMin: 60,
     items: [
-      { exerciseId: 'bulgara', rx: { sets: 3, reps: '10-15', rir: 1, rest: 90, unilateral: true } },
-      { exerciseId: 'flexion', rx: { sets: 3, reps: 'AMRAP', rir: 0, rest: 90 }, note: 'Hoy prueba el siguiente nivel de progresión (declinada o diamante).' },
-      { exerciseId: 'filaInvertida', rx: { sets: 3, reps: 'AMRAP', rir: 0, rest: 90 } },
-      { exerciseId: 'zancada', rx: { sets: 3, reps: '12', rir: 1, rest: 75, unilateral: true } },
+      { exerciseId: 'dominadaProna', rx: { sets: 4, reps: 'AMRAP', rir: 0, rest: 150, tempo: 3 },
+        note: 'Agarre prono, más ancho. Piensa en llevar los codos al suelo. Bajada de 3 s.' },
+      { exerciseId: 'sentadillaUna', rx: { sets: 3, reps: '6-10', rir: 1, rest: 105, unilateral: true },
+        note: 'Sustituye a la sentadilla con peso corporal: a 12–15 reps ya no te supone estímulo suficiente.' },
+      { exerciseId: 'remoBarraBaja', rx: { sets: 3, reps: 'AMRAP', rir: 0, rest: 90 } },
+      { exerciseId: 'nordico', rx: { sets: 3, reps: '5-8', rir: 1, rest: 105, tempo: 5 },
+        note: 'Femoral: el músculo que te falta por completo en lo que venías haciendo. Excéntricas muy lentas.' },
+      { exerciseId: 'curlBarraBaja', rx: { sets: 3, reps: '10-15', rir: 0, rest: 60, tempo: 3 } },
       { exerciseId: 'gemelo', rx: { sets: 3, reps: '15-20', rir: 0, rest: 45, unilateral: true } },
-      { exerciseId: 'planchaLateral', rx: { sets: 3, reps: '30 s', rir: 1, rest: 40, unilateral: true } },
     ],
   },
 

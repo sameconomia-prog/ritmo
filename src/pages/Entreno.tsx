@@ -29,11 +29,11 @@ export default function Entreno() {
             caminata de 45 minutos sin audífonos, movilidad y meditación.
           </p>
           <Porque>
-            Estabas corriendo 1.2 km todos los días. El meta-análisis de Wilson (2012, 21 estudios) encontró
-            que combinar fuerza con CARRERA —no con bicicleta— reduce de forma significativa tanto la
-            hipertrofia como la fuerza, y que el daño escala con la FRECUENCIA del aeróbico. Sumado a tus
-            3 h 20 min de baile, estabas en interferencia máxima. Ese cansancio que sentiste no era falta de
-            carácter: era exceso de volumen aeróbico sin recuperación.
+            Descansar no es perder el día: es cuando el músculo se repara. Tus 1 200 m de calentamiento antes
+            de entrenar están bien —Panissa et al. 2021 sitúa el umbral de interferencia en 3 km, muy por
+            encima—, pero correr como sesión propia todos los días sí era excesivo: Wilson et al. 2012
+            encontró que la interferencia crónica escala con la FRECUENCIA del aeróbico. Hoy toca caminata,
+            movilidad y meditación, y eso es tan parte del programa como las dominadas.
           </Porque>
         </Card>
 
@@ -168,6 +168,7 @@ function Ejercicio({ item, workoutId, orden }: { item: WorkoutItem; workoutId: s
               {item.rx.sets} × {item.rx.reps}
             </Pill>
             <Pill>RIR {item.rx.rir}</Pill>
+            {item.rx.tempo && <Pill tone="good">{item.rx.tempo}s de bajada</Pill>}
             <Pill>{item.rx.rest}s descanso</Pill>
             {item.rx.unilateral && <Pill>por lado</Pill>}
           </div>
