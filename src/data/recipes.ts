@@ -412,6 +412,91 @@ export const RECIPES: Record<string, Recipe> = {
     why: 'Alternativa al tvorog sólido cuando ya no lo toleras. El kéfir suma probióticos que ayudan con la digestión de tanta proteína.',
   },
 
+
+  // ══════ DESPENSA REAL — recetas con lo que Sam ya tiene en casa ══════
+  // Añadidas el 2026-08-14 tras su primera compra. Sin verduras todavía:
+  // cuando las compre, entran a c1/c2 y estas pasan a ser el respaldo.
+  p1b: {
+    id: 'p1b',
+    slot: 'comida',
+    name: 'Гречка con pollo y tomate (despensa)',
+    time: 25,
+    kcal: 800,
+    protein: 70,
+    carbs: 62,
+    fat: 22,
+    costRub: 150,
+    ingredients: [
+      { item: 'Trigo sarraceno en bolsita', qty: '1 bolsita (80 g)', ru: 'гречка в пакетиках' },
+      { item: 'Pechuga de pollo', qty: '250 g', ru: 'куриная грудка' },
+      { item: 'Pasta de tomate', qty: '2 cdas', ru: 'томатная паста' },
+      { item: 'Crema agria sin lactosa', qty: '1 cda', ru: 'безлактозная сметана' },
+      { item: 'Mantequilla', qty: '1 cdta', ru: 'сливочное масло' },
+      { item: 'Sal', qty: 'al gusto', ru: 'соль' },
+    ],
+    steps: [
+      'Bolsita de гречка en agua hirviendo con sal: 15 minutos. Al venir en bolsita no se pega ni se pasa de agua.',
+      'Mientras hierve, corta el pollo en cubos de 2 cm.',
+      'Sartén a fuego medio-alto con la mantequilla. Pollo dentro, 8-10 min revolviendo, hasta que no quede nada rosa.',
+      'Baja el fuego. Agrega la pasta de tomate + 3 cdas de agua. Revuelve 2 minutos.',
+      'FUERA del fuego, añade la crema agria. Si la hierves se corta.',
+      'Sirve sobre la гречка.',
+    ],
+    tip: 'AL DOBLAR: no metas los 500 g de pollo de golpe. Suelta agua, la temperatura cae y se cuece al vapor en vez de dorarse. Dos tandas de 250 g, 8 minutos cada una. Son 8 minutos más y es la diferencia entre comer bien dos días o comer correoso dos días.',
+    why: 'El plato central de la despensa actual. La гречка en bolsita elimina el único paso donde un principiante falla: la proporción de agua.',
+  },
+  p2b: {
+    id: 'p2b',
+    slot: 'cena',
+    name: 'Penne con atún y aguacate (despensa)',
+    time: 15,
+    kcal: 700,
+    protein: 40,
+    carbs: 74,
+    fat: 26,
+    costRub: 140,
+    ingredients: [
+      { item: 'Penne', qty: '100 g', ru: 'макароны пенне' },
+      { item: 'Atún en aceite, escurrido', qty: '1 lata', ru: 'тунец в масле' },
+      { item: 'Pasta de tomate', qty: '2 cdas', ru: 'томатная паста' },
+      { item: 'Crema agria sin lactosa', qty: '1 cda', ru: 'безлактозная сметана' },
+      { item: 'Aguacate', qty: '1/2', ru: 'авокадо' },
+    ],
+    steps: [
+      'Penne en agua hirviendo con sal: 12 minutos.',
+      'Escurre bien el atún: el aceite de la lata son ~150 kcal que no aportan nada.',
+      'Escurre la pasta, reserva media taza del agua de cocción.',
+      'En la olla: pasta + pasta de tomate + 3 cdas del agua reservada. Revuelve.',
+      'Fuera del fuego: la crema agria y el atún desmenuzado. El aguacate en rodajas encima.',
+    ],
+    tip: 'El agua de cocción de la pasta lleva almidón: liga la salsa mucho mejor que agua limpia.',
+    why: 'Cena rápida para los días de trabajo. El aguacate aporta las grasas monoinsaturadas que faltan mientras no haya aceite de oliva.',
+  },
+  n1b: {
+    id: 'n1b',
+    slot: 'nocturno',
+    name: 'Caseína de emergencia (sin tvorog)',
+    time: 3,
+    kcal: 580,
+    protein: 35,
+    carbs: 28,
+    fat: 34,
+    costRub: 90,
+    ingredients: [
+      { item: 'Leche sin lactosa', qty: '400 ml', ru: 'безлактозное молоко' },
+      { item: 'Huevos cocidos', qty: '2', ru: 'яйца' },
+      { item: 'Pasta de cacahuate', qty: '1 cda', ru: 'арахисовая паста' },
+      { item: 'Nueces', qty: 'un puño (20 g)', ru: 'грецкий орех' },
+    ],
+    steps: [
+      'Los huevos ya cocidos del meal prep.',
+      'La leche en un vaso, la pasta de cacahuate a cucharadas o sobre pan de centeno.',
+      'Cómelo despacio unos 45 minutos antes de dormir.',
+    ],
+    tip: 'Esto es el SUSTITUTO mientras no hay творог. En cuanto consigas творог безлактозный, vuelve a la receta principal: 38 g de proteína contra estos 35, con la mitad de grasa.',
+    why: 'El 80 % de la proteína de la leche es CASEÍNA, la misma que buscamos en el творог, solo que menos concentrada. La grasa de las nueces y el cacahuate enlentece el vaciado gástrico, que es justo lo que quieres antes de dormir.',
+  },
+
   // ══════════════ PRE-BAILE (fines de semana) ══════════════
   b1: {
     id: 'b1',
