@@ -18,6 +18,20 @@
  *
  * A eso se suman huevos baratos, kéfir, hígado de res (el alimento más denso en
  * micronutrientes que existe) y remolacha (nitratos → rendimiento).
+ *
+ * INTOLERANCIA A LA LACTOSA
+ * -------------------------
+ * Sam es intolerante. Eso NO elimina la estrategia de caseína nocturna: la
+ * caseína es la proteína, la lactosa es el azúcar, y se pueden separar.
+ *   · Творог безлактозный — la opción directa (Prostokvashino, Село Зелёное).
+ *   · Творог normal + Лактазар (enzima lactasa) — más barato y muy común en
+ *     Rusia. El tvorog ya pierde la mayor parte de la lactosa con el suero:
+ *     unos 3-6 g por ración de 200 g, y la mayoría de intolerantes tolera
+ *     hasta ~12 g en una toma (Suarez et al., NEJM 1995).
+ *   · Proteína de caseína micelar en polvo — prácticamente sin lactosa.
+ *   · Quesos curados (Российский, пармезан) — lactosa casi nula, pero grasos.
+ * Nunca estrenar un lácteo nuevo a la 01:30: una mala noche de digestión
+ * arruina justo el sueño que la caseína pretende aprovechar.
  */
 
 export type MealSlot = 'desayuno' | 'comida' | 'postEntreno' | 'cena' | 'nocturno' | 'preBaile'
@@ -61,7 +75,7 @@ export const RECIPES: Record<string, Recipe> = {
     costRub: 95,
     ingredients: [
       { item: 'Avena en hojuelas', qty: '90 g (1 taza)', ru: 'овсяные хлопья / Геркулес' },
-      { item: 'Leche entera 3.2 %', qty: '350 ml', ru: 'молоко 3.2%' },
+      { item: 'Leche sin lactosa', qty: '350 ml', ru: 'безлактозное молоко' },
       { item: 'Plátano maduro', qty: '1 grande', ru: 'банан' },
       { item: 'Huevos', qty: '3', ru: 'яйца' },
       { item: 'Miel', qty: '1 cda', ru: 'мёд' },
@@ -90,7 +104,7 @@ export const RECIPES: Record<string, Recipe> = {
     fat: 24,
     costRub: 120,
     ingredients: [
-      { item: 'Tvorog 5 %', qty: '300 g', ru: 'творог 5%' },
+      { item: 'Tvorog SIN LACTOSA 5 %', qty: '300 g', ru: 'безлактозный творог' },
       { item: 'Huevos', qty: '2', ru: 'яйца' },
       { item: 'Harina o avena molida', qty: '4 cdas', ru: 'мука / овсяная мука' },
       { item: 'Miel', qty: '1 cda', ru: 'мёд' },
@@ -125,7 +139,7 @@ export const RECIPES: Record<string, Recipe> = {
       { item: 'Tomate', qty: '1', ru: 'помидор' },
       { item: 'Cebolla', qty: '1/2', ru: 'лук' },
       { item: 'Aceite', qty: '1 cdta', ru: 'масло' },
-      { item: 'Kéfir', qty: '250 ml', ru: 'кефир' },
+      { item: 'Kéfir sin lactosa', qty: '250 ml', ru: 'безлактозный кефир' },
     ],
     steps: [
       'Pica la cebolla y el tomate en cubos pequeños.',
@@ -242,10 +256,10 @@ export const RECIPES: Record<string, Recipe> = {
     fat: 8,
     costRub: 110,
     ingredients: [
-      { item: 'Leche', qty: '350 ml', ru: 'молоко' },
+      { item: 'Leche sin lactosa', qty: '350 ml', ru: 'безлактозное молоко' },
       { item: 'Plátano', qty: '1 grande', ru: 'банан' },
       { item: 'Avena cruda', qty: '35 g', ru: 'овсяные хлопья' },
-      { item: 'Tvorog', qty: '100 g', ru: 'творог' },
+      { item: 'Tvorog sin lactosa', qty: '100 g', ru: 'безлактозный творог' },
       { item: 'Miel', qty: '1 cda', ru: 'мёд' },
       { item: 'Cacao', qty: '1 cdta', ru: 'какао' },
     ],
@@ -358,7 +372,7 @@ export const RECIPES: Record<string, Recipe> = {
     fat: 14,
     costRub: 90,
     ingredients: [
-      { item: 'Tvorog 5 %', qty: '220 g', ru: 'творог 5%' },
+      { item: 'Tvorog SIN LACTOSA 5 %', qty: '220 g', ru: 'безлактозный творог' },
       { item: 'Miel', qty: '1 cda', ru: 'мёд' },
       { item: 'Nueces de castilla', qty: '20 g', ru: 'грецкий орех' },
       { item: 'Smetana o yogur', qty: '1 cda', ru: 'сметана' },
@@ -369,7 +383,7 @@ export const RECIPES: Record<string, Recipe> = {
       'Agrega la miel, la smetana, las nueces troceadas y la canela.',
       'Mezcla y cómelo despacio, sin pantallas, unos 45 minutos antes de dormir.',
     ],
-    tip: 'Este es el hábito que NO puedes saltarte. Es la única comida del plan que trabaja mientras duermes.',
+    tip: 'Búscalo como безлактозный творог. Si no lo encuentras, творог normal + una pastilla de Лактазар con la primera cucharada funciona igual y sale más barato. Pruébalo primero de día, nunca estrenándolo a la 01:30.',
     why: 'Res et al. 2012 y Snijders et al. 2015: 30–40 g de caseína antes de dormir aumentan la síntesis proteica nocturna un 22 % y, sostenido en el tiempo, producen más masa y fuerza. Como duermes ~7.5 h en ayuno, esta comida decide si esas horas son anabólicas o catabólicas.',
   },
   s2: {
@@ -383,8 +397,8 @@ export const RECIPES: Record<string, Recipe> = {
     fat: 10,
     costRub: 80,
     ingredients: [
-      { item: 'Kéfir', qty: '400 ml', ru: 'кефир' },
-      { item: 'Tvorog', qty: '120 g', ru: 'творог' },
+      { item: 'Kéfir sin lactosa', qty: '400 ml', ru: 'безлактозный кефир' },
+      { item: 'Tvorog sin lactosa', qty: '120 g', ru: 'безлактозный творог' },
       { item: 'Avena', qty: '40 g', ru: 'овсяные хлопья' },
       { item: 'Miel', qty: '1 cda', ru: 'мёд' },
       { item: 'Semillas de linaza', qty: '1 cda', ru: 'семена льна' },
@@ -411,7 +425,7 @@ export const RECIPES: Record<string, Recipe> = {
     costRub: 110,
     ingredients: [
       { item: 'Avena', qty: '120 g', ru: 'овсяные хлопья' },
-      { item: 'Leche', qty: '400 ml', ru: 'молоко' },
+      { item: 'Leche sin lactosa', qty: '400 ml', ru: 'безлактозное молоко' },
       { item: 'Huevos', qty: '3', ru: 'яйца' },
       { item: 'Plátano', qty: '2', ru: 'бананы' },
       { item: 'Miel', qty: '2 cdas', ru: 'мёд' },
@@ -452,16 +466,16 @@ export const COMPRA_SEMANAL = [
       { item: 'Caballa', ru: 'скумбрия', qty: '500 g', rub: 260 },
       { item: 'Arenque', ru: 'сельдь', qty: '300 g', rub: 190 },
       { item: 'Huevos', ru: 'яйца', qty: '30 piezas', rub: 280 },
-      { item: 'Tvorog 5 %', ru: 'творог 5%', qty: '2 kg', rub: 750 },
+      { item: 'Tvorog SIN LACTOSA', ru: 'безлактозный творог', qty: '1.5 kg', rub: 900 },
     ],
   },
   {
     seccion: 'Lácteos',
     items: [
-      { item: 'Leche 3.2 %', ru: 'молоко 3.2%', qty: '5 L', rub: 400 },
-      { item: 'Kéfir', ru: 'кефир', qty: '2 L', rub: 200 },
-      { item: 'Smetana 15 %', ru: 'сметана 15%', qty: '400 g', rub: 160 },
-      { item: 'Queso ruso', ru: 'сыр Российский', qty: '250 g', rub: 290 },
+      { item: 'Leche sin lactosa', ru: 'безлактозное молоко', qty: '4 L', rub: 480 },
+      { item: 'Kéfir sin lactosa', ru: 'безлактозный кефир', qty: '1 L', rub: 160 },
+      { item: 'Smetana sin lactosa 15 %', ru: 'безлактозная сметана', qty: '400 g', rub: 190 },
+      { item: 'Queso curado (lactosa casi nula)', ru: 'сыр Российский', qty: '250 g', rub: 290 },
     ],
   },
   {
