@@ -5,6 +5,7 @@ import { planDelDia } from '../data/plan'
 import { db, hoyISO, ultimaSesion } from '../db'
 import { sugerirProgresion } from '../lib'
 import { Btn, Card, Pill, Porque, Section } from '../ui'
+import { FotoEjercicio } from '../FotoEjercicio'
 
 export default function Entreno() {
   const fase = useLiveQuery(async () => ((await db.meta.get('fase'))?.value as 1 | 2) ?? 1, []) ?? 1
@@ -196,6 +197,8 @@ function Ejercicio({ item, workoutId, orden }: { item: WorkoutItem; workoutId: s
               Ver técnica en video →
             </a>
           </div>
+
+          <FotoEjercicio exerciseId={item.exerciseId} />
 
           {ex.progression && (
             <div className="mt-3">

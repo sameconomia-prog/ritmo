@@ -185,6 +185,24 @@ export default function Ajustes() {
         </Card>
       </Section>
 
+      <Section title="Créditos">
+        <Card className="p-4">
+          <p className="text-[13px] leading-relaxed text-[var(--color-ink-dim)]">
+            Las fotos de cada ejercicio vienen de{' '}
+            <a
+              href="https://github.com/yuhonas/free-exercise-db"
+              target="_blank"
+              rel="noreferrer"
+              className="font-semibold text-[var(--color-accent)]"
+            >
+              free-exercise-db
+            </a>
+            , publicado bajo The Unlicense (dominio público). Están dentro de la app, no enlazadas, así que
+            funcionan sin conexión.
+          </p>
+        </Card>
+      </Section>
+
       <p className="mt-8 mb-4 text-center text-[11px] text-[var(--color-ink-dim)]">
         RITMO · Cuerpo, Mente y Alma
       </p>

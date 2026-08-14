@@ -9,7 +9,8 @@
     "build": "npm run ics && tsc -b && vite build",
     "preview": "vite preview --port 5180",
     "icons": "python3 scripts/make-icons.py",
-    "ics": "vite-node scripts/build-ics.ts"
+    "ics": "vite-node scripts/build-ics.ts",
+    "imagenes": "node scripts/fetch-images.mjs"
   },
   "dependencies": {
     "dexie": "^4.0.11",

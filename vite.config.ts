@@ -17,8 +17,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icons/apple-touch-icon.png', 'icons/favicon.png'],
       workbox: {
-        globPatterns: ['**/*.{js,css,html,png,svg,woff2}'],
+        globPatterns: ['**/*.{js,css,html,png,jpg,svg,woff2}'],
         cleanupOutdatedCaches: true,
+        maximumFileSizeToCacheInBytes: 4_000_000,
       },
       manifest: {
         name: 'RITMO — Cuerpo, Mente y Alma',
