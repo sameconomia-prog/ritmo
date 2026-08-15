@@ -180,15 +180,22 @@ export default function Comida() {
             <Section key={sec.seccion} title={sec.seccion}>
               <div className="space-y-1.5">
                 {sec.items.map((it) => (
-                  <Card key={it.item} className="flex items-center gap-3 p-3">
-                    <div className="min-w-0 flex-1">
-                      <p className="text-[13px] font-medium">{it.item}</p>
-                      <p className="text-[11px] italic text-[var(--color-ink-dim)]">{it.ru}</p>
+                  <Card key={it.item} className="p-3">
+                    <div className="flex items-center gap-3">
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[13px] font-medium">{it.item}</p>
+                        <p className="text-[11px] italic text-[var(--color-ink-dim)]">{it.ru}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-[12px] font-semibold tabular-nums">{it.qty}</p>
+                        <p className="text-[11px] tabular-nums text-[var(--color-ink-dim)]">{it.rub} ₽</p>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-[12px] font-semibold tabular-nums">{it.qty}</p>
-                      <p className="text-[11px] tabular-nums text-[var(--color-ink-dim)]">{it.rub} ₽</p>
-                    </div>
+                    {it.nota && (
+                      <p className="mt-2 rounded-lg bg-[var(--color-surface-2)] p-2.5 text-[12px] leading-relaxed text-[var(--color-ink-dim)]">
+                        {it.nota}
+                      </p>
+                    )}
                   </Card>
                 ))}
               </div>

@@ -541,17 +541,29 @@ export const MENU_SEMANAL: Record<number, Partial<Record<MealSlot, string>>> = {
 }
 
 /** Lista de compra semanal, agrupada por pasillo. */
-export const COMPRA_SEMANAL = [
+export interface ItemCompra {
+  item: string
+  ru: string
+  qty: string
+  rub: number
+  /** Cómo reconocerlo en la tienda, para los productos que Sam no conoce. */
+  nota?: string
+}
+
+export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
   {
     seccion: 'Proteína',
     items: [
       { item: 'Pechuga de pollo', ru: 'куриная грудка', qty: '1.5 kg', rub: 480 },
       { item: 'Carne molida de res', ru: 'говяжий фарш', qty: '600 g', rub: 380 },
       { item: 'Hígado de res', ru: 'говяжья печень', qty: '250 g', rub: 90 },
-      { item: 'Caballa', ru: 'скумбрия', qty: '500 g', rub: 260 },
-      { item: 'Arenque', ru: 'сельдь', qty: '300 g', rub: 190 },
+      { item: 'Caballa', ru: 'скумбрия свежемороженая', qty: '500 g', rub: 260,
+        nota: 'CÓMO RECONOCERLA: rayas negras onduladas tipo cebra sobre el lomo verde-azulado, vientre plateado liso, ~30 cm. Ningún otro pescado del súper tiene ese dibujo. Búscala CONGELADA ENTERA en el arcón (свежемороженая), no ahumada (копчёная) ni salada (солёная), que llevan muchísima sal. Es la del horno con papas.' },
+      { item: 'Arenque', ru: 'сельдь', qty: '300 g', rub: 190,
+        nota: 'CÓMO RECONOCERLO: SIN rayas, todo plateado, más pequeño y estrecho que la caballa. Regla simple: la caballa tiene dibujo, el arenque no. Compra el filete en aceite (филе сельди в масле), en tarro o tarrina refrigerada — viene listo, sin cocinar.' },
       { item: 'Huevos', ru: 'яйца', qty: '30 piezas', rub: 280 },
-      { item: 'Tvorog SIN LACTOSA', ru: 'безлактозный творог', qty: '1.5 kg', rub: 900 },
+      { item: 'Tvorog SIN LACTOSA', ru: 'безлактозный творог', qty: '1.5 kg', rub: 900,
+        nota: 'Busca la palabra БЕЗЛАКТОЗНЫЙ en el envase. Si solo hay творог normal, cómpralo con Лактазар (enzima, en cualquier аптека). OJO: «творожный продукт» NO es творог — lleva grasas vegetales añadidas.' },
     ],
   },
   {
