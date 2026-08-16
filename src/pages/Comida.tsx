@@ -2,11 +2,18 @@ import { useEffect, useRef, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useSearchParams } from 'react-router-dom'
 import { COMPRA_SEMANAL, MENU_SEMANAL, RECIPES, SUPLEMENTOS, type Recipe } from '../data/recipes'
-import { RESUMEN_DIA } from '../data/plan'
+import { planDelDia, RESUMEN_DIA } from '../data/plan'
 import { db, hoyISO, toggleMeal } from '../db'
 import { calcularNutricion, tendenciaSemanal } from '../lib'
 import { Btn, Card, Pill, Porque, Section } from '../ui'
 
+/**
+ * Las horas de respaldo, para el caso raro de que un slot del menú no tenga
+ * bloque en el plan del día. La hora buena sale de `planDelDia`: tenerla
+ * escrita dos veces era garantía de que se separaran, y se separaron — el
+ * sábado esta pantalla anunciaba el desayuno a las 08:30 cuando el plan ya lo
+ * había movido al camión de las 09:00.
+ */
 const ORDEN: { slot: string; label: string; hora: string }[] = [
   { slot: 'preBaile', label: 'Desayuno de carga', hora: '08:30' },
   { slot: 'desayuno', label: 'Desayuno', hora: '10:00' },
@@ -16,6 +23,11 @@ const ORDEN: { slot: string; label: string; hora: string }[] = [
   { slot: 'nocturno', label: 'Snack nocturno', hora: '01:30' },
 ]
 
+/** Hora real a la que el plan de hoy coloca cada comida. */
+function horaDelSlot(bloques: { start: string; ref?: { type: string; slot?: string } }[], slot: string) {
+  return bloques.find((b) => b.ref?.type === 'receta' && b.ref.slot === slot)?.start
+}
+
 export default function Comida() {
   const [params] = useSearchParams()
   // Cuando llegas desde el plan del día, abre directamente esa comida.
@@ -24,12 +36,17 @@ export default function Comida() {
   const dia = new Date().getDay()
   const fecha = hoyISO()
   const menu = MENU_SEMANAL[dia] ?? {}
+  const fase = useLiveQuery(async () => ((await db.meta.get('fase'))?.value as 1 | 2) ?? 1, []) ?? 1
 
   const checks = useLiveQuery(() => db.mealChecks.where('date').equals(fecha).toArray(), [fecha]) ?? []
   const hechas = new Set(checks.filter((c) => c.done).map((c) => c.slot))
 
+  // ORDEN ya está en secuencia de día vivido (el snack nocturno de la 01:30
+  // cierra la jornada, no la abre), así que no se reordena por hora.
+  const bloques = planDelDia(dia, fase)
   const comidasHoy = ORDEN.filter((o) => menu[o.slot as keyof typeof menu]).map((o) => ({
     ...o,
+    hora: horaDelSlot(bloques, o.slot) ?? o.hora,
     receta: RECIPES[menu[o.slot as keyof typeof menu]!],
   }))
 

@@ -5,8 +5,8 @@ import { KIND_META, NOMBRE_DIA, RESUMEN_DIA, planDelDia, type Block } from '../d
 import { RECIPES, MENU_SEMANAL } from '../data/recipes'
 import { WORKOUTS } from '../data/workouts'
 import { MEDITACIONES, PROTOCOLOS_ESTUDIO, leccionDelDia, ANKI_URL } from '../data/content'
-import { asegurarInicio, db, hoyISO, toggleBlock, toggleSupplement } from '../db'
-import { aMin, bloqueActual, duracionMin, progresoBloque, proximoBloque, semanaDelPrograma, yaTermino } from '../lib'
+import { asegurarInicio, db, hoyISO, setMeta, toggleBlock, toggleSupplement } from '../db'
+import { aMin, bloqueActual, duracionMin, esSemanaDeload, progresoBloque, proximoBloque, semanaDelPrograma, yaTermino } from '../lib'
 import { Btn, Card, Pill, Porque, Section } from '../ui'
 import { IconAjustes } from '../icons'
 
@@ -56,8 +56,9 @@ export default function Hoy() {
       <header className="mb-6">
         <div className="flex items-baseline justify-between">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-ink-dim)]">
+            <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--color-ink-dim)]">
               {NOMBRE_DIA[dia]} · Semana {semana}
+              {esSemanaDeload(semana) && <Pill tone="good">descarga</Pill>}
             </p>
             <h1 className="mt-0.5 text-[28px] font-bold leading-tight">{resumen.titulo}</h1>
             <p className="text-sm text-[var(--color-ink-dim)]">{resumen.foco}</p>
@@ -83,6 +84,8 @@ export default function Hoy() {
           </span>
         </div>
       </header>
+
+      <AvisoCalendario />
 
       <RegistroRapido fecha={fecha} />
 
@@ -168,15 +171,64 @@ export default function Hoy() {
 }
 
 /**
+ * El calendario suscrito es lo único que convierte esta app en un asistente que
+ * te busca, en vez de una que espera a que te acuerdes de abrirla. Llevaba
+ * semanas sin suscribirse porque el botón vivía enterrado en Ajustes: nadie
+ * entra a Ajustes por gusto. Ahora el aviso vive en la primera pantalla y no se
+ * va hasta que lo resuelvas o lo descartes explícitamente.
+ */
+function AvisoCalendario() {
+  // El valor por defecto tiene que resolverse DENTRO de la consulta: useLiveQuery
+  // devuelve undefined mientras carga, así que sin el `?? false` no hay forma de
+  // distinguir "todavía no sé" de "no lo ha suscrito" y el aviso no salía nunca.
+  const listo = useLiveQuery(async () => ((await db.meta.get('icsListo'))?.value as boolean) ?? false)
+  if (listo !== false) return null
+
+  return (
+    <Card className="mb-4 border-[var(--color-accent)]/40 bg-[var(--color-accent)]/8 p-4">
+      <p className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-accent)]">
+        Tu plan todavía no te avisa
+      </p>
+      <p className="mt-1.5 text-[13px] leading-relaxed">
+        Sin el calendario suscrito, esta app solo funciona cuando te acuerdas de abrirla. Con él, iOS te
+        avisa del columpio, del entreno y del snack de caseína aunque no la abras.
+      </p>
+      <a href="webcal://sameconomia-prog.github.io/ritmo/ritmo.ics" className="mt-3 block">
+        <Btn className="w-full">Suscribir ahora · 10 segundos</Btn>
+      </a>
+      <div className="mt-2 flex gap-2">
+        <Link to="/ajustes" className="flex-1">
+          <Btn variant="outline" className="w-full">No me abre el botón</Btn>
+        </Link>
+        <Btn variant="ghost" className="flex-1" onClick={() => setMeta('icsListo', true)}>
+          Ya lo suscribí
+        </Btn>
+      </div>
+      <p className="mt-2 text-[11px] leading-relaxed text-[var(--color-ink-dim)]">
+        Cuando iOS pregunte si quieres <strong>eliminar las alertas</strong>, di que NO. Si las eliminas, el
+        calendario aparece pero nunca te avisa.
+      </p>
+    </Card>
+  )
+}
+
+/**
  * Los dos datos que el plan necesita a diario y que antes costaban navegar:
  * el peso, que alimenta el motor de calorías, y la creatina, que solo funciona
  * si se toma TODOS los días (Kreider et al. 2017 — su efecto viene de la
  * saturación muscular sostenida, no de la dosis puntual).
+ *
+ * El contador de pesajes existe porque el motor de calorías necesita un mínimo
+ * de 3 registros para calcular tendencia, y hasta llegar ahí no pasa nada
+ * visible: se registra un peso, la app dice gracias, y el objetivo calórico
+ * sigue siendo el mismo número estimado de siempre. Sin ver cuánto falta para
+ * que algo ocurra, pesarse parece inútil — y deja de hacerse.
  */
 function RegistroRapido({ fecha }: { fecha: string }) {
   const [valor, setValor] = useState('')
   const [abierto, setAbierto] = useState(false)
   const peso = useLiveQuery(() => db.weights.get(fecha), [fecha])
+  const totalPesajes = useLiveQuery(() => db.weights.count(), []) ?? 0
   const supl = useLiveQuery(() => db.supplements.where('date').equals(fecha).toArray(), [fecha]) ?? []
   const tomados = new Set(supl.filter((s) => s.done).map((s) => s.supp))
 
@@ -186,8 +238,15 @@ function RegistroRapido({ fecha }: { fecha: string }) {
     { id: 'magnesio', label: 'Magnesio' },
   ]
 
+  const faltan = Math.max(0, 3 - totalPesajes)
+  const pendiente = !peso
+
   return (
-    <Card className="mb-6 p-3.5">
+    <Card
+      className={`mb-6 p-3.5 ${
+        pendiente ? 'border-[var(--color-accent)]/40 bg-[var(--color-accent)]/5' : ''
+      }`}
+    >
       <button
         onClick={() => setAbierto((v) => !v)}
         className="flex w-full items-baseline gap-2 text-left"
@@ -198,9 +257,29 @@ function RegistroRapido({ fecha }: { fecha: string }) {
         {peso ? (
           <span className="text-lg font-bold tabular-nums text-[var(--color-accent)]">{peso.kg} kg</span>
         ) : (
-          <span className="text-[13px] text-[var(--color-accent)]">registrar →</span>
+          <span className="text-[13px] font-semibold text-[var(--color-accent)]">registrar →</span>
         )}
       </button>
+
+      {faltan > 0 && (
+        <div className="mt-2 flex items-center gap-2">
+          <div className="flex shrink-0 gap-1">
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className={`h-1.5 w-5 rounded-full ${
+                  i < totalPesajes ? 'bg-[var(--color-accent)]' : 'bg-[var(--color-surface-2)]'
+                }`}
+              />
+            ))}
+          </div>
+          <span className="text-[11px] leading-tight text-[var(--color-ink-dim)]">
+            {faltan === 3
+              ? 'Faltan 3 pesajes para el ajuste automático'
+              : `Faltan ${faltan} para el ajuste automático`}
+          </span>
+        </div>
+      )}
 
       <div className="mt-2.5 flex gap-1.5">
         {DIARIOS.map((s) => (

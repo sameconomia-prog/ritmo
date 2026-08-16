@@ -527,17 +527,93 @@ export const RECIPES: Record<string, Recipe> = {
     tip: 'Termina de desayunar al menos 90 minutos antes de bailar, o vas a sentirte pesado en los giros.',
     why: 'Una hora de clase quema ~350 kcal; el domingo, entre las dos academias y 3 h de traslados, el gasto pasa de 1 100 kcal. Sin esta carga previa entras en déficit y el baile te consume músculo en vez de construirlo.',
   },
+
+  // ══════ FIN DE SEMANA REAL — se come en el camión, no en casa ══════
+  // Corregido el 2026-08-15. El plan anterior te hacía cocinar avena a las
+  // 08:05: nunca pasó. Te levantas 8:30, tomas el camión de las 9:00 y llegas
+  // a las 10:00. La única ventana de desayuno que existe de verdad son esos
+  // 60 minutos sentado en el camión — y son los 60 minutos PERFECTOS, porque
+  // dejan una hora exacta de digestión antes de bailar.
+  b2: {
+    id: 'b2',
+    slot: 'preBaile',
+    name: 'Desayuno de camión (portátil, sin cocinar)',
+    time: 2,
+    kcal: 720,
+    protein: 38,
+    carbs: 122,
+    fat: 8,
+    costRub: 190,
+    ingredients: [
+      { item: 'Leche proteica UHT (la de 30 g)', qty: '1 botella', ru: 'протеиновый коктейль / молоко с протеином' },
+      { item: 'Plátanos', qty: '2', ru: 'бананы' },
+      { item: 'Pan de centeno', qty: '2 rebanadas', ru: 'хлеб ржаной' },
+      { item: 'Miel', qty: '1 cda (en un frasquito)', ru: 'мёд' },
+    ],
+    steps: [
+      'ANOCHE: mete la botella, los 2 plátanos y el pan con miel en la mochila. Si no está en la mochila la noche anterior, no ocurre.',
+      'Al despertar 8:30: agua, creatina y vitamina D3. Nada más — no intentes desayunar en casa, no te da el tiempo.',
+      'EN EL CAMIÓN (9:00–10:00): la leche proteica y un plátano mientras haces el Anki de ruso.',
+      'Pan con miel a media hora de camino si tienes más hambre.',
+      'El segundo plátano guárdalo: te lo comes a las 10:40, veinte minutos antes de entrar a la clase.',
+    ],
+    tip: 'GRASA CERO ANTES DE BAILAR. Nada de queso, pizza ni frituras en los 90 minutos previos: la grasa es lo que más retrasa el vaciado gástrico y es exactamente lo que te deja pesado en los giros. Toda esa comida cabe perfecta a las 12:00, cuando sales.',
+    why: 'Casi 40 g de proteína y 120 g de carbohidrato con solo 8 g de grasa. Digiere rápido, llega al músculo a tiempo y no te pesa. Terminar de comer 60 minutos antes de bailar es margen suficiente cuando la comida es baja en grasa; con la pizza harían falta 90 o más.',
+  },
+  k1: {
+    id: 'k1',
+    slot: 'comida',
+    name: 'Comida de tienda entre clases (qué elegir)',
+    time: 10,
+    kcal: 800,
+    protein: 45,
+    carbs: 90,
+    fat: 26,
+    costRub: 400,
+    ingredients: [
+      { item: 'Proteína real — pollo asado, pescado, huevos cocidos o otra leche proteica', qty: '35–45 g de proteína', ru: 'курица гриль / яйца / протеиновый коктейль' },
+      { item: 'Carbohidrato de verdad — arroz, papa, гречка, pan', qty: 'una porción grande', ru: 'рис / картофель / гречка' },
+      { item: 'Fruta o jugo natural', qty: '1', ru: 'банан / сок' },
+      { item: 'Agua con una pizca de sal', qty: '700 ml', ru: 'вода + соль' },
+    ],
+    steps: [
+      'AHORA SÍ cabe lo graso: si quieres la pizza, el shawarma o el queso, es en esta comida, no en la de la mañana.',
+      'Busca primero la proteína. Es lo que la comida de tienda casi nunca trae y lo que no puedes recuperar después.',
+      'Un carbohidrato sólido al lado: te quedan 2 h 20 de baile el domingo y no se sostienen con pan solo.',
+      'Rellena la botella. Tres horas de baile deshidratan más de lo que sientes.',
+    ],
+    tip: 'La trampa de la tienda rusa es el пирожок: sabe a comida completa y son casi puros carbohidratos y grasa, con 5 g de proteína. Si es lo único que hay, acompáñalo de huevos cocidos o de otra leche proteica.',
+    why: 'Comer fuera no es salirse del plan: es parte del plan dos días por semana. Lo que arruina un domingo de baile no es comprar comida hecha, es comprar solo almidón y grasa y llegar a la segunda academia sin proteína desde el día anterior.',
+  },
 }
 
-/** Menú por día de la semana: qué receta toca en cada franja. */
+/**
+ * Menú por día de la semana: qué receta toca en cada franja.
+ *
+ * REESCRITO 2026-08-15 — APUNTA A LA DESPENSA REAL, NO A LA IDEAL.
+ * Hasta hoy el menú mandaba a c1 (гречка con zanahoria), n1 (caballa al horno)
+ * y n2 (estofado de res): tres recetas que Sam NO puede cocinar porque le
+ * faltan la zanahoria, el pescado y la carne. Un plan que te manda a cocinar
+ * algo que no tienes en el refrigerador no es un plan, es una decepción diaria.
+ *
+ * Ahora el menú solo apunta a lo que hay en casa. Dos cambios lo permiten:
+ *  · El творог normal le cayó bien (probado el 2026-08-15), así que s1 y p1
+ *    vuelven al menú: la caseína nocturna estaba fuera y era la pieza con más
+ *    evidencia detrás de todo el plan nutricional.
+ *  · p1b y p2b, escritas con lo que ya tiene, pasan de respaldo a titulares.
+ *
+ * CUANDO COMPRE zanahoria, pescado y carne: devolver c1, n1, n2 y n3 a sus
+ * días. La lista de recetas ideales sigue intacta esperando ese día.
+ */
 export const MENU_SEMANAL: Record<number, Partial<Record<MealSlot, string>>> = {
-  1: { desayuno: 'd1', comida: 'c1', postEntreno: 'p1', cena: 'n1', nocturno: 's1' },
-  2: { desayuno: 'd2', comida: 'c2', cena: 'n2', nocturno: 's1' },
-  3: { desayuno: 'd1', comida: 'c1', postEntreno: 'p1', cena: 'n2', nocturno: 's2' },
-  4: { desayuno: 'd3', comida: 'c3', cena: 'n3', nocturno: 's1' },
-  5: { desayuno: 'd1', comida: 'c2', postEntreno: 'p1', cena: 'n2', nocturno: 's1' },
-  6: { preBaile: 'b1', comida: 'c1', cena: 'n1', nocturno: 's1' },
-  0: { preBaile: 'b1', comida: 'c2', postEntreno: 'p1', cena: 'n3', nocturno: 's2' },
+  1: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p2b', nocturno: 's1' },
+  2: { desayuno: 'd2', comida: 'p1b', cena: 'p2b', nocturno: 's1' },
+  3: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p2b', nocturno: 's2' },
+  4: { desayuno: 'd2', comida: 'p1b', cena: 'p2b', nocturno: 's1' },
+  5: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p2b', nocturno: 's1' },
+  // Fin de semana: no cocina. Desayuna en el camión y come en la calle.
+  6: { preBaile: 'b2', comida: 'k1', cena: 'p2b', nocturno: 's1' },
+  0: { preBaile: 'b2', comida: 'k1', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' },
 }
 
 /** Lista de compra semanal, agrupada por pasillo. */

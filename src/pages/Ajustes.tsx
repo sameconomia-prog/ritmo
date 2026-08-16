@@ -9,6 +9,7 @@ export default function Ajustes() {
   const fileRef = useRef<HTMLInputElement>(null)
   const inicio = useLiveQuery(async () => (await db.meta.get('inicio'))?.value as string | undefined)
   const fase = useLiveQuery(async () => ((await db.meta.get('fase'))?.value as number) ?? 1) ?? 1
+  const icsListo = useLiveQuery(async () => ((await db.meta.get('icsListo'))?.value as boolean) ?? false) ?? false
 
   async function descargar() {
     const data = await exportarDatos()
@@ -92,6 +93,18 @@ export default function Ajustes() {
           <a href="webcal://sameconomia-prog.github.io/ritmo/ritmo.ics" className="mt-3 block">
             <Btn className="w-full">Suscribir en el Calendario de iOS</Btn>
           </a>
+
+          <div className="mt-2 flex items-center justify-between gap-2 rounded-xl bg-[var(--color-surface-2)] px-3 py-2">
+            <span className="text-[12px] text-[var(--color-ink-dim)]">
+              {icsListo ? '✓ Marcado como suscrito' : 'Aún sin suscribir'}
+            </span>
+            <Btn
+              variant="ghost"
+              onClick={() => db.meta.put({ key: 'icsListo', value: !icsListo })}
+            >
+              {icsListo ? 'No lo está' : 'Ya lo suscribí'}
+            </Btn>
+          </div>
 
           <div className="mt-3 rounded-xl bg-[var(--color-surface-2)] p-3">
             <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-accent)]">

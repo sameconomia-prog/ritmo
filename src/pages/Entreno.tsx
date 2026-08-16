@@ -2,8 +2,15 @@ import { useEffect, useMemo, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { EXERCISES, WORKOUTS, EQUIPO_RECOMENDADO, type WorkoutItem } from '../data/workouts'
 import { planDelDia } from '../data/plan'
-import { db, hoyISO, ultimaSesion } from '../db'
-import { sugerirProgresion } from '../lib'
+import { db, hoyISO, setMeta, ultimaSesion } from '../db'
+import {
+  ajustarPorDeload,
+  buscarEntrenosPerdidos,
+  esSemanaDeload,
+  NOMBRE_DIA_DE,
+  semanaDelPrograma,
+  sugerirProgresion,
+} from '../lib'
 import { Btn, Card, Pill, Porque, Section } from '../ui'
 import { FotoEjercicio } from '../FotoEjercicio'
 
@@ -16,11 +23,69 @@ export default function Entreno() {
   const activo = manual ?? workoutId
   const workout = activo ? WORKOUTS[activo] : null
 
+  const inicio = useLiveQuery(async () => (await db.meta.get('inicio'))?.value as string | undefined)
+  const semana = inicio ? semanaDelPrograma(inicio) : 1
+  const deload = esSemanaDeload(semana)
+
+  const fechasConSeries = useLiveQuery(
+    async () => new Set((await db.sets.orderBy('date').uniqueKeys()) as string[]),
+    [],
+  )
+  const resueltos = useLiveQuery(
+    async () =>
+      new Set(
+        (await db.meta.where('key').startsWith('recuperado:').toArray()).map((m) =>
+          m.key.slice('recuperado:'.length),
+        ),
+      ),
+    [],
+  )
+  const perdido =
+    fechasConSeries && resueltos
+      ? buscarEntrenosPerdidos(fase, fechasConSeries, resueltos)[0]
+      : undefined
+
   if (!workout) {
     return (
       <div className="rise">
         <h1 className="mb-1 text-2xl font-bold">Entrenamiento</h1>
         <p className="mb-6 text-sm text-[var(--color-ink-dim)]">Hoy es día de recuperación.</p>
+
+        {perdido && (
+          <Card className="mb-4 border-[var(--color-accent)]/40 bg-[var(--color-accent)]/8 p-4">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-accent)]">
+              Se te quedó el entreno del {NOMBRE_DIA_DE(perdido.fecha)}
+            </p>
+            <p className="mt-1.5 text-[13px] leading-relaxed">
+              {WORKOUTS[perdido.workoutId]?.name ?? 'Sesión pendiente'} —{' '}
+              {perdido.diasAtras === 1 ? 'de ayer' : `hace ${perdido.diasAtras} días`}. Hoy es día de
+              recuperación, así que cabe sin pisarle a nada.
+            </p>
+            <div className="mt-3 flex gap-2">
+              <Btn
+                className="flex-1"
+                onClick={() => {
+                  setMeta(`recuperado:${perdido.fecha}`, hoyISO())
+                  setManual(perdido.workoutId)
+                }}
+              >
+                Recuperarlo hoy
+              </Btn>
+              <Btn
+                variant="ghost"
+                className="flex-1"
+                onClick={() => setMeta(`recuperado:${perdido.fecha}`, 'descartado')}
+              >
+                Dejarlo ir
+              </Btn>
+            </div>
+            <Porque>
+              Reponerlo hoy vale más que esperar al siguiente: dos semanas seguidas con dos sesiones en vez
+              de tres es exactamente donde se estanca el progreso. Pero si ya pasaron tres días, la app deja
+              de ofrecerlo — a esas alturas recuperarlo solo acumula fatiga sin ganar estímulo.
+            </Porque>
+          </Card>
+        )}
 
         <Card className="p-5">
           <div className="mb-2 text-3xl">🚶</div>
@@ -90,6 +155,25 @@ export default function Entreno() {
         </p>
       </header>
 
+      {deload && (
+        <Card className="mb-5 border-sky-500/40 bg-sky-500/8 p-4">
+          <p className="text-[11px] font-bold uppercase tracking-wider text-sky-400">
+            Semana {semana} · SEMANA DE DESCARGA
+          </p>
+          <p className="mt-1.5 text-[13px] leading-relaxed">
+            Llevas ocho semanas acumulando fatiga. Esta semana las series bajan un 40 % y te quedas a{' '}
+            <strong>3–4 repeticiones del fallo</strong>: ya están ajustadas abajo, no tienes que calcular nada.
+            Mismo peso, mismos ejercicios, menos volumen.
+          </p>
+          <Porque>
+            Bajar el pie una semana de cada nueve no te hace perder músculo: la adaptación se conserva
+            mientras mantengas la carga, y lo que se disipa es la fatiga que venía enmascarando tu fuerza
+            real. La semana 10 vas a levantar más que hoy. Y en codos y hombros, con tanta dominada y fondo,
+            esta semana es lo que separa progresar de una tendinitis.
+          </Porque>
+        </Card>
+      )}
+
       <Card className="mb-5 p-4">
         <p className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-accent)]">
           Calentamiento · 5 min
@@ -102,7 +186,7 @@ export default function Entreno() {
 
       <div className="space-y-4">
         {workout.items.map((item, i) => (
-          <Ejercicio key={item.exerciseId + i} item={item} workoutId={workout.id} orden={i + 1} />
+          <Ejercicio key={item.exerciseId + i} item={item} workoutId={workout.id} orden={i + 1} deload={deload} />
         ))}
       </div>
 
@@ -121,10 +205,24 @@ export default function Entreno() {
   )
 }
 
-function Ejercicio({ item, workoutId, orden }: { item: WorkoutItem; workoutId: string; orden: number }) {
+function Ejercicio({
+  item,
+  workoutId,
+  orden,
+  deload,
+}: {
+  item: WorkoutItem
+  workoutId: string
+  orden: number
+  deload: boolean
+}) {
   const ex = EXERCISES[item.exerciseId]
   const fecha = hoyISO()
   const [abierto, setAbierto] = useState(false)
+
+  // En semana de descarga toda la pantalla trabaja con la prescripción reducida:
+  // las pastillas, el conteo de series completas y el temporizador de descanso.
+  const rx = ajustarPorDeload(item.rx, deload)
 
   const seriesHoy =
     useLiveQuery(
@@ -142,11 +240,11 @@ function Ejercicio({ item, workoutId, orden }: { item: WorkoutItem; workoutId: s
 
   const esPesoCorporal = !!ex.progression
   const sugerencia = useMemo(
-    () => sugerirProgresion(previas, item.rx.reps, esPesoCorporal),
-    [previas, item.rx.reps, esPesoCorporal],
+    () => sugerirProgresion(previas, rx.reps, esPesoCorporal),
+    [previas, rx.reps, esPesoCorporal],
   )
 
-  const completo = seriesHoy.length >= item.rx.sets * (item.rx.unilateral ? 2 : 1)
+  const completo = seriesHoy.length >= rx.sets * (rx.unilateral ? 2 : 1)
 
   return (
     <Card className="overflow-hidden p-0">
@@ -166,12 +264,13 @@ function Ejercicio({ item, workoutId, orden }: { item: WorkoutItem; workoutId: s
           <p className="mt-0.5 text-[11px] text-[var(--color-ink-dim)]">{ex.muscle}</p>
           <div className="mt-2 flex flex-wrap gap-1.5">
             <Pill tone="accent">
-              {item.rx.sets} × {item.rx.reps}
+              {rx.sets} × {rx.reps}
             </Pill>
-            <Pill>RIR {item.rx.rir}</Pill>
-            {item.rx.tempo && <Pill tone="good">{item.rx.tempo}s de bajada</Pill>}
-            <Pill>{item.rx.rest}s descanso</Pill>
-            {item.rx.unilateral && <Pill>por lado</Pill>}
+            <Pill>RIR {rx.rir}</Pill>
+            {rx.tempo && <Pill tone="good">{rx.tempo}s de bajada</Pill>}
+            <Pill>{rx.rest}s descanso</Pill>
+            {rx.unilateral && <Pill>por lado</Pill>}
+            {deload && <Pill tone="good">descarga</Pill>}
           </div>
         </div>
         <span className="mt-1 text-[var(--color-ink-dim)]">{abierto ? '−' : '+'}</span>
@@ -245,7 +344,7 @@ function Ejercicio({ item, workoutId, orden }: { item: WorkoutItem; workoutId: s
             <p className="mt-3 text-[12px] italic leading-relaxed text-[var(--color-ink-dim)]">{item.note}</p>
           )}
 
-          <Registro item={item} workoutId={workoutId} seriesHoy={seriesHoy} />
+          <Registro item={{ ...item, rx }} workoutId={workoutId} seriesHoy={seriesHoy} />
         </div>
       )}
     </Card>

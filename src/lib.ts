@@ -1,4 +1,4 @@
-import type { Block } from './data/plan'
+import { planDelDia, type Block } from './data/plan'
 import type { WeightLog, SetLog } from './db'
 
 // ── Tiempo ────────────────────────────────────────────────────
@@ -264,3 +264,84 @@ export function semanaDelPrograma(inicioISO: string): number {
   const dias = Math.floor((Date.now() - inicio.getTime()) / 86_400_000)
   return Math.max(1, Math.floor(dias / 7) + 1)
 }
+
+// ── Descarga (deload) ─────────────────────────────────────────
+
+/**
+ * Cada novena semana es de descarga: ocho de acumulación, una de bajar el pie.
+ *
+ * El programa siempre lo contempló, pero la app no avisaba, así que dependía de
+ * que Sam llevara la cuenta él mismo — y nadie lleva esa cuenta ocho semanas
+ * seguidas. Una descarga que hay que recordar es una descarga que no ocurre.
+ *
+ * No es descanso opcional: la fatiga acumulada enmascara la fuerza real y es lo
+ * que precede a las lesiones por sobreuso, sobre todo en codos y hombros con
+ * tanta dominada y fondo.
+ */
+export function esSemanaDeload(semana: number): boolean {
+  return semana > 0 && semana % 9 === 0
+}
+
+/**
+ * Prescripción ajustada a la semana de descarga: ~40 % menos series y tres
+ * repeticiones más lejos del fallo. Se mantiene la carga y el movimiento —
+ * lo que se recorta es el volumen, no la intensidad, para no perder adaptación.
+ */
+export function ajustarPorDeload<T extends { sets: number; rir: number }>(rx: T, deload: boolean): T {
+  if (!deload) return rx
+  return { ...rx, sets: Math.max(1, Math.round(rx.sets * 0.6)), rir: rx.rir + 3 }
+}
+
+// ── Entrenos perdidos ─────────────────────────────────────────
+
+export interface EntrenoPerdido {
+  fecha: string
+  workoutId: string
+  diasAtras: number
+}
+
+/** Ventana de recuperación: pasados 3 días, el entreno ya no se repone, se sigue. */
+const DIAS_RECUPERABLES = 3
+
+const isoDe = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+
+/**
+ * Entrenos que tocaban y no ocurrieron, del más reciente al más antiguo.
+ *
+ * Un plan fijo asume que la vida coopera. Cuando se caía un lunes no había
+ * forma de moverlo: el martes la app decía "hoy es día de recuperación" como si
+ * nada, y esa sesión se perdía entera. Ahora los días de descanso ofrecen
+ * reponerla.
+ *
+ * Solo se mira hacia atrás 3 días a propósito. Recuperar el entreno de hace una
+ * semana no es recuperarlo: es entrenar dos veces seguidas arrastrando fatiga,
+ * que es peor que haberlo saltado. Pasada la ventana, se sigue adelante.
+ *
+ * @param fechasConSeries días que ya tienen series registradas
+ * @param resueltos días ya recuperados o descartados a mano
+ */
+export function buscarEntrenosPerdidos(
+  fase: 1 | 2,
+  fechasConSeries: Set<string>,
+  resueltos: Set<string>,
+  hoy = new Date(),
+): EntrenoPerdido[] {
+  const out: EntrenoPerdido[] = []
+  for (let d = 1; d <= DIAS_RECUPERABLES; d++) {
+    const f = new Date(hoy)
+    f.setDate(f.getDate() - d)
+    const iso = isoDe(f)
+    if (fechasConSeries.has(iso) || resueltos.has(iso)) continue
+    const bloque = planDelDia(f.getDay(), fase).find((b) => b.ref?.type === 'entreno')
+    if (bloque?.ref?.type === 'entreno') {
+      out.push({ fecha: iso, workoutId: bloque.ref.workoutId, diasAtras: d })
+    }
+  }
+  return out
+}
+
+export const NOMBRE_DIA_DE = (iso: string) =>
+  ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'][
+    new Date(iso + 'T00:00:00').getDay()
+  ]

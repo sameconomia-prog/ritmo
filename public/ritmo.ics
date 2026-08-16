@@ -17,45 +17,66 @@ TZNAME:+07
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:ritmo-0-2-0750@sameconomia-prog.github.io
+UID:ritmo-0-2-0830@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260809T075000
-DTEND;TZID=Asia/Novosibirsk:20260809T080500
+DTSTART;TZID=Asia/Novosibirsk:20260809T083000
+DTEND;TZID=Asia/Novosibirsk:20260809T085000
 RRULE:FREQ=WEEKLY;BYDAY=SU
-SUMMARY:Despertar
-DESCRIPTION:Agua\, creatina\, vitamina D3.
+SUMMARY:Despertar · el día más largo de tu semana
+DESCRIPTION:Agua\, creatina\, vitamina D3. Hoy bailas 3 h 20 min en dos a
+ cademias y pasas 9 horas fuera. Todo lo que comas hoy tiene que caber en
+  la mochila o comprarse en el camino.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
-DESCRIPTION:Despertar
+DESCRIPTION:Despertar · el día más largo de tu semana
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-4-0850@sameconomia-prog.github.io
+UID:ritmo-0-3-0850@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260809T085000
-DTEND;TZID=Asia/Novosibirsk:20260809T092000
+DTEND;TZID=Asia/Novosibirsk:20260809T090000
 RRULE:FREQ=WEEKLY;BYDAY=SU
-SUMMARY:Meditación en el columpio
+SUMMARY:Salida al camión
+DESCRIPTION:Mochila de anoche: leche proteica\, 2 plátanos\, pan con mie
+ l\, botella de 700 ml con agua y sal\, ropa de cambio y dinero para la c
+ omida del mediodía.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
-DESCRIPTION:Meditación en el columpio
+DESCRIPTION:Salida al camión
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-5-0920@sameconomia-prog.github.io
+UID:ritmo-0-4-0900@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260809T092000
+DTSTART;TZID=Asia/Novosibirsk:20260809T090000
 DTEND;TZID=Asia/Novosibirsk:20260809T100000
 RRULE:FREQ=WEEKLY;BYDAY=SU
-SUMMARY:Preparación y salida del dormitorio
-DESCRIPTION:Hoy sales por 8 horas: botella de 700 ml con electrolitos\, r
- opa de cambio\, y algo de dinero para la comida del mediodía.
+SUMMARY:Camión · desayuno + Anki de ruso
+DESCRIPTION:Comes sentado y estudias al mismo tiempo. Hoy importa el dobl
+ e: si sales en ayunas\, a las 16:00 en la segunda academia se te acaba y
+  el baile te consume músculo.
 BEGIN:VALARM
 ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Preparación y salida del dormitorio
+TRIGGER:-PT0M
+DESCRIPTION:Camión · desayuno + Anki de ruso
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-0-6-1040@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260809T104000
+DTEND;TZID=Asia/Novosibirsk:20260809T110000
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:Segundo plátano y calentamiento
+DESCRIPTION:Movilidad de cadera y tobillo 10 min. Hoy son más de tres ho
+ ras de baile: el calentamiento no es opcional.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Segundo plátano y calentamiento
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -65,9 +86,10 @@ DTSTART;TZID=Asia/Novosibirsk:20260809T190000
 DTEND;TZID=Asia/Novosibirsk:20260809T200000
 RRULE:FREQ=WEEKLY;BYDAY=SU
 SUMMARY:MEAL PREP de la semana
-DESCRIPTION:La hora más rentable de tu semana. Estofado de res (3 cenas)
-  + 300 g de гречка + 8 huevos cocidos + verduras cortadas. Te ahor
- ra ~5 horas de lunes a viernes.
+DESCRIPTION:La hora más rentable de tu semana. Con la despensa de ahora:
+  500 g de pollo en dos tandas de 250 g (nunca de golpe\, se cuece al vap
+ or)\, 4 bolsitas de гречка y 8 huevos cocidos. Deja también la mo
+ chila del sábado hecha: leche proteica\, plátanos y pan con miel.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
@@ -528,33 +550,81 @@ DESCRIPTION:Snack nocturno de caseína
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-4-0850@sameconomia-prog.github.io
+UID:ritmo-6-2-0830@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260808T085000
-DTEND;TZID=Asia/Novosibirsk:20260808T092000
+DTSTART;TZID=Asia/Novosibirsk:20260808T083000
+DTEND;TZID=Asia/Novosibirsk:20260808T085000
 RRULE:FREQ=WEEKLY;BYDAY=SA
-SUMMARY:Meditación en el columpio
-DESCRIPTION:La luz matinal del fin de semana es la que impide que tu relo
- j se desfase. No la saltes por ir con prisa.
+SUMMARY:Despertar · sales en 30 min
+DESCRIPTION:Agua\, creatina\, vitamina D3. NO intentes desayunar aquí: n
+ o te da el tiempo y por eso llevas años saliendo en ayunas.
 BEGIN:VALARM
 ACTION:DISPLAY
-TRIGGER:-PT5M
-DESCRIPTION:Meditación en el columpio
+TRIGGER:-PT0M
+DESCRIPTION:Despertar · sales en 30 min
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-5-0920@sameconomia-prog.github.io
+UID:ritmo-6-3-0850@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260808T092000
-DTEND;TZID=Asia/Novosibirsk:20260808T100000
+DTSTART;TZID=Asia/Novosibirsk:20260808T085000
+DTEND;TZID=Asia/Novosibirsk:20260808T090000
 RRULE:FREQ=WEEKLY;BYDAY=SA
-SUMMARY:Preparación y salida del dormitorio
-DESCRIPTION:Botella de 700 ml: agua + pizca de sal + jugo de limón. Ropa
-  de cambio. Movilidad de cadera y tobillo 5 min.
+SUMMARY:Salida al camión
+DESCRIPTION:La mochila ya debería estar hecha de anoche: leche proteica\
+ , 2 plátanos\, pan con miel\, botella de 700 ml con agua y una pizca de
+  sal\, ropa de cambio.
 BEGIN:VALARM
 ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Preparación y salida del dormitorio
+TRIGGER:-PT5M
+DESCRIPTION:Salida al camión
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-6-4-0900@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260808T090000
+DTEND;TZID=Asia/Novosibirsk:20260808T100000
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:Camión · desayuno + Anki de ruso
+DESCRIPTION:Los 60 minutos más rentables de tu fin de semana: comes y es
+ tudias sentado. Terminar de desayunar ahora te deja una hora exacta de d
+ igestión antes de bailar.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Camión · desayuno + Anki de ruso
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-6-6-1040@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260808T104000
+DTEND;TZID=Asia/Novosibirsk:20260808T110000
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:Segundo plátano y calentamiento
+DESCRIPTION:El plátano que guardaste\, ahora. Movilidad de cadera y tobi
+ llo 10 min: es lo que separa una clase buena de un tirón.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Segundo plátano y calentamiento
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-6-8-1200@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260808T120000
+DTEND;TZID=Asia/Novosibirsk:20260808T124500
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:Comida al salir · aquí SÍ cabe lo graso
+DESCRIPTION:Este es el momento de la pizza\, el shawarma o lo que se te a
+ ntoje. Terminaste de bailar: la grasa ya no te estorba y el músculo pid
+ e proteína.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Comida al salir · aquí SÍ cabe lo graso
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
