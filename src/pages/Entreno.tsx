@@ -27,23 +27,51 @@ export default function Entreno() {
   const semana = inicio ? semanaDelPrograma(inicio) : 1
   const deload = esSemanaDeload(semana)
 
-  const fechasConSeries = useLiveQuery(
-    async () => new Set((await db.sets.orderBy('date').uniqueKeys()) as string[]),
-    [],
-  )
-  const resueltos = useLiveQuery(
-    async () =>
-      new Set(
-        (await db.meta.where('key').startsWith('recuperado:').toArray()).map((m) =>
-          m.key.slice('recuperado:'.length),
+  /**
+   * Detección de entrenos perdidos, a prueba de fallos.
+   *
+   * La versión anterior usaba `db.sets.orderBy('date').uniqueKeys()` y
+   * `db.meta.where('key').startsWith(...)`. Eran las dos únicas consultas de su
+   * tipo en toda la app y estaban las dos en esta pantalla — la única que a Sam
+   * se le quedaba en negro mientras el resto funcionaba.
+   *
+   * useLiveQuery RELANZA durante el render cualquier error de la consulta, así
+   * que un índice que el navegador no resuelva como se espera no da un aviso:
+   * tumba la pantalla entera. Y `where()` sobre una clave primaria es
+   * precisamente el terreno donde WebKit y Chromium no siempre coinciden.
+   *
+   * La tabla meta tiene un puñado de filas y las series son unas pocas por
+   * sesión: leerlas enteras y filtrar en memoria cuesta lo mismo, hace lo
+   * mismo y no depende de ningún índice. El try/catch es el último seguro:
+   * esta tarjeta es una comodidad, y ninguna comodidad debería poder impedirte
+   * abrir tu entrenamiento.
+   */
+  const datosPerdidos = useLiveQuery(async () => {
+    try {
+      const [sets, metas] = await Promise.all([db.sets.toArray(), db.meta.toArray()])
+      return {
+        fechasConSeries: new Set(sets.map((s) => s.date)),
+        resueltos: new Set(
+          metas
+            .filter((m) => typeof m.key === 'string' && m.key.startsWith('recuperado:'))
+            .map((m) => m.key.slice('recuperado:'.length)),
         ),
-      ),
-    [],
-  )
-  const perdido =
-    fechasConSeries && resueltos
-      ? buscarEntrenosPerdidos(fase, fechasConSeries, resueltos)[0]
+      }
+    } catch (e) {
+      console.error('[RITMO] No se pudieron leer los entrenos perdidos:', e)
+      return null
+    }
+  }, [])
+
+  let perdido: ReturnType<typeof buscarEntrenosPerdidos>[number] | undefined
+  try {
+    perdido = datosPerdidos
+      ? buscarEntrenosPerdidos(fase, datosPerdidos.fechasConSeries, datosPerdidos.resueltos)[0]
       : undefined
+  } catch (e) {
+    console.error('[RITMO] Fallo al calcular entrenos perdidos:', e)
+    perdido = undefined
+  }
 
   if (!workout) {
     return (
