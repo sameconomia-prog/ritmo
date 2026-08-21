@@ -624,14 +624,32 @@ export const WORKOUTS: Record<string, Workout> = {
 }
 
 /** Qué comprar para multiplicar el rendimiento de la Fase 1. */
+/**
+ * REORDENADO 2026-08-21. La báscula estaba en prioridad 4, enterrada debajo de
+ * una barra de dominadas que Sam ya no necesita —entrena en un parque lleno de
+ * barras—, y la cinta métrica ni siquiera figuraba. Mientras tanto el motor de
+ * calorías llevaba dos semanas dando un número teórico por falta de datos.
+ *
+ * El orden ahora refleja lo que de verdad desbloquea el plan: primero los dos
+ * sensores, que son lo más barato de toda la lista, y después la carga.
+ */
 export const EQUIPO_RECOMENDADO = [
   {
-    item: 'Barra de dominadas de marco de puerta',
-    ru: 'турник в дверной проём',
-    precio: '1 200–2 500 ₽',
-    donde: 'Ozon / Wildberries / Sportmaster',
+    item: 'Báscula corporal digital',
+    ru: 'напольные весы',
+    precio: '700–1 800 ₽',
+    donde: 'Ozon · Wildberries · DNS · Лента · Магнит',
     porque:
-      'La compra de mayor impacto de todo el plan. Sin ella no tienes tracción vertical y la espalda —tu prioridad para la silueta en V— se queda a medias. Convierte la Fase 1 en un programa casi completo.',
+      'El sensor de todo el sistema. Sin ella, el objetivo calórico de esta app es una fórmula sin corregir: puede errar 300 kcal en cualquier dirección y nunca lo sabrías. NO compres una con análisis de grasa corporal (весы с анализатором): la bioimpedancia de las básculas domésticas es muy imprecisa, cuesta el triple y no vas a usar ese número. Una digital simple que marque décimas es todo lo que hace falta.',
+    prioridad: 1,
+  },
+  {
+    item: 'Cinta métrica de sastre',
+    ru: 'сантиметровая лента / портновский метр',
+    precio: '50–150 ₽',
+    donde: 'Fix Price · cualquier магазин ткани · Ozon',
+    porque:
+      'Lo más barato de esta lista y lo que mejor responde a tu meta real. La báscula miente a corto plazo —el agua y el glucógeno la mueven un kilo en un día—; la cinta no. Si el bíceps y el muslo suben mientras la cintura casi no se mueve, estás ganando músculo, diga lo que diga la báscula esa mañana. MIENTRAS NO LA TENGAS: rodea el bíceps con un cordón o un cable de cargador, marca el cruce con pluma, estíralo y mídelo contra un billete (los billetes rusos miden 150 mm de largo). Es menos cómodo, pero mide igual de bien.',
     prioridad: 1,
   },
   {
@@ -640,7 +658,7 @@ export const EQUIPO_RECOMENDADO = [
     precio: '0 ₽ (ya la tienes)',
     donde: 'Casa',
     porque:
-      'Tu sistema de carga progresiva. 6 kg de agua transforman la sentadilla búlgara de resistencia a hipertrofia real.',
+      'Tu sistema de carga progresiva, y gratis. 6 kg de agua transforman la sentadilla búlgara de resistencia a hipertrofia real. Cuando pases de 15 dominadas limpias, esta mochila es lo único que impide que dejes de crecer: sumar repeticiones más allá de ahí entrena resistencia, no tamaño.',
     prioridad: 2,
   },
   {
@@ -649,17 +667,8 @@ export const EQUIPO_RECOMENDADO = [
     precio: '600–1 500 ₽',
     donde: 'Ozon',
     porque:
-      'Asisten las dominadas mientras ganas fuerza y permiten face pulls para la salud del hombro.',
+      'Asisten las dominadas mientras ganas fuerza y permiten face pulls para la salud del hombro. También son tu plan B para elevaciones laterales, que es el trabajo de deltoides que la calistenia no cubre bien.',
     prioridad: 3,
-  },
-  {
-    item: 'Báscula corporal digital',
-    ru: 'напольные весы',
-    precio: '1 000–1 800 ₽',
-    donde: 'Ozon / Лента',
-    porque:
-      'Sin medir el peso semanal, el motor de calorías de esta app no puede ajustarse. Es el sensor del sistema.',
-    prioridad: 4,
   },
   {
     item: 'Báscula de cocina digital',
@@ -668,6 +677,15 @@ export const EQUIPO_RECOMENDADO = [
     donde: 'Ozon',
     porque:
       'Solo las primeras 2 semanas, para calibrar el ojo. Después estimas sin pesar.',
+    prioridad: 4,
+  },
+  {
+    item: 'Barra de dominadas de marco de puerta',
+    ru: 'турник в дверной проём',
+    precio: '1 200–2 500 ₽',
+    donde: 'Ozon / Wildberries / Sportmaster',
+    porque:
+      'Ya NO es prioritaria: entrenas en un parque lleno de barras. Vuelve a serlo cuando llegue el invierno siberiano de verdad y el parque deje de ser una opción — o si algún día quieres entrenar sin salir.',
     prioridad: 5,
   },
 ]

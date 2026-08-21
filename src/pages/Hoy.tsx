@@ -281,6 +281,20 @@ function RegistroRapido({ fecha }: { fecha: string }) {
         </div>
       )}
 
+      {/*
+        Durante dos semanas esta tarjeta insistió en que se pesara sin ofrecer
+        salida, y resultó que el problema no era el olvido: no tenía báscula.
+        Un recordatorio sin salida solo genera culpa.
+      */}
+      {totalPesajes === 0 && (
+        <Link
+          to="/ajustes"
+          className="mt-1.5 inline-block text-[11px] font-semibold text-[var(--color-accent)]"
+        >
+          ¿No tienes báscula? Mira cuál comprar →
+        </Link>
+      )}
+
       <div className="mt-2.5 flex gap-1.5">
         {DIARIOS.map((s) => (
           <button
