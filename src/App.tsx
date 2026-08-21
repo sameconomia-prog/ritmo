@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import { aplicarActualizacion, iniciarActualizaciones } from './pwa'
+import { ErrorBoundary } from './ErrorBoundary'
 import Hoy from './pages/Hoy'
 import Entreno from './pages/Entreno'
 import Comida from './pages/Comida'
@@ -43,15 +44,21 @@ export default function App() {
       )}
 
       <main className="safe-top flex-1 px-4 pb-28 pt-5">
+        {/*
+          Cada pantalla va envuelta por separado, con su nombre. Así un fallo en
+          Entreno no tumba la app entera: las demás pestañas siguen navegables y
+          el error aparece escrito en la pantalla que lo provocó, en vez de
+          dejarla en negro sin ninguna pista.
+        */}
         <Routes>
           <Route path="/" element={<Navigate to="/hoy" replace />} />
-          <Route path="/hoy" element={<Hoy />} />
-          <Route path="/entreno" element={<Entreno />} />
-          <Route path="/comida" element={<Comida />} />
-          <Route path="/estudio" element={<Estudio />} />
-          <Route path="/progreso" element={<Progreso />} />
-          <Route path="/fotos" element={<Fotos />} />
-          <Route path="/ajustes" element={<Ajustes />} />
+          <Route path="/hoy" element={<ErrorBoundary zona="Hoy"><Hoy /></ErrorBoundary>} />
+          <Route path="/entreno" element={<ErrorBoundary zona="Entreno"><Entreno /></ErrorBoundary>} />
+          <Route path="/comida" element={<ErrorBoundary zona="Comida"><Comida /></ErrorBoundary>} />
+          <Route path="/estudio" element={<ErrorBoundary zona="Estudio"><Estudio /></ErrorBoundary>} />
+          <Route path="/progreso" element={<ErrorBoundary zona="Progreso"><Progreso /></ErrorBoundary>} />
+          <Route path="/fotos" element={<ErrorBoundary zona="Fotos"><Fotos /></ErrorBoundary>} />
+          <Route path="/ajustes" element={<ErrorBoundary zona="Ajustes"><Ajustes /></ErrorBoundary>} />
           <Route path="*" element={<Navigate to="/hoy" replace />} />
         </Routes>
       </main>
