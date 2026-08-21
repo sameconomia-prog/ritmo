@@ -80,16 +80,79 @@ DESCRIPTION:Segundo plátano y calentamiento
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-14-1900@sameconomia-prog.github.io
+UID:ritmo-0-8-1200@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260809T190000
-DTEND;TZID=Asia/Novosibirsk:20260809T200000
+DTSTART;TZID=Asia/Novosibirsk:20260809T120000
+DTEND;TZID=Asia/Novosibirsk:20260809T130000
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:Bachata · segunda hora seguida
+DESCRIPTION:Dos horas seguidas y todavía te falta la clase larga de la t
+ arde. Hoy el total son 3 h 30 de baile.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Bachata · segunda hora seguida
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-0-9-1300@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260809T130000
+DTEND;TZID=Asia/Novosibirsk:20260809T142000
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:Comida en el camino · la que decide tu domingo
+DESCRIPTION:La comida más importante de tu semana. Acabas de bailar dos 
+ horas y te faltan hora y media. Aquí SÍ cabe lo graso\, pero busca pro
+ teína de verdad: pollo\, pescado\, huevos u otra leche proteica. Si sal
+ es de aquí solo con almidón\, a las 15:30 se te acaba.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Comida en el camino · la que decide tu domingo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-0-10-1420@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260809T142000
+DTEND;TZID=Asia/Novosibirsk:20260809T144000
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:Llegada a la academia 2 · plátano y movilidad
+DESCRIPTION:Un plátano ahora te deja con glucógeno fresco para la clase
+  larga\, y diez minutos de cadera y tobillo evitan que la segunda sesió
+ n del día sea la que te lesione.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Llegada a la academia 2 · plátano y movilidad
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-0-13-1710@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260809T171000
+DTEND;TZID=Asia/Novosibirsk:20260809T174000
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:Batido de recuperación
+DESCRIPTION:En cuanto llegues al dormitorio. Tras 3 h 30 min de baile\, e
+ sta es la reposición más urgente del día.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Batido de recuperación
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-0-15-1810@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260809T181000
+DTEND;TZID=Asia/Novosibirsk:20260809T191000
 RRULE:FREQ=WEEKLY;BYDAY=SU
 SUMMARY:MEAL PREP de la semana
 DESCRIPTION:La hora más rentable de tu semana. Con la despensa de ahora:
   500 g de pollo en dos tandas de 250 g (nunca de golpe\, se cuece al vap
- or)\, 4 bolsitas de гречка y 8 huevos cocidos. Deja también la mo
- chila del sábado hecha: leche proteica\, plátanos y pan con miel.
+ or)\, 4 bolsitas de гречка y 8 huevos cocidos. Te ahorra ~5 horas 
+ de lunes a viernes.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
@@ -97,10 +160,10 @@ DESCRIPTION:MEAL PREP de la semana
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-17-2125@sameconomia-prog.github.io
+UID:ritmo-0-18-2040@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260809T212500
-DTEND;TZID=Asia/Novosibirsk:20260809T220500
+DTSTART;TZID=Asia/Novosibirsk:20260809T204000
+DTEND;TZID=Asia/Novosibirsk:20260809T212000
 RRULE:FREQ=WEEKLY;BYDAY=SU
 SUMMARY:Revisión semanal
 DESCRIPTION:Peso promedio de la semana\, fotos si toca\, adherencia. Plan
@@ -550,6 +613,24 @@ DESCRIPTION:Snack nocturno de caseína
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+UID:ritmo-5-22-2350@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T235000
+DTEND;TZID=Asia/Novosibirsk:20260807T235900
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Ritual de cierre · DEJA LA MOCHILA LISTA
+DESCRIPTION:Mañana sales 8:50 al camión de las 9:00 y bailas dos horas 
+ seguidas. Mochila AHORA: leche proteica\, 2 plátanos\, pan con miel\, b
+ otella de 700 ml con agua y una pizca de sal\, ropa de cambio. Es el ún
+ ico paso del sábado que se hace la noche anterior\, y sin él desayunas
+  grasa a 45 minutos de bailar.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Ritual de cierre · DEJA LA MOCHILA LISTA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 UID:ritmo-6-2-0830@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260808T083000
@@ -615,20 +696,37 @@ BEGIN:VEVENT
 UID:ritmo-6-8-1200@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260808T120000
-DTEND;TZID=Asia/Novosibirsk:20260808T124500
+DTEND;TZID=Asia/Novosibirsk:20260808T130000
 RRULE:FREQ=WEEKLY;BYDAY=SA
-SUMMARY:Comida al salir · aquí SÍ cabe lo graso
-DESCRIPTION:Este es el momento de la pizza\, el shawarma o lo que se te a
- ntoje. Terminaste de bailar: la grasa ya no te estorba y el músculo pid
- e proteína.
+SUMMARY:Bachata · segunda hora seguida
+DESCRIPTION:Son DOS horas seguidas de baile\, no una: ~700 kcal en total 
+ y casi cuatro horas desde el desayuno del camión. Si entre clase y clas
+ e te queda un minuto\, el resto del pan con miel o unos dátiles — no 
+ llegues a la bachata vacío.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
-DESCRIPTION:Comida al salir · aquí SÍ cabe lo graso
+DESCRIPTION:Bachata · segunda hora seguida
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-15-2315@sameconomia-prog.github.io
+UID:ritmo-6-9-1300@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260808T130000
+DTEND;TZID=Asia/Novosibirsk:20260808T132000
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:Al salir · come algo YA
+DESCRIPTION:Acabas de bailar dos horas y te espera una hora de camión. N
+ o aguantes hasta casa: lo que compres aquí sirve\, y aquí SÍ cabe lo 
+ graso — la pizza\, el shawarma\, lo que se te antoje.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Al salir · come algo YA
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-6-16-2315@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260808T231500
 DTEND;TZID=Asia/Novosibirsk:20260808T233500
@@ -638,6 +736,24 @@ BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
 DESCRIPTION:Snack nocturno de caseína
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-6-17-2335@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260808T233500
+DTEND;TZID=Asia/Novosibirsk:20260808T235900
+RRULE:FREQ=WEEKLY;BYDAY=SA
+SUMMARY:Ritual de cierre · DEJA LA MOCHILA LISTA
+DESCRIPTION:Mañana es tu día más largo: sales 8:50 y no vuelves hasta 
+ las 17:10\, con 3 h 30 de baile en medio. Mochila AHORA: leche proteica\
+ , 2 plátanos\, pan con miel\, botella de 700 ml con agua y sal\, ropa d
+ e cambio y dinero para la comida del mediodía. Si no la dejas hecha est
+ a noche\, mañana sales en ayunas.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT0M
+DESCRIPTION:Ritual de cierre · DEJA LA MOCHILA LISTA
 END:VALARM
 END:VEVENT
 END:VCALENDAR
