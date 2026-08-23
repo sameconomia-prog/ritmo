@@ -534,6 +534,12 @@ export const RECIPES: Record<string, Recipe> = {
   // a las 10:00. La única ventana de desayuno que existe de verdad son esos
   // 60 minutos sentado en el camión — y son los 60 minutos PERFECTOS, porque
   // dejan una hora exacta de digestión antes de bailar.
+  //
+  // 2026-08-23: la «leche proteica» dejó de ser genérica. La receta la pedía
+  // pero la lista de compra nunca la incluyó, así que el sábado 22 agarró a
+  // Sam sin ella. Lo resolvió solo en la tienda: Neo High Protein de
+  // chocolate — 30 г белка, sin azúcar añadido, tetrapak UHT que aguanta la
+  // mochila sin refrigerar. Producto confirmado → entra a COMPRA_SEMANAL.
   b2: {
     id: 'b2',
     slot: 'preBaile',
@@ -545,7 +551,7 @@ export const RECIPES: Record<string, Recipe> = {
     fat: 8,
     costRub: 190,
     ingredients: [
-      { item: 'Leche proteica UHT (la de 30 g)', qty: '1 botella', ru: 'протеиновый коктейль / молоко с протеином' },
+      { item: 'Leche proteica Neo High Protein (30 g)', qty: '1 tetrapak', ru: 'Neo High Protein, шоколад' },
       { item: 'Plátanos', qty: '2', ru: 'бананы' },
       { item: 'Pan de centeno', qty: '2 rebanadas', ru: 'хлеб ржаной' },
       { item: 'Miel', qty: '1 cda (en un frasquito)', ru: 'мёд' },
@@ -649,8 +655,20 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
       { item: 'Kéfir sin lactosa', ru: 'безлактозный кефир', qty: '1 L', rub: 160 },
       { item: 'Smetana sin lactosa 15 %', ru: 'безлактозная сметана', qty: '400 g', rub: 190 },
       { item: 'Queso curado (lactosa casi nula)', ru: 'сыр Российский', qty: '250 g', rub: 290 },
+      { item: 'Leche proteica Neo High Protein', ru: 'Neo High Protein шоколад', qty: '2 tetrapaks (sáb y dom)', rub: 300,
+        nota: 'La del desayuno de camión. Confirmada el 2026-08-22: tetrapak azul oscuro con franja dorada, dice «30 г белка в порции» y «без добавления сахара». Búscala con la leche UHT y los batidos, no en refrigerados. Se compra el viernes: la mochila se arma esa noche. Si un finde no la hay, cualquier молочный коктейль con ≥25 г белка hace el mismo papel.' },
     ],
   },
+  // LO QUE NO ENTRÓ — каша infantil Nestlé (el «Nestum» de México), 2026-08-23.
+  // La recomiendan influencers para ectomorfos y la lógica no es absurda:
+  // avena hidrolizada + leche en polvo = calorías fáciles de tragar para quien
+  // le cuesta comer. Pero es ~10 veces más cara por kilo que la Геркулес, su
+  // «без добавленного сахара» es solo sin sacarosa (la lactosa y el azúcar de
+  // la fruta siguen ahí, y este plan raciona la lactosa con cuidado), y la
+  // fortificación está dosificada para bebés de 6 meses, no para un adulto de
+  // 70 kg. Si algún día cuesta tragar la avena: molerla en la licuadora antes
+  // de cocerla logra la misma papilla a 110 ₽/kg. El hueco real del fin de
+  // semana era proteína portátil, y eso ya lo resolvió la Neo.
   {
     seccion: 'Carbohidratos',
     items: [
@@ -691,6 +709,20 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
     ],
   },
 ]
+
+/**
+ * Total de la compra semanal, sumado de la lista real y redondeado a centenas.
+ * Mismo principio que kcalPlaneadas en plan.ts: un número que vive dos veces
+ * acaba divergiendo — el encabezado decía 6 400 ₽ mientras la lista sumaba
+ * 8 000+. Derivarlo hace imposible que se vuelvan a separar.
+ */
+export function totalCompra(): number {
+  const suma = COMPRA_SEMANAL.reduce(
+    (acc, sec) => acc + sec.items.reduce((s, it) => s + it.rub, 0),
+    0,
+  )
+  return Math.round(suma / 100) * 100
+}
 
 export const SUPLEMENTOS = [
   {

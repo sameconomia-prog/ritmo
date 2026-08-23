@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useSearchParams } from 'react-router-dom'
-import { COMPRA_SEMANAL, MENU_SEMANAL, RECIPES, SUPLEMENTOS, type Recipe } from '../data/recipes'
+import { COMPRA_SEMANAL, MENU_SEMANAL, RECIPES, SUPLEMENTOS, totalCompra, type Recipe } from '../data/recipes'
 import { planDelDia, RESUMEN_DIA } from '../data/plan'
 import { db, hoyISO, toggleMeal } from '../db'
 import { calcularNutricion, tendenciaSemanal } from '../lib'
@@ -188,8 +188,10 @@ export default function Comida() {
           <Card className="mb-4 p-4">
             <p className="text-sm font-semibold">Compra semanal</p>
             <p className="mt-1 text-[13px] leading-relaxed text-[var(--color-ink-dim)]">
-              Total aproximado: <strong className="text-[var(--color-accent)]">≈ 6 400 ₽</strong> por semana
-              (~70 USD). Los nombres en ruso están para que los busques directamente en la tienda o en la app
+              {/* Sumado de la lista real: el «≈ 6 400 ₽» escrito a mano ya iba
+                  1 600 ₽ por debajo cuando se detectó (2026-08-23). */}
+              Total aproximado: <strong className="text-[var(--color-accent)]">≈ {totalCompra().toLocaleString('ru-RU')} ₽</strong> por semana
+              (~{Math.round(totalCompra() / 90)} USD). Los nombres en ruso están para que los busques directamente en la tienda o en la app
               de Пятёрочка.
             </p>
           </Card>
