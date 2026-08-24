@@ -17,12 +17,31 @@ const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..')
 const DESTINO = join(RAIZ, 'public', 'ejercicios')
 const BASE = 'https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/'
 
-/** ID interno del ejercicio → nombre en el dataset. */
+/**
+ * ID interno del ejercicio → nombre en el dataset.
+ *
+ * COMPLETADO 2026-08-24: Sam salió del entreno del lunes sin saber hacer el
+ * curl en barra baja porque era de los pocos sin foto — los 23 que faltaban
+ * (4 de parque y toda la Fase 2 de gimnasio) entran hoy. Tres son
+ * aproximaciones deliberadas, elegidas mirando las fotos una por una, con el
+ * mismo criterio ya usado en sentadillaUna (foto con barra) y curlMochila
+ * (foto con mancuerna): enseñar el PATRÓN; el matiz lo pone el cue.
+ *  · curlBarraBaja → 'Inverted Row': la posición es exactamente esa; el cue
+ *    ya explica que los codos quedan fijos y solo se doblan ellos.
+ *  · flexionPica → 'Inchworm': su primera foto es la V invertida exacta.
+ *    'Pike Press' (el mapeo anterior) no existe en el dataset: por eso este
+ *    ejercicio llevaba desde el inicio sin foto. 'Handstand Push-Ups' se
+ *    descartó a propósito: un pino sin pared enseña otra cosa y asusta.
+ *  · hollow → 'Scissor Kick': supino, lumbar pegada, piernas extendidas
+ *    flotando. No es idéntico (el hollow no alterna) pero coloca el cuerpo.
+ */
 export const MAPA = {
+  // ── Fase 1 · parque y casa ──
   dominadaSupina: 'Chin-Up',
   dominadaProna: 'Pullups',
   fondoParalelas: 'Dips - Triceps Version',
   remoBarraBaja: 'Inverted Row',
+  curlBarraBaja: 'Inverted Row',
   flexionInclinada: 'Incline Push-Up',
   flexionDiamante: 'Push-Ups - Close Triceps Position',
   flexion: 'Pushups',
@@ -33,9 +52,31 @@ export const MAPA = {
   nordico: 'Natural Glute Ham Raise',
   gemelo: 'Standing Calf Raises',
   plancha: 'Plank',
+  planchaLateral: 'Side Bridge',
+  hollow: 'Scissor Kick',
   puenteGluteo: 'Single Leg Glute Bridge',
-  flexionPica: 'Pike Press',
+  flexionPica: 'Inchworm',
   curlMochila: 'Dumbbell Bicep Curl',
+  // ── Fase 2 · gimnasio (septiembre en adelante) ──
+  gobletSquat: 'Goblet Squat',
+  prensa: 'Leg Press',
+  pmr: 'Romanian Deadlift',
+  hipThrust: 'Barbell Hip Thrust',
+  curlFemoral: 'Lying Leg Curls',
+  extCuadriceps: 'Leg Extensions',
+  pressMancuernas: 'Dumbbell Bench Press',
+  pressInclinado: 'Incline Dumbbell Press',
+  pressMilitar: 'Dumbbell Shoulder Press',
+  elevLaterales: 'Side Lateral Raise',
+  fondos: 'Dips - Chest Version',
+  extTriceps: 'Triceps Pushdown',
+  jalonPecho: 'Wide-Grip Lat Pulldown',
+  remoMancuerna: 'One-Arm Dumbbell Row',
+  remoPolea: 'Seated Cable Rows',
+  facePull: 'Face Pull',
+  curlBiceps: 'Dumbbell Alternate Bicep Curl',
+  curlMartillo: 'Hammer Curls',
+  gemeloMaquina: 'Standing Calf Raises',
 }
 
 const existe = (p) => access(p).then(() => true, () => false)
