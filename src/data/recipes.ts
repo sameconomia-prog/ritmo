@@ -435,15 +435,16 @@ export const RECIPES: Record<string, Recipe> = {
       { item: 'Sal', qty: 'al gusto', ru: 'соль' },
     ],
     steps: [
-      'Bolsita de гречка en agua hirviendo con sal: 15 minutos. Al venir en bolsita no se pega ni se pasa de agua.',
+      'SE COCINA DOBLE: 2 bolsitas de гречка y 500 g de pollo (las cantidades de arriba son de UNA porción). Una sola cocinada resuelve comida y cena.',
+      'Bolsitas de гречка en agua hirviendo con sal: 15 minutos. Al venir en bolsita no se pega ni se pasa de agua.',
       'Mientras hierve, corta el pollo en cubos de 2 cm.',
-      'Sartén a fuego medio-alto con la mantequilla. Pollo dentro, 8-10 min revolviendo, hasta que no quede nada rosa.',
-      'Baja el fuego. Agrega la pasta de tomate + 3 cdas de agua. Revuelve 2 minutos.',
+      'Sartén a fuego medio-alto con la mantequilla. Pollo dentro EN DOS TANDAS de 250 g, 8-10 min cada una, hasta que no quede nada rosa.',
+      'Baja el fuego, junta todo el pollo. Agrega la pasta de tomate + 4 cdas de agua. Revuelve 2 minutos.',
       'FUERA del fuego, añade la crema agria. Si la hierves se corta.',
-      'Sirve sobre la гречка.',
+      'Sirve la mitad sobre una bolsita de гречка: esa es la comida. La otra mitad al tupper y al refri: es la cena de hoy, 2 minutos de microondas.',
     ],
-    tip: 'AL DOBLAR: no metas los 500 g de pollo de golpe. Suelta agua, la temperatura cae y se cuece al vapor en vez de dorarse. Dos tandas de 250 g, 8 minutos cada una. Son 8 minutos más y es la diferencia entre comer bien dos días o comer correoso dos días.',
-    why: 'El plato central de la despensa actual. La гречка en bolsita elimina el único paso donde un principiante falla: la proporción de agua.',
+    tip: 'Las dos tandas de pollo no son manía: 500 g de golpe sueltan agua, la temperatura de la sartén cae y el pollo se cuece al vapor en vez de dorarse. Son 8 minutos más y es la diferencia entre comer bien dos veces hoy o comer correoso dos veces.',
+    why: 'El plato central de la despensa actual, en doble porción porque la cena es este mismo plato recalentado: en la parrilla eléctrica lenta de la residencia se cocina UNA vez al día, no dos. La гречка en bolsita elimina el único paso donde un principiante falla: la proporción de agua.',
   },
   p2b: {
     id: 'p2b',
@@ -463,14 +464,16 @@ export const RECIPES: Record<string, Recipe> = {
       { item: 'Aguacate', qty: '1/2', ru: 'авокадо' },
     ],
     steps: [
+      'MARTES Y JUEVES SE COCINA DOBLE: 200 g de penne y 2 latas (las cantidades de arriba son de UNA porción). El sábado en la noche va sencilla.',
       'Penne en agua hirviendo con sal: 12 minutos.',
       'Escurre bien el atún: el aceite de la lata son ~150 kcal que no aportan nada.',
       'Escurre la pasta, reserva media taza del agua de cocción.',
-      'En la olla: pasta + pasta de tomate + 3 cdas del agua reservada. Revuelve.',
+      'En la olla: pasta + pasta de tomate + 3-4 cdas del agua reservada. Revuelve.',
       'Fuera del fuego: la crema agria y el atún desmenuzado. El aguacate en rodajas encima.',
+      'Entre semana: la mitad al plato, la otra mitad al tupper — es la cena de hoy. El aguacate de la cena córtalo hasta la noche, o se pone negro.',
     ],
     tip: 'El agua de cocción de la pasta lleva almidón: liga la salsa mucho mejor que agua limpia.',
-    why: 'Cena rápida para los días de trabajo. El aguacate aporta las grasas monoinsaturadas que faltan mientras no haya aceite de oliva.',
+    why: 'El plato de los martes y jueves: la proteína viene de lata, así que es la cocinada más fácil de la semana — solo hierves pasta. El aguacate aporta las grasas monoinsaturadas del día.',
   },
   n1b: {
     id: 'n1b',
@@ -602,27 +605,47 @@ export const RECIPES: Record<string, Recipe> = {
  * faltan la zanahoria, el pescado y la carne. Un plan que te manda a cocinar
  * algo que no tienes en el refrigerador no es un plan, es una decepción diaria.
  *
- * Ahora el menú solo apunta a lo que hay en casa. Dos cambios lo permiten:
- *  · El творог normal le cayó bien (probado el 2026-08-15), así que s1 y p1
- *    vuelven al menú: la caseína nocturna estaba fuera y era la pieza con más
- *    evidencia detrás de todo el plan nutricional.
- *  · p1b y p2b, escritas con lo que ya tiene, pasan de respaldo a titulares.
+ * REESCRITO OTRA VEZ 2026-08-24 — UNA COCINADA AL DÍA, NO DOS.
+ * El menú pedía cocinar el pollo al mediodía Y la pasta en la noche: dos
+ * cocinadas diarias en la parrilla eléctrica lenta de una residencia
+ * estudiantil, sin espacio para guardar gran cosa. Sam contó lo que hace de
+ * verdad: cocina DOBLE porción al mediodía y en la noche recalienta lo mismo.
+ * Eso no es una desviación del plan — es mejor plan, y desde hoy es el plan:
  *
- * CUANDO COMPRE zanahoria, pescado y carne: devolver c1, n1, n2 y n3 a sus
- * días. La lista de recetas ideales sigue intacta esperando ese día.
+ *   · COMIDA Y CENA SON EL MISMO PLATO. Se cocina una vez, en doble porción;
+ *     la cena es recalentar el tupper. Nutricionalmente no se pierde nada:
+ *     lo que importa es el total del día y la proteína repartida en tomas de
+ *     ~30-40 g (Areta 2013 habla de dosis por toma, no de variedad).
+ *   · LA VARIEDAD VA ENTRE DÍAS: pollo con гречка un día, penne con atún al
+ *     siguiente. Con eso los micronutrientes de la semana quedan cubiertos y
+ *     el atún se queda en 4 latas semanales, dentro de lo prudente.
+ *   · Sábado: la cena es el penne (15 min y la mitad viene de lata) — único
+ *     día que se cocina de noche, con la noche libre. Domingo: la cena sale
+ *     del MEAL PREP de las 18:10, también una sola cocinada.
+ *
+ * CUANDO COMPRE zanahoria, pescado y carne: c1, n1, n2 y n3 entran al relevo
+ * de días, siempre respetando la regla de una cocinada: doble porción o cero
+ * cocción (n3 es bowl de lata). La lista ideal sigue intacta esperando.
  */
 export const MENU_SEMANAL: Record<number, Partial<Record<MealSlot, string>>> = {
-  1: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p2b', nocturno: 's1' },
-  2: { desayuno: 'd2', comida: 'p1b', cena: 'p2b', nocturno: 's1' },
-  3: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p2b', nocturno: 's2' },
-  4: { desayuno: 'd2', comida: 'p1b', cena: 'p2b', nocturno: 's1' },
-  5: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p2b', nocturno: 's1' },
-  // Fin de semana: no cocina. Desayuna en el camión y come en la calle.
+  1: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' },
+  2: { desayuno: 'd2', comida: 'p2b', cena: 'p2b', nocturno: 's1' },
+  3: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p1b', nocturno: 's2' },
+  4: { desayuno: 'd2', comida: 'p2b', cena: 'p2b', nocturno: 's1' },
+  5: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' },
+  // Fin de semana: no cocina de día. Desayuna en el camión y come en la calle.
   6: { preBaile: 'b2', comida: 'k1', cena: 'p2b', nocturno: 's1' },
   0: { preBaile: 'b2', comida: 'k1', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' },
 }
 
-/** Lista de compra semanal, agrupada por pasillo. */
+/**
+ * Lista de compra semanal, agrupada por pasillo.
+ *
+ * 2026-08-24: entran atún, penne, aguacate, pasta de tomate y mantequilla —
+ * el menú real (p1b/p2b) los consumía cada semana y la lista nunca los tuvo:
+ * el mismo hueco que tuvo la leche proteica del camión. Y el pollo sube a
+ * 2 kg: con la doble porción de p1b son 7 raciones de 250 g por semana.
+ */
 export interface ItemCompra {
   item: string
   ru: string
@@ -636,7 +659,9 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
   {
     seccion: 'Proteína',
     items: [
-      { item: 'Pechuga de pollo', ru: 'куриная грудка', qty: '1.5 kg', rub: 480 },
+      { item: 'Pechuga de pollo', ru: 'куриная грудка', qty: '2 kg', rub: 640 },
+      { item: 'Atún en aceite', ru: 'тунец в масле', qty: '5 latas', rub: 600,
+        nota: 'El del penne: martes y jueves en doble porción, sábado en la noche sencillo.' },
       { item: 'Carne molida de res', ru: 'говяжий фарш', qty: '600 g', rub: 380 },
       { item: 'Hígado de res', ru: 'говяжья печень', qty: '250 g', rub: 90 },
       { item: 'Caballa', ru: 'скумбрия свежемороженая', qty: '500 g', rub: 260,
@@ -677,6 +702,7 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
       { item: 'Arroz', ru: 'рис', qty: '1 kg', rub: 120 },
       { item: 'Papas', ru: 'картофель', qty: '3 kg', rub: 150 },
       { item: 'Pan de centeno', ru: 'хлеб ржаной', qty: '2 barras', rub: 120 },
+      { item: 'Penne', ru: 'макароны пенне', qty: '500 g', rub: 90 },
     ],
   },
   {
@@ -694,6 +720,8 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
       { item: 'Chucrut', ru: 'квашеная капуста', qty: '500 g', rub: 130 },
       { item: 'Brócoli congelado', ru: 'брокколи замороженная', qty: '700 g', rub: 240 },
       { item: 'Eneldo', ru: 'укроп', qty: '2 manojos', rub: 80 },
+      { item: 'Aguacate', ru: 'авокадо', qty: '3 piezas', rub: 300,
+        nota: 'Cómpralos duros al inicio de semana: maduran solos hacia el martes y el jueves, que es cuando los usa el penne.' },
     ],
   },
   {
@@ -706,6 +734,8 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
       { item: 'Miel', ru: 'мёд', qty: '500 g', rub: 350 },
       { item: 'Cacao en polvo', ru: 'какао-порошок', qty: '200 g', rub: 150 },
       { item: 'Semillas de linaza', ru: 'семена льна', qty: '200 g', rub: 90 },
+      { item: 'Pasta de tomate', ru: 'томатная паста', qty: '2 frascos chicos (140 g)', rub: 160 },
+      { item: 'Mantequilla', ru: 'сливочное масло', qty: '180 g', rub: 180 },
     ],
   },
 ]
