@@ -116,7 +116,7 @@ const trasNocheTrabajo = (): Block[] => [
   { start: '01:30', end: '01:50', kind: 'comida', title: 'Snack nocturno de caseína', avisar: 0,
     detail: 'El hábito que no se salta: trabaja mientras duermes.', ref: { type: 'receta', slot: 'nocturno' } },
   { start: '01:50', end: '02:00', kind: 'cierre', title: 'Ritual de cierre',
-    detail: 'Magnesio 400 mg. Pantallas fuera. Ducha tibia terminando en fría. Cuarto a 18–20 °C, oscuridad total.',
+    detail: 'Magnesio 400 mg. Pantallas fuera. Ducha tibia CORTA si te gusta dormir bañado — tibia, no fría: la fría activa el sistema nervioso y es para después de entrenar, no para antes de dormir. Cuarto a 18–20 °C, oscuridad total.',
     ref: { type: 'meditacion', id: 'cierre' } },
   { start: '02:00', end: '09:30', kind: 'sueño', title: 'Sueño profundo · 7.5 h',
     detail: 'Aquí es donde crece el músculo, no en el entrenamiento. Dormir menos de 6 h reduce la síntesis proteica ~18 % y la testosterona 10–15 %.' },
@@ -157,6 +157,17 @@ const trabajoNoche = (): Block[] => [
 ]
 
 // ── DÍA DE ENTRENO (Lunes · Miércoles · Viernes) ─────────────
+//
+// AÑADIDO 2026-08-24: EL BLOQUE DE COCINA. Sam tarda ~90 minutos cocinando y
+// el plan fingía que la comida aparecía sola: el bloque de 45 min de "Comida
+// principal" tenía que absorber cocinar Y comer, así que el doctorado de la
+// tarde ya se estaba perdiendo en la realidad — solo que sin nombre. Además
+// lo que cocina aguanta 2 días en el refri, así que no hace falta cocinar a
+// diario: lunes y miércoles se cocina PARA DOS DÍAS (4 raciones), martes y
+// jueves la comida es recalentar el tupper (3 minutos), y el viernes se
+// cocina solo lo de hoy. Tres cocinadas por semana en vez de cinco. El día
+// de cocina pierde el bloque 2 del doctorado porque ya lo perdía de facto;
+// el día de tupper lo conserva completo y arranca antes.
 
 const diaEntreno = (
   workoutId: string,
@@ -164,6 +175,8 @@ const diaEntreno = (
   madrugada: Block[],
   /** Fin del entreno. Fase 1 son 65 min en casa; Fase 2, 75 con el gimnasio. */
   fin = '13:20',
+  /** 'dosDias': hoy se cocina para hoy y mañana. 'recalentado': la comida es el tupper de ayer. */
+  cocina: 'dosDias' | 'recalentado' = 'dosDias',
 ): Block[] => [
   ...madrugada,
   ...ritualMatinal(),
@@ -173,22 +186,42 @@ const diaEntreno = (
   { start: '12:00', end: '12:15', kind: 'prep', title: 'Traslado al parque + calentamiento',
     detail: 'Tus 1 200 m trotando SÍ sirven como calentamiento: están por debajo del umbral donde el aeróbico empieza a restar. Trota suave, sin sprints. Después: 10 bisagras de cadera, 10 círculos de hombro, y 2 series ligeras del primer ejercicio.' },
   { start: '12:15', end: fin, kind: 'entreno', title: nombre, avisar: 10, ref: { type: 'entreno', workoutId } },
-  { start: fin, end: sumar(fin, 30), kind: 'comida', title: 'Batido post-entreno + ducha', ref: { type: 'receta', slot: 'postEntreno' } },
-  { start: sumar(fin, 30), end: sumar(fin, 75), kind: 'comida', title: 'Comida principal', ref: { type: 'receta', slot: 'comida' } },
-  { start: sumar(fin, 75), end: sumar(fin, 165), kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5,
-    detail: 'Define el entregable ANTES de empezar. Sin clases que te estructuren, este bloque es lo único que hace avanzar la tesis.',
-    ref: { type: 'protocolo', id: 'ultradiano' } },
-  { start: sumar(fin, 165), end: sumar(fin, 185), kind: 'libre', title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
-  { start: sumar(fin, 185), end: sumar(fin, 245), kind: 'doctorado', title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo', id: 'pomodoro' } },
-  { start: sumar(fin, 245), end: '18:30', kind: 'libre', title: 'Recados / compras / personal', flexible: true },
-  { start: '18:30', end: '19:15', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
+  { start: fin, end: sumar(fin, 30), kind: 'comida', title: 'Batido post-entreno + ducha', ref: { type: 'receta', slot: 'postEntreno' },
+    detail: 'La ducha del día va aquí: acabas de sudar. Si te gusta el agua fría, este es su momento — despierta y no estorba al sueño de nadie.' },
+  ...(cocina === 'dosDias'
+    ? [
+        { start: sumar(fin, 30), end: sumar(fin, 105), kind: 'prep' as const, title: 'Cocina para hoy y MAÑANA · 4 raciones', avisar: 5,
+          detail: 'El bloque que no existía y siempre existió. Hoy sales de aquí con 4 raciones: comida y cena de hoy, comida y cena de mañana. Trucos que recortan tu hora y media: el agua SIEMPRE arranca en el hervidor eléctrico (чайник), no en la parrilla lenta — son 15 minutos gratis; las bolsitas de гречка se cuecen solas mientras haces el pollo por tandas; y se lava sobre la marcha, no al final.' },
+        { start: sumar(fin, 105), end: sumar(fin, 145), kind: 'comida' as const, title: 'Comida · recién hecha', ref: { type: 'receta' as const, slot: 'comida' } },
+        { start: sumar(fin, 145), end: sumar(fin, 235), kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
+          detail: 'Define el entregable ANTES de empezar. Hoy cocinaste para dos días: el único bloque de tesis de hoy es este, protégelo.',
+          ref: { type: 'protocolo' as const, id: 'ultradiano' } },
+        { start: sumar(fin, 235), end: sumar(fin, 255), kind: 'libre' as const, title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
+        { start: sumar(fin, 255), end: '18:30', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
+      ]
+    : [
+        { start: sumar(fin, 30), end: sumar(fin, 50), kind: 'comida' as const, title: 'Comida · recalentar el tupper de ayer',
+          detail: 'Ayer cocinaste esto en doble tanda. Hoy: 3 minutos de microondas y a comer. Por esto existe el bloque de cocina de ayer.',
+          ref: { type: 'receta' as const, slot: 'comida' } },
+        { start: sumar(fin, 50), end: sumar(fin, 140), kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
+          detail: 'Define el entregable ANTES de empezar. Hoy no se cocina: día de dos bloques completos de tesis.',
+          ref: { type: 'protocolo' as const, id: 'ultradiano' } },
+        { start: sumar(fin, 140), end: sumar(fin, 160), kind: 'libre' as const, title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
+        { start: sumar(fin, 160), end: sumar(fin, 220), kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo' as const, id: 'pomodoro' } },
+        { start: sumar(fin, 220), end: '18:30', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
+      ]),
+  { start: '18:30', end: '19:15', kind: 'comida', title: 'Cena · recalentar la segunda ración', ref: { type: 'receta', slot: 'cena' } },
   { start: '19:15', end: '20:15', kind: 'libre', title: 'Tiempo personal', flexible: true },
   ...trabajoNoche(),
 ]
 
 // ── DÍA DE RECUPERACIÓN (Martes · Jueves) ────────────────────
 
-const diaRecuperacion = (medId: string): Block[] => [
+const diaRecuperacion = (
+  medId: string,
+  /** En Fase 2 el miércoles es recuperación Y día de cocina a la vez. */
+  cocina: 'dosDias' | 'recalentado' = 'recalentado',
+): Block[] => [
   ...trasNocheTrabajo(),
   ...ritualMatinal(),
   { start: '11:15', end: '12:00', kind: 'ruso', title: 'Ruso · Anki + lección', avisar: 0, ref: { type: 'ruso' } },
@@ -197,15 +230,31 @@ const diaRecuperacion = (medId: string): Block[] => [
     ref: { type: 'protocolo', id: 'recuperacion' } },
   { start: '12:45', end: '13:05', kind: 'movilidad', title: 'Movilidad',
     detail: 'Cadera, tobillo, columna torácica y hombro. 3 minutos por zona. Es lo que te mantendrá sin lesiones bailando.' },
-  { start: '13:05', end: '13:50', kind: 'comida', title: 'Comida principal', ref: { type: 'receta', slot: 'comida' } },
-  { start: '13:50', end: '15:20', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5,
-    detail: 'Sin entreno hoy, este es tu día de mayor capacidad cognitiva. Úsalo en lo más difícil de la tesis.',
-    ref: { type: 'protocolo', id: 'ultradiano' } },
-  { start: '15:20', end: '15:40', kind: 'libre', title: 'Descanso real' },
-  { start: '15:40', end: '17:10', kind: 'doctorado', title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo', id: 'ultradiano' } },
-  { start: '17:10', end: '17:30', kind: 'meditacion', title: 'Práctica de recuperación', ref: { type: 'meditacion', id: medId } },
-  { start: '17:30', end: '18:30', kind: 'libre', title: 'Recados / compras / personal', flexible: true },
-  { start: '18:30', end: '19:15', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
+  ...(cocina === 'recalentado'
+    ? [
+        { start: '13:05', end: '13:25', kind: 'comida' as const, title: 'Comida · recalentar el tupper de ayer',
+          detail: 'Ayer cocinaste doble. Hoy: 3 minutos de microondas. El tiempo que no cocinas se lo queda la tesis.',
+          ref: { type: 'receta' as const, slot: 'comida' } },
+        { start: '13:25', end: '14:55', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
+          detail: 'Sin entreno hoy, este es tu día de mayor capacidad cognitiva. Úsalo en lo más difícil de la tesis.',
+          ref: { type: 'protocolo' as const, id: 'ultradiano' } },
+        { start: '14:55', end: '15:15', kind: 'libre' as const, title: 'Descanso real' },
+        { start: '15:15', end: '16:45', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo' as const, id: 'ultradiano' } },
+        { start: '16:45', end: '17:05', kind: 'meditacion' as const, title: 'Práctica de recuperación', ref: { type: 'meditacion' as const, id: medId } },
+        { start: '17:05', end: '18:30', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
+      ]
+    : [
+        { start: '13:05', end: '14:20', kind: 'prep' as const, title: 'Cocina para hoy y MAÑANA · 4 raciones', avisar: 5,
+          detail: 'Día sin entreno pero con cocina: 4 raciones que resuelven hoy y mañana. El agua arranca en el hervidor eléctrico, no en la parrilla; se lava sobre la marcha.' },
+        { start: '14:20', end: '15:00', kind: 'comida' as const, title: 'Comida · recién hecha', ref: { type: 'receta' as const, slot: 'comida' } },
+        { start: '15:00', end: '16:30', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
+          detail: 'Hoy cocinaste para dos días: el único bloque de tesis de hoy es este, protégelo.',
+          ref: { type: 'protocolo' as const, id: 'ultradiano' } },
+        { start: '16:30', end: '16:50', kind: 'libre' as const, title: 'Descanso real' },
+        { start: '16:50', end: '17:10', kind: 'meditacion' as const, title: 'Práctica de recuperación', ref: { type: 'meditacion' as const, id: medId } },
+        { start: '17:10', end: '18:30', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
+      ]),
+  { start: '18:30', end: '19:15', kind: 'comida', title: 'Cena · recalentar la segunda ración', ref: { type: 'receta', slot: 'cena' } },
   { start: '19:15', end: '20:15', kind: 'libre', title: 'Tiempo personal', flexible: true },
   ...trabajoNoche(),
 ]
@@ -218,13 +267,15 @@ const VIERNES: Block[] = [
   { start: '11:15', end: '12:00', kind: 'ruso', title: 'Ruso · Anki + lección', avisar: 0, ref: { type: 'ruso' } },
   { start: '12:00', end: '12:15', kind: 'prep', title: 'Calentamiento dinámico' },
   { start: '12:15', end: '13:20', kind: 'entreno', title: 'Entreno C · Full body volumen', ref: { type: 'entreno', workoutId: 'f1c' } },
-  { start: '13:20', end: '13:50', kind: 'comida', title: 'Batido post-entreno + ducha', ref: { type: 'receta', slot: 'postEntreno' } },
-  { start: '13:50', end: '14:35', kind: 'comida', title: 'Comida principal', ref: { type: 'receta', slot: 'comida' } },
-  { start: '14:35', end: '16:05', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5, ref: { type: 'protocolo', id: 'ultradiano' } },
-  { start: '16:05', end: '16:25', kind: 'libre', title: 'Descanso real' },
-  { start: '16:25', end: '17:25', kind: 'doctorado', title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo', id: 'pomodoro' } },
-  { start: '17:25', end: '18:45', kind: 'libre', title: 'Tiempo libre', flexible: true },
-  { start: '18:45', end: '19:30', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
+  { start: '13:20', end: '13:50', kind: 'comida', title: 'Batido post-entreno + ducha', ref: { type: 'receta', slot: 'postEntreno' },
+    detail: 'La ducha del día va aquí: acabas de sudar. Fría al final si quieres — hoy no estorba a nadie.' },
+  { start: '13:50', end: '14:50', kind: 'prep', title: 'Cocina solo para HOY · 2 raciones', avisar: 5,
+    detail: 'La cocinada corta de la semana: mañana y el domingo comes en la calle, así que hoy solo sale comida y cena de hoy. El agua arranca en el hervidor eléctrico; se lava sobre la marcha.' },
+  { start: '14:50', end: '15:30', kind: 'comida', title: 'Comida · recién hecha', ref: { type: 'receta', slot: 'comida' } },
+  { start: '15:30', end: '17:00', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5, ref: { type: 'protocolo', id: 'ultradiano' } },
+  { start: '17:00', end: '17:20', kind: 'libre', title: 'Descanso real' },
+  { start: '17:20', end: '18:45', kind: 'libre', title: 'Tiempo libre', flexible: true },
+  { start: '18:45', end: '19:30', kind: 'comida', title: 'Cena · recalentar la segunda ración', ref: { type: 'receta', slot: 'cena' } },
   { start: '19:30', end: '23:30', kind: 'libre', title: 'Noche libre · sin trabajo',
     detail: 'Tu única noche sin jornada laboral. Úsala: social, cine, descanso. Recuperar la vida también es parte del plan.' },
   { start: '23:30', end: '23:50', kind: 'comida', title: 'Snack nocturno de caseína', avisar: 0, ref: { type: 'receta', slot: 'nocturno' } },
@@ -346,9 +397,9 @@ const FASE_1: Record<number, Block[]> = {
 const FASE_2: Record<number, Block[]> = {
   0: DOMINGO,
   1: diaEntreno('f2ua', 'Empuje · Pecho · Hombros · Tríceps', trasNocheDomingo(), '13:30'),
-  2: diaEntreno('f2la', 'Pierna A · Cuádriceps dominante', trasNocheTrabajo(), '13:30'),
-  3: diaRecuperacion('escaneo'),
-  4: diaEntreno('f2lb', 'Pierna B · Cadena posterior', trasNocheTrabajo(), '13:30'),
+  2: diaEntreno('f2la', 'Pierna A · Cuádriceps dominante', trasNocheTrabajo(), '13:30', 'recalentado'),
+  3: diaRecuperacion('escaneo', 'dosDias'),
+  4: diaEntreno('f2lb', 'Pierna B · Cadena posterior', trasNocheTrabajo(), '13:30', 'recalentado'),
   5: VIERNES.map((b) =>
     b.kind === 'entreno'
       ? { ...b, title: 'Tracción · Espalda · Bíceps', ref: { type: 'entreno' as const, workoutId: 'f2ub' } }
