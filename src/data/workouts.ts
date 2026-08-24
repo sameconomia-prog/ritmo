@@ -109,7 +109,7 @@ export const EXERCISES: Record<string, Exercise> = {
     progression: [
       'Con banda elástica o pies apoyados (asistida)',
       'Solo la bajada: saltas arriba y bajas en 5 s',
-      'Completa, 3 s de bajada ← tu objetivo ahora',
+      'Completa, 3 s de bajada',
       'Completa con pausa de 1 s con la barbilla arriba',
       'Con lastre (mochila cargada)',
     ],
@@ -139,7 +139,7 @@ export const EXERCISES: Record<string, Exercise> = {
     progression: [
       'Fondos con pies apoyados en el suelo (asistidos)',
       'Negativas de 5 s',
-      'Completos, 8–10 reps ← donde estás',
+      'Completos, 8–10 reps',
       'Completos con pausa abajo',
       'Con lastre',
     ],
@@ -217,7 +217,7 @@ export const EXERCISES: Record<string, Exercise> = {
       'Manos en mesa (inclinada)',
       'Manos en silla',
       'De rodillas',
-      'Estándar en el piso ← tu nivel actual',
+      'Estándar en el piso',
       'Diamante (manos juntas)',
       'Declinada (pies en silla)',
       'Arquera (peso a un lado)',

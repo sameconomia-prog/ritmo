@@ -264,7 +264,16 @@ function Ejercicio({
   }, [item.exerciseId, fecha, seriesHoy.length])
 
   const nivel = useLiveQuery(() => db.progressions.get(item.exerciseId), [item.exerciseId])
-  const nivelActual = nivel?.level ?? (ex.progression ? Math.min(4, ex.progression.length - 1) : 0)
+  /**
+   * CORREGIDO 2026-08-24. El default era `Math.min(4, longitud - 1)`: sin dato
+   * guardado, la app te plantaba en el nivel 5 de cada escalera — el MÁXIMO en
+   * casi todas — con los escalones de banda asistida tachados como superados.
+   * Sam lo dijo exacto: «me pones como si yo ya fuera experto». Un plan de
+   * fuerza arranca en el primer escalón: subir desde abajo cuesta una sesión
+   * de calibración; arrancar arriba cuesta frustración o una lesión. Tu nivel
+   * real se marca con un toque y queda guardado.
+   */
+  const nivelActual = nivel?.level ?? 0
 
   const esPesoCorporal = !!ex.progression
   const sugerencia = useMemo(
@@ -350,6 +359,10 @@ function Ejercicio({
                   </button>
                 ))}
               </div>
+              <p className="mt-1.5 text-[11px] leading-relaxed text-[var(--color-ink-dim)]">
+                Se empieza desde abajo: toca el escalón donde estés HOY (con ayuda cuenta como el escalón de
+                ayuda) y la app lo recuerda. Cuando completes el rango en todas las series, sube al siguiente.
+              </p>
             </div>
           )}
 
