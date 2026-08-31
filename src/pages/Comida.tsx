@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useSearchParams } from 'react-router-dom'
-import { COMPRA_SEMANAL, MENU_SEMANAL, RECIPES, SUPLEMENTOS, totalCompra, type Recipe } from '../data/recipes'
+import { COMPRA_SEMANAL, MENU_SEMANAL, RECIPES, SUPLEMENTOS, totalCompra, totalOpcional, type Recipe } from '../data/recipes'
 import { planDelDia, RESUMEN_DIA } from '../data/plan'
 import { db, hoyISO, toggleMeal } from '../db'
 import { calcularNutricion, tendenciaSemanal } from '../lib'
@@ -162,10 +162,9 @@ export default function Comida() {
                 <strong className="text-[var(--color-ink)]">1) el licuado</strong> — líquido, siempre cabe;{' '}
                 <strong className="text-[var(--color-ink)]">2) la comida</strong>;{' '}
                 <strong className="text-[var(--color-ink)]">3) la cena</strong>;{' '}
-                <strong className="text-[var(--color-ink)]">4) el desayuno</strong>;{' '}
-                <strong className="text-[var(--color-ink)]">5) el snack nocturno</strong>. Y si el plato te
-                gana: no comas más volumen, hazlo más denso — un chorro de aceite de oliva son 120 kcal que no
-                ocupan espacio. Nada de agua durante la comida: llena sin alimentar.
+                <strong className="text-[var(--color-ink)]">4) el desayuno</strong>. Y si el plato te gana: no
+                comas más volumen, hazlo más denso — dos cucharadas de aceite de girasol al servir son 240 kcal
+                que no ocupan espacio y cuestan 4 ₽. Nada de agua durante la comida: llena sin alimentar.
               </p>
             </div>
             <div className="mt-3 grid grid-cols-3 gap-2 text-center">
@@ -211,9 +210,12 @@ export default function Comida() {
             <p className="mt-1 text-[13px] leading-relaxed text-[var(--color-ink-dim)]">
               {/* Sumado de la lista real: el «≈ 6 400 ₽» escrito a mano ya iba
                   1 600 ₽ por debajo cuando se detectó (2026-08-23). */}
-              Total aproximado: <strong className="text-[var(--color-accent)]">≈ {totalCompra().toLocaleString('ru-RU')} ₽</strong> por semana
-              (~{Math.round(totalCompra() / 90)} USD). Los nombres en ruso están para que los busques directamente en la tienda o en la app
-              de Пятёрочка.
+              Lo indispensable:{' '}
+              <strong className="text-[var(--color-accent)]">≈ {totalCompra().toLocaleString('ru-RU')} ₽</strong> por
+              semana (~{Math.round(totalCompra() / 90)} USD). Con eso solo ya llegas a tus calorías y a tu
+              proteína — lo de «solo si sobra dinero» son{' '}
+              {totalOpcional().toLocaleString('ru-RU')} ₽ más que puedes dejar fuera sin perder nada del plan.
+              Los nombres en ruso están para buscarlos en la tienda o en la app de Пятёрочка.
             </p>
           </Card>
           {COMPRA_SEMANAL.map((sec) => (

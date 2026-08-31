@@ -268,13 +268,13 @@ export const RECIPES: Record<string, Recipe> = {
     protein: 55,
     carbs: 107,
     fat: 29,
-    costRub: 230,
+    costRub: 112,
     ingredients: [
-      { item: 'Leche sin lactosa', qty: '400 ml', ru: 'безлактозное молоко' },
-      { item: 'Tvorog sin lactosa', qty: '150 g', ru: 'безлактозный творог' },
+      { item: 'Leche', qty: '400 ml', ru: 'молоко' },
+      { item: 'Avena cruda', qty: '60 g', ru: 'овсяные хлопья' },
+      { item: 'Cacahuate crudo o tostado', qty: '40 g', ru: 'арахис' },
+      { item: 'Tvorog 5 %', qty: '100 g', ru: 'творог 5%' },
       { item: 'Plátano', qty: '1 grande', ru: 'банан' },
-      { item: 'Avena cruda', qty: '50 g', ru: 'овсяные хлопья' },
-      { item: 'Pasta de cacahuate con chocolate', qty: '2 cdas (30 g)', ru: 'паста арахисовая с шоколадом' },
       { item: 'Miel', qty: '1 cda', ru: 'мёд' },
     ],
     steps: [
@@ -283,8 +283,8 @@ export const RECIPES: Record<string, Recipe> = {
       'Bébelo sin prisa, pero sin dejarlo para después: si se asienta 20 minutos, espesa y cuesta el doble.',
       'SI TODAVÍA NO LLEGA LA LICUADORA: bátelo a mano en un frasco con tapa, sustituyendo la avena por 1 tetrapak de Neo o YoMilk. Queda con grumos de tvorog pero las calorías son las mismas.',
     ],
-    tip: 'NO LE PONGAS HUEVO CRUDO, aunque el licuado de hace años lo llevara. Del huevo crudo solo absorbes ~51 % de la proteína contra ~91 % del cocido (Evenepoel et al. 1998): de 5 huevos crudos aprovechabas la mitad. Además la clara cruda tiene avidina, que bloquea la absorción de biotina si lo tomas a diario, y está el riesgo de salmonela. Los 150 g de tvorog dan la misma proteína, entera y sin riesgo. La otra advertencia es la pasta de cacahuate: lleva maltitol e inulina, y en cantidad grande los dos hinchan y dan gases — que es justo lo contrario de lo que buscas. Máximo 2-3 cucharadas al día.',
-    why: 'Tu licuado de hace años SÍ funcionó, pero no por los huevos: funcionó porque era líquido. Beber 900 kcal no te llena como comerlas — el estómago se vacía más rápido y la señal de saciedad es mucho menor (DiMeglio & Mattes 2000). Esta es la única toma del día que puedes meter cuando ya te sientes lleno, y por eso vale más que cualquier comida que dejes a la mitad.',
+    tip: 'NO LE PONGAS HUEVO CRUDO, aunque el licuado de hace años lo llevara. Del huevo crudo solo absorbes ~51 % de la proteína contra ~91 % del cocido (Evenepoel et al. 1998): de 5 huevos crudos aprovechabas la mitad. Además la clara cruda lleva avidina, que bloquea la absorción de biotina si lo tomas a diario, y está el riesgo de salmonela. El tvorog y el cacahuate dan la misma proteína, entera y sin riesgo. Si quieres los huevos, cuécelos y cómetelos al lado: no se licúan bien.',
+    why: 'Tu licuado de hace años SÍ funcionó, pero no por los huevos: funcionó porque era líquido. Beber 900 kcal no te llena como comerlas — el estómago se vacía más rápido y la señal de saciedad es mucho menor (DiMeglio & Mattes 2000). Es la única toma del día que entra cuando ya te sientes lleno. Y con cacahuate en vez de la pasta de chocolate cuesta 112 ₽ en vez de 230: la misma grasa y la misma proteína, a menos de la mitad de precio, porque la licuadora hace el trabajo que pagabas hecho.',
   },
 
   // ══════════════ CENA ══════════════
@@ -609,6 +609,71 @@ export const RECIPES: Record<string, Recipe> = {
     tip: 'La trampa de la tienda rusa es el пирожок: sabe a comida completa y son casi puros carbohidratos y grasa, con 5 g de proteína. Si es lo único que hay, acompáñalo de huevos cocidos o de otra leche proteica.',
     why: 'Comer fuera no es salirse del plan: es parte del plan dos días por semana. Lo que arruina un domingo de baile no es comprar comida hecha, es comprar solo almidón y grasa y llegar a la segunda academia sin proteína desde el día anterior.',
   },
+
+  // ══════════════ MODO ECONÓMICO — TRES RECETAS Y YA ══════════════
+  // 2026-08-31. Sam se quedó sin trabajo: el presupuesto baja a 2 500 ₽ por
+  // semana y pidió pocas recetas, simples, con lo barato de Пятёрочка. El
+  // recetario entero se reduce a TRES platos que rotan. No es un plan peor:
+  // con muslo de pollo en vez de pechuga, творог normal con Лактазар en vez
+  // del безлактозный y cacahuate en vez de crema, sale la misma proteína y
+  // más calorías por menos de la mitad de dinero.
+  e1: {
+    id: 'e1',
+    slot: 'comida',
+    name: 'La olla · pollo con lo que haya',
+    time: 35,
+    kcal: 960,
+    protein: 50,
+    carbs: 92,
+    fat: 40,
+    costRub: 78,
+    ingredients: [
+      { item: 'Muslo de pollo', qty: '180 g (1 ración)', ru: 'бёдра куриные' },
+      { item: 'EL CARBOHIDRATO DE HOY — гречка, arroz, pasta o papa', qty: '100 g en seco', ru: 'гречка / рис / макароны / картофель' },
+      { item: 'Huevo', qty: '1', ru: 'яйцо' },
+      { item: 'Cebolla', qty: '1/2', ru: 'лук' },
+      { item: 'Zanahoria', qty: '1', ru: 'морковь' },
+      { item: 'Aceite de girasol', qty: '2 cdas', ru: 'подсолнечное масло' },
+      { item: 'Sal, pimienta, lo que tengas', qty: 'al gusto', ru: 'соль, перец' },
+    ],
+    steps: [
+      'SE COCINA PARA DOS DÍAS: multiplica todo por 4 (720 g de pollo, 400 g de carbohidrato, 4 huevos). Comida y cena de hoy y de mañana en una sola cocinada.',
+      'El agua arranca en el HERVIDOR ELÉCTRICO. Con ella pones el carbohidrato de hoy a cocer y, en la misma agua o en otra olla, los huevos 8 minutos.',
+      'Pica cebolla y zanahoria. Sartén con 1 cda de aceite: cebolla 2 min, zanahoria 3 min.',
+      'Sube el fuego y añade el pollo en tandas (nunca más de 300 g a la vez). 10-12 minutos hasta que no quede rosa. Sazona.',
+      'Junta todo. AL SERVIR, el paso que no se salta: la segunda cucharada de aceite por encima. Son 120 kcal que no ocupan espacio en el estómago.',
+      'Los huevos cocidos, pelados, al lado o partidos encima. El resto a tuppers.',
+    ],
+    tip: 'EL CARBOHIDRATO ROTA SEGÚN EL PRECIO, no según la receta: гречка si quieres proteína extra, arroz o pasta si están en oferta, papa si es lo más barato de la semana. El plato es el mismo y las calorías casi también — compra el que esté barato ese día y ya. Si te llena antes de terminarlo: más aceite, menos volumen.',
+    why: 'Una sola receta que cubre comida y cena de dos días, con la proteína más barata de la tienda. El muslo de pollo cuesta la mitad que la pechuga y trae más grasa: para ti eso es una ventaja, no un defecto — son calorías por rublo, que es exactamente lo que necesitas ahora.',
+  },
+  e2: {
+    id: 'e2',
+    slot: 'desayuno',
+    name: 'Avena grande con huevos',
+    time: 12,
+    kcal: 885,
+    protein: 37,
+    carbs: 108,
+    fat: 34,
+    costRub: 75,
+    ingredients: [
+      { item: 'Avena', qty: '80 g', ru: 'овсяные хлопья' },
+      { item: 'Leche', qty: '250 ml', ru: 'молоко' },
+      { item: 'Huevos', qty: '2', ru: 'яйца' },
+      { item: 'Plátano', qty: '1', ru: 'банан' },
+      { item: 'Cacahuate', qty: '25 g', ru: 'арахис' },
+      { item: 'Miel', qty: '1 cda', ru: 'мёд' },
+    ],
+    steps: [
+      'Huevos a hervir: 8 minutos desde que rompe el hervor.',
+      'La avena con la leche a fuego medio, 4-5 minutos revolviendo. Si la quieres más calórica sin más volumen, una cucharadita de aceite dentro: ni se nota y son 40 kcal.',
+      'Encima: el plátano en rodajas, la miel y el cacahuate machacado con el vaso.',
+      'Los huevos al lado, con sal.',
+    ],
+    tip: 'Si a esta hora no te entra, no te fuerces: pásala a media mañana y arranca el día con el licuado. La regla nueva es que la caloría entre, no la hora a la que entra.',
+    why: 'Mil calorías por 90 ₽ y sin ingrediente de marca. El cacahuate machacado hace aquí el mismo trabajo que la crema de cacahuate a un tercio del precio.',
+  },
 }
 
 /**
@@ -648,17 +713,23 @@ export const RECIPES: Record<string, Recipe> = {
  * cero cocción (n3 es bowl de lata). La lista ideal sigue intacta esperando.
  */
 export const MENU_SEMANAL: Record<number, Partial<Record<MealSlot, string>>> = {
-  // El licuado (p1) está ahora TODOS los días, entrene o no: es la toma que
-  // Sam sí logra cuando ya se siente lleno, y sin ella el plan se queda en
-  // 3 comidas sólidas de las que además deja parte en el plato.
-  1: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' }, // cocina 4 raciones
-  2: { desayuno: 'd2', comida: 'p1b', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' }, // tupper de ayer
-  3: { desayuno: 'd1', comida: 'p2b', postEntreno: 'p1', cena: 'p2b', nocturno: 's2' }, // cocina 4 raciones
-  4: { desayuno: 'd2', comida: 'p2b', postEntreno: 'p1', cena: 'p2b', nocturno: 's1' }, // tupper de ayer
-  5: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' }, // cocina 2 raciones
+  // MODO ECONÓMICO 2026-08-31: tres recetas y ya. Todos los días entre semana
+  // son el mismo esqueleto —avena grande, licuado, la olla dos veces— y lo
+  // único que cambia es el carbohidrato de la olla, elegido por precio. Se
+  // cocina lunes, miércoles y viernes; martes y jueves es tupper.
+  //
+  // Son CUATRO tomas, no cinco: el snack nocturno de caseína sale del menú
+  // entre semana porque existía para una jornada que terminaba a la 01:30, y
+  // esa jornada ya no existe. Cuatro tomas de ~900 kcal se cumplen mejor que
+  // cinco de 700, que es de lo que se trata todo esto.
+  1: { desayuno: 'e2', comida: 'e1', postEntreno: 'p1', cena: 'e1' }, // cocina para 2 días
+  2: { desayuno: 'e2', comida: 'e1', postEntreno: 'p1', cena: 'e1' }, // tupper de ayer
+  3: { desayuno: 'e2', comida: 'e1', postEntreno: 'p1', cena: 'e1' }, // cocina para 2 días
+  4: { desayuno: 'e2', comida: 'e1', postEntreno: 'p1', cena: 'e1' }, // tupper de ayer
+  5: { desayuno: 'e2', comida: 'e1', postEntreno: 'p1', cena: 'e1' }, // cocina para hoy
   // Fin de semana: no cocina de día. Desayuna en el camión y come en la calle.
-  6: { preBaile: 'b2', comida: 'k1', cena: 'p2b', nocturno: 's1' },
-  0: { preBaile: 'b2', comida: 'k1', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' },
+  6: { preBaile: 'b2', comida: 'k1', cena: 'e1' },
+  0: { preBaile: 'b2', comida: 'k1', postEntreno: 'p1', cena: 'e1' },
 }
 
 /**
@@ -682,89 +753,61 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
   {
     seccion: 'Proteína',
     items: [
-      { item: 'Pechuga de pollo', ru: 'куриная грудка', qty: '2 kg', rub: 640 },
-      { item: 'Atún en aceite', ru: 'тунец в масле', qty: '5 latas', rub: 600,
-        nota: 'El del penne: 4 latas en la cocinada del miércoles (que cubre jueves) y 1 el sábado en la noche.' },
-      { item: 'Carne molida de res', ru: 'говяжий фарш', qty: '600 g', rub: 380 },
-      { item: 'Hígado de res', ru: 'говяжья печень', qty: '250 g', rub: 90 },
-      { item: 'Caballa', ru: 'скумбрия свежемороженая', qty: '500 g', rub: 260,
-        nota: 'CÓMO RECONOCERLA: rayas negras onduladas tipo cebra sobre el lomo verde-azulado, vientre plateado liso, ~30 cm. Ningún otro pescado del súper tiene ese dibujo. Búscala CONGELADA ENTERA en el arcón (свежемороженая), no ahumada (копчёная) ni salada (солёная), que llevan muchísima sal. Es la del horno con papas.' },
-      { item: 'Arenque', ru: 'сельдь', qty: '300 g', rub: 190,
-        nota: 'CÓMO RECONOCERLO: SIN rayas, todo plateado, más pequeño y estrecho que la caballa. Regla simple: la caballa tiene dibujo, el arenque no. Compra el filete en aceite (филе сельди в масле), en tarro o tarrina refrigerada — viene listo, sin cocinar.' },
-      { item: 'Huevos', ru: 'яйца', qty: '30 piezas', rub: 280 },
-      { item: 'Tvorog SIN LACTOSA', ru: 'безлактозный творог', qty: '1.5 kg', rub: 900,
-        nota: 'Busca la palabra БЕЗЛАКТОЗНЫЙ en el envase. Si solo hay творог normal, cómpralo con Лактазар (enzima, en cualquier аптека). OJO: «творожный продукт» NO es творог — lleva grasas vegetales añadidas.' },
+      { item: 'Muslo de pollo con hueso', ru: 'бёдра куриные / окорочка', qty: '2 kg', rub: 480,
+        nota: 'EL CAMBIO QUE MÁS AHORRA. La pechuga cuesta ~400 ₽/kg; el muslo, la mitad — y para ti es MEJOR, no peor: tiene más grasa, o sea más calorías por rublo, que es justo lo que te falta. Quítale la piel si quieres, pero no hace falta. En Пятёрочка están junto a la pechuga, en bandeja amarilla.' },
+      { item: 'Huevos С1', ru: 'яйца С1', qty: '30 piezas', rub: 280,
+        nota: 'La proteína más barata que existe: 1.5 ₽ por gramo. Compra siempre los С1 (medianos), no los О (grandes): salen más baratos por gramo de proteína.' },
+      { item: 'Tvorog 5 %', ru: 'творог 5%', qty: '600 g', rub: 200,
+        nota: 'El NORMAL, no el безлактозный — este cuesta menos de la mitad. Lo tomas con Лактазар, que ya sabes que te funciona (probado el 2026-08-15). Son los 100 g diarios del licuado.' },
     ],
   },
   {
     seccion: 'Lácteos',
     items: [
-      { item: 'Leche sin lactosa', ru: 'безлактозное молоко', qty: '4 L', rub: 480 },
-      { item: 'Kéfir sin lactosa', ru: 'безлактозный кефир', qty: '1 L', rub: 160 },
-      { item: 'Smetana sin lactosa 15 %', ru: 'безлактозная сметана', qty: '400 g', rub: 190 },
-      { item: 'Queso curado (lactosa casi nula)', ru: 'сыр Российский', qty: '250 g', rub: 290 },
-      { item: 'Leche proteica Neo High Protein', ru: 'Neo High Protein шоколад', qty: '2 tetrapaks (sáb y dom)', rub: 300,
-        nota: 'La del desayuno de camión. Confirmada el 2026-08-22: tetrapak azul oscuro con franja dorada, dice «30 г белка в порции» y «без добавления сахара». Búscala con la leche UHT y los batidos, no en refrigerados. Se compra el viernes: la mochila se arma esa noche. El YoMilk Protein morado (2026-08-28) sirve de relevo pero es el plan B: 20 g de proteína contra 30, y solo 130 kcal por envase — es proteína casi pura, así que cubre la proteína pero no las calorías que te faltan. Entre los dos, la Neo.' },
+      { item: 'Leche 3.2 %', ru: 'молоко 3,2%', qty: '4 L', rub: 340,
+        nota: 'La entera, no la descremada: 30 kcal más por vaso al mismo precio. La normal con Лактазар sale mucho más barata que la безлактозная.' },
     ],
   },
-  // LO QUE NO ENTRÓ — каша infantil Nestlé (el «Nestum» de México), 2026-08-23.
-  // La recomiendan influencers para ectomorfos y la lógica no es absurda:
-  // avena hidrolizada + leche en polvo = calorías fáciles de tragar para quien
-  // le cuesta comer. Pero es ~10 veces más cara por kilo que la Геркулес, su
-  // «без добавленного сахара» es solo sin sacarosa (la lactosa y el azúcar de
-  // la fruta siguen ahí, y este plan raciona la lactosa con cuidado), y la
-  // fortificación está dosificada para bebés de 6 meses, no para un adulto de
-  // 70 kg. Si algún día cuesta tragar la avena: molerla en la licuadora antes
-  // de cocerla logra la misma papilla a 110 ₽/kg. El hueco real del fin de
-  // semana era proteína portátil, y eso ya lo resolvió la Neo.
   {
     seccion: 'Carbohidratos',
     items: [
-      { item: 'Trigo sarraceno', ru: 'гречка', qty: '1.5 kg', rub: 140 },
-      { item: 'Avena Геркулес', ru: 'овсяные хлопья', qty: '1.5 kg', rub: 165 },
-      { item: 'Arroz', ru: 'рис', qty: '1 kg', rub: 120 },
-      { item: 'Papas', ru: 'картофель', qty: '3 kg', rub: 150 },
-      { item: 'Pan de centeno', ru: 'хлеб ржаной', qty: '2 barras', rub: 120 },
-      { item: 'Penne', ru: 'макароны пенне', qty: '500 g', rub: 90 },
-      { item: 'Granola Bionova de chocolate', ru: 'гранола Bionova шоколадная', qty: '1 paquete', rub: 350,
-        nota: 'Densa en calorías (450 por 100 g) pero con 8 g de fibra por 100 g, y la fibra es lo que MÁS llena. Úsala de topping —2 cdas sobre el tvorog o el licuado—, nunca como plato principal en tazón: un tazón grande te quita el hambre de la comida siguiente, que es justo lo que no te conviene.' },
-      { item: 'Barras Nut&Go de cacahuate y plátano', ru: 'батончик Nut&Go арахис-банан', qty: '6 barras', rub: 400,
-        nota: 'Confirmadas el 2026-08-28: 510 kcal y 23 g de proteína por 100 g. Son la toma portátil que no requiere cocina ni refrigerador: una en la mochila del baile, otra en el escritorio para la pausa de las 23:00. No sustituyen una comida — la rescatan cuando ya sabes que no vas a comer.' },
+      { item: 'Trigo sarraceno', ru: 'гречка', qty: '1.8 kg', rub: 180,
+        nota: 'La caloría con proteína más barata de Rusia: 13 g de proteína por 100 g en seco. Base de la olla.' },
+      { item: 'Avena Геркулес', ru: 'овсяные хлопья', qty: '1.5 kg', rub: 165,
+        nota: 'Desayuno y licuado. En el licuado va CRUDA: la licuadora la muele y no hay que cocerla.' },
+      { item: 'Pasta', ru: 'макароны', qty: '900 g', rub: 110 },
+      { item: 'Papa', ru: 'картофель', qty: '2 kg', rub: 90 },
+    ],
+  },
+  {
+    seccion: 'Grasas — donde están tus calorías baratas',
+    items: [
+      { item: 'Aceite de girasol', ru: 'подсолнечное масло', qty: '1 L', rub: 130,
+        nota: 'LA CALORÍA MÁS BARATA QUE EXISTE: 0.015 ₽ por kcal, seis veces más barata que la гречка y cuarenta veces más que la carne. Un litro son 8 800 kcal por 130 ₽. Dos cucharadas al servir cada plato son 240 kcal que no ocupan espacio en el estómago — tu mejor arma contra la saciedad y contra el presupuesto a la vez.' },
+      { item: 'Cacahuate', ru: 'арахис', qty: '500 g', rub: 230,
+        nota: 'SUSTITUYE A LA CREMA DE CACAHUATE, que cuesta 1 285 ₽/kg contra 460 el cacahuate: casi tres veces más caro por lo mismo. Con la licuadora va entero al vaso. Y si quieres la crema, hazla: 300 g de cacahuate + 1 cda de aceite, licuadora 5 minutos, parando a bajar lo de las paredes. Sale medio kilo por 140 ₽.' },
+      { item: 'Miel', ru: 'мёд', qty: 'ya tienes', rub: 0 },
     ],
   },
   {
     seccion: 'Verdura y fruta',
     items: [
-      { item: 'Plátanos', ru: 'бананы', qty: '14 piezas', rub: 350 },
-      { item: 'Manzanas', ru: 'яблоки', qty: '1 kg', rub: 120 },
-      { item: 'Cebolla', ru: 'лук', qty: '1.5 kg', rub: 60 },
-      { item: 'Zanahoria', ru: 'морковь', qty: '1 kg', rub: 60 },
-      { item: 'Remolacha cocida', ru: 'свёкла варёная', qty: '500 g', rub: 90 },
-      { item: 'Ajo', ru: 'чеснок', qty: '3 cabezas', rub: 60 },
-      { item: 'Pepino', ru: 'огурец', qty: '5 piezas', rub: 150 },
-      { item: 'Tomate', ru: 'помидор', qty: '5 piezas', rub: 220 },
-      { item: 'Col', ru: 'капуста', qty: '1 pieza', rub: 60 },
-      { item: 'Chucrut', ru: 'квашеная капуста', qty: '500 g', rub: 130 },
-      { item: 'Brócoli congelado', ru: 'брокколи замороженная', qty: '700 g', rub: 240 },
-      { item: 'Eneldo', ru: 'укроп', qty: '2 manojos', rub: 80 },
-      { item: 'Aguacate', ru: 'авокадо', qty: '3 piezas', rub: 300,
-        nota: 'Cómpralos duros al inicio de semana: maduran solos hacia el miércoles y el jueves, que es cuando los usa el penne. Se cortan al momento de cada comida, nunca antes.' },
+      { item: 'Plátanos', ru: 'бананы', qty: '10-12 piezas', rub: 200 },
+      { item: 'Cebolla', ru: 'лук', qty: '1 kg', rub: 40 },
+      { item: 'Zanahoria', ru: 'морковь', qty: '1 kg', rub: 45 },
+      { item: 'Col', ru: 'капуста', qty: '1 pieza', rub: 50,
+        nota: 'La verdura más barata del invierno ruso. Va cruda rallada al lado de la olla: aporta vitamina C y potasio por casi nada.' },
     ],
   },
   {
-    seccion: 'Grasas y extras',
+    seccion: 'Solo si sobra dinero',
     items: [
-      { item: 'Aceite de oliva', ru: 'оливковое масло', qty: '500 ml', rub: 600 },
-      { item: 'Aceite de girasol', ru: 'подсолнечное масло', qty: '1 L', rub: 130 },
-      { item: 'Mantequilla de cacahuate', ru: 'арахисовая паста', qty: '350 g', rub: 350 },
-      { item: 'Pasta de cacahuate CON CHOCOLATE', ru: 'паста арахисовая с шоколадом', qty: '1 frasco', rub: 450,
-        nota: 'La del licuado, confirmada el 2026-08-28: 610 kcal y 23 g de proteína por 100 g — el producto más denso en calorías de toda tu despensa, y por eso el más útil para ti. OJO: lleva maltitol e inulina, que en cantidad grande hinchan y dan gases. Máximo 2-3 cucharadas al día y no de golpe.' },
-      { item: 'Nueces de castilla', ru: 'грецкий орех', qty: '300 g', rub: 370 },
-      { item: 'Miel', ru: 'мёд', qty: '500 g', rub: 350 },
-      { item: 'Cacao en polvo', ru: 'какао-порошок', qty: '200 g', rub: 150 },
-      { item: 'Semillas de linaza', ru: 'семена льна', qty: '200 g', rub: 90 },
-      { item: 'Pasta de tomate', ru: 'томатная паста', qty: '2 frascos chicos (140 g)', rub: 160 },
-      { item: 'Mantequilla', ru: 'сливочное масло', qty: '180 g', rub: 180 },
+      { item: 'Leche proteica Neo High Protein', ru: 'Neo High Protein шоколад', qty: '1-2 tetrapaks', rub: 300,
+        nota: 'Para el desayuno del camión del fin de semana. Si no entra en el presupuesto, el relevo casero es gratis: un frasco con 400 ml de leche, 2 cdas de avena, 1 cda de miel y un puño de cacahuate, batido la noche anterior. Aguanta las tres horas de camión sin refrigerar en clima frío.' },
+      { item: 'Atún en aceite', ru: 'тунец в масле', qty: '2-3 latas', rub: 360,
+        nota: 'La cocinada de emergencia: pasta + atún + aceite en 12 minutos. Buena para el día que no hay tiempo, pero por 120 ₽ la lata es proteína cara — el pollo cuesta la mitad por gramo.' },
+      { item: 'Pasta de cacahuate con chocolate', ru: 'паста арахисовая с шоколадом', qty: '1 frasco', rub: 450,
+        nota: 'Excelente producto (610 kcal y 23 g de proteína por 100 g) pero es un lujo mientras el presupuesto apriete: el cacahuate solo hace lo mismo por un tercio. Si la compras, máximo 2-3 cucharadas al día — lleva maltitol e inulina, que en cantidad hinchan.' },
     ],
   },
 ]
@@ -776,11 +819,20 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
  * 8 000+. Derivarlo hace imposible que se vuelvan a separar.
  */
 export function totalCompra(): number {
-  const suma = COMPRA_SEMANAL.reduce(
+  const suma = COMPRA_SEMANAL.filter((sec) => !sec.seccion.startsWith('Solo si')).reduce(
     (acc, sec) => acc + sec.items.reduce((s, it) => s + it.rub, 0),
     0,
   )
-  return Math.round(suma / 100) * 100
+  return Math.round(suma / 50) * 50
+}
+
+/** Lo que cuesta la sección opcional, para que el extra se vea aparte del mínimo. */
+export function totalOpcional(): number {
+  const suma = COMPRA_SEMANAL.filter((sec) => sec.seccion.startsWith('Solo si')).reduce(
+    (acc, sec) => acc + sec.items.reduce((s, it) => s + it.rub, 0),
+    0,
+  )
+  return Math.round(suma / 50) * 50
 }
 
 export const SUPLEMENTOS = [
