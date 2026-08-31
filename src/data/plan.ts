@@ -330,15 +330,18 @@ const SABADO: Block[] = [
     ref: { type: 'receta', slot: 'comida' } },
   { start: '13:20', end: '14:20', kind: 'ruso', title: 'Traslado de regreso · escucha en ruso',
     detail: 'Podcast o música rusa. Escucha pasiva, sin exigirte entender todo.', ref: { type: 'ruso' } },
-  { start: '14:20', end: '15:15', kind: 'libre', title: 'Llegada y descanso', flexible: true },
+  { start: '14:20', end: '14:50', kind: 'comida', title: 'Licuado de 900 + ducha', avisar: 0,
+    detail: 'En cuanto llegues. Bailaste dos horas y comiste de tienda: esta es la toma que endereza el sábado, y entra sin esfuerzo porque se bebe.',
+    ref: { type: 'receta', slot: 'postEntreno' } },
+  { start: '14:50', end: '15:15', kind: 'libre', title: 'Descanso', flexible: true },
   { start: '15:15', end: '16:45', kind: 'doctorado', title: 'Proyecto doctoral · bloque ligero', flexible: true, ref: { type: 'protocolo', id: 'pomodoro' } },
   { start: '16:45', end: '18:30', kind: 'libre', title: 'Tiempo personal / social', flexible: true },
   { start: '18:30', end: '19:30', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
-  { start: '19:30', end: '23:15', kind: 'libre', title: 'Noche libre', flexible: true },
-  { start: '23:15', end: '23:35', kind: 'comida', title: 'Snack nocturno de caseína', avisar: 0, ref: { type: 'receta', slot: 'nocturno' } },
-  { start: '23:35', end: '00:00', kind: 'cierre', title: 'Ritual de cierre · DEJA LA MOCHILA LISTA', avisar: 0,
-    detail: 'Mañana es tu día más largo: sales 8:50 y no vuelves hasta las 17:10, con 3 h 30 de baile en medio. Mochila AHORA: leche proteica, 2 plátanos, pan con miel, botella de 700 ml con agua y sal, ropa de cambio y dinero para la comida del mediodía. Si no la dejas hecha esta noche, mañana sales en ayunas.',
+  { start: '19:30', end: '22:45', kind: 'libre', title: 'Noche libre', flexible: true },
+  { start: '22:45', end: '23:30', kind: 'cierre', title: 'Ritual de cierre · DEJA LA MOCHILA LISTA', avisar: 0,
+    detail: 'Mañana es tu día más largo: sales 8:50 y no vuelves hasta las 17:10, con 3 h 30 de baile en medio. Mochila AHORA: la bebida de proteína (o el frasco casero), 2 plátanos, pan con miel, botella de 700 ml con agua y sal, ropa de cambio y dinero para la comida del mediodía. Si no la dejas hecha esta noche, mañana sales en ayunas.',
     ref: { type: 'meditacion', id: 'cierre' } },
+  { start: '23:30', end: '00:00', kind: 'sueño', title: 'Sueño · 8 h' },
 ]
 
 // ── DOMINGO · Salsa 11–13 y 14:30–17 · Día más exigente ──────
@@ -367,7 +370,7 @@ const DOMINGO: Block[] = [
   { start: '14:40', end: '16:10', kind: 'baile', title: 'Salsa · academia 2 · 1 h 30 min',
     detail: 'El bloque más exigente de tu semana: llegas con dos horas de baile encima. Si a las 15:30 te baja la energía, medio plátano o 4 dátiles.' },
   { start: '16:10', end: '17:10', kind: 'ruso', title: 'Traslado de regreso · escucha en ruso', ref: { type: 'ruso' } },
-  { start: '17:10', end: '17:40', kind: 'comida', title: 'Batido de recuperación', avisar: 0,
+  { start: '17:10', end: '17:40', kind: 'comida', title: 'Licuado de 900 · recuperación', avisar: 0,
     detail: 'En cuanto llegues al dormitorio. Tras 3 h 30 min de baile, esta es la reposición más urgente del día.',
     ref: { type: 'receta', slot: 'postEntreno' } },
   { start: '17:40', end: '18:10', kind: 'libre', title: 'Ducha y descanso' },
@@ -377,7 +380,11 @@ const DOMINGO: Block[] = [
   { start: '20:00', end: '20:40', kind: 'ruso', title: 'Ruso · auto-test semanal', ref: { type: 'ruso' } },
   { start: '20:40', end: '21:20', kind: 'metricas', title: 'Revisión semanal', avisar: 5,
     detail: 'Peso promedio de la semana, fotos si toca, adherencia. Planea la semana que entra. Aquí se ajusta el plan con datos, no con sensaciones.' },
-  { start: '21:20', end: '00:00', kind: 'libre', title: 'Tiempo personal', flexible: true },
+  { start: '21:20', end: '22:45', kind: 'libre', title: 'Tiempo personal', flexible: true },
+  { start: '22:45', end: '23:30', kind: 'cierre', title: 'Ritual de cierre', avisar: 10,
+    detail: 'Mañana arranca la semana con entreno a las 10:15. Magnesio, pantallas fuera, cuarto oscuro y fresco.',
+    ref: { type: 'meditacion', id: 'cierre' } },
+  { start: '23:30', end: '00:00', kind: 'sueño', title: 'Sueño · 8 h' },
 ]
 
 // ─────────────────────────────────────────────────────────────

@@ -587,13 +587,13 @@ export const RECIPES: Record<string, Recipe> = {
   k1: {
     id: 'k1',
     slot: 'comida',
-    name: 'Comida de tienda entre clases (qué elegir)',
+    name: 'Comida del baile · de casa o de tienda',
     time: 10,
     kcal: 800,
     protein: 45,
     carbs: 90,
     fat: 26,
-    costRub: 400,
+    costRub: 120,
     ingredients: [
       { item: 'Proteína real — pollo asado, pescado, huevos cocidos o otra leche proteica', qty: '35–45 g de proteína', ru: 'курица гриль / яйца / протеиновый коктейль' },
       { item: 'Carbohidrato de verdad — arroz, papa, гречка, pan', qty: 'una porción grande', ru: 'рис / картофель / гречка' },
@@ -601,7 +601,9 @@ export const RECIPES: Record<string, Recipe> = {
       { item: 'Agua con una pizca de sal', qty: '700 ml', ru: 'вода + соль' },
     ],
     steps: [
-      'AHORA SÍ cabe lo graso: si quieres la pizza, el shawarma o el queso, es en esta comida, no en la de la mañana.',
+      'LO BARATO ES LLEVARLA (2026-08-31): un tupper de la olla del viernes + un plátano cuesta ~120 ₽; comprarla en la calle, ~400. Son 560 ₽ al fin de semana, casi una cuarta parte de tu presupuesto semanal, por dos comidas. Prepáralo el viernes junto con la cocinada y métele el tupper a la mochila.',
+      'Si la llevas: come en la banca o en el pasillo de la academia, da igual. Fría no pasa nada — es pollo con гречка, no un plato de restaurante.',
+      'SI HOY SÍ COMPRAS: ahora sí cabe lo graso. Si quieres la pizza, el shawarma o el queso, es en esta comida, no en la de la mañana.',
       'Busca primero la proteína. Es lo que la comida de tienda casi nunca trae y lo que no puedes recuperar después.',
       'Un carbohidrato sólido al lado: te quedan 2 h 20 de baile el domingo y no se sostienen con pan solo.',
       'Rellena la botella. Tres horas de baile deshidratan más de lo que sientes.',
@@ -728,7 +730,7 @@ export const MENU_SEMANAL: Record<number, Partial<Record<MealSlot, string>>> = {
   4: { desayuno: 'e2', comida: 'e1', postEntreno: 'p1', cena: 'e1' }, // tupper de ayer
   5: { desayuno: 'e2', comida: 'e1', postEntreno: 'p1', cena: 'e1' }, // cocina para hoy
   // Fin de semana: no cocina de día. Desayuna en el camión y come en la calle.
-  6: { preBaile: 'b2', comida: 'k1', cena: 'e1' },
+  6: { preBaile: 'b2', comida: 'k1', postEntreno: 'p1', cena: 'e1' },
   0: { preBaile: 'b2', comida: 'k1', postEntreno: 'p1', cena: 'e1' },
 }
 
