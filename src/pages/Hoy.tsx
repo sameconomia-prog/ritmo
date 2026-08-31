@@ -191,7 +191,7 @@ function AvisoCalendario() {
       </p>
       <p className="mt-1.5 text-[13px] leading-relaxed">
         Sin el calendario suscrito, esta app solo funciona cuando te acuerdas de abrirla. Con él, iOS te
-        avisa del columpio, del entreno y del snack de caseína aunque no la abras.
+        avisa del columpio, del entreno y del licuado aunque no la abras.
       </p>
       <a href="webcal://sameconomia-prog.github.io/ritmo/ritmo.ics" className="mt-3 block">
         <Btn className="w-full">Suscribir ahora · 10 segundos</Btn>
