@@ -10,11 +10,23 @@
  * horario habría sido lo peor de los dos mundos — todo el coste circadiano sin
  * el ingreso que lo justificaba.
  *
- * El día es ahora diurno: sueño 23:30–07:30 (8 h, media hora más que antes),
- * columpio a las 08:00 con luz de mañana temprana —la señal más potente para
- * fijar el ritmo circadiano, justo lo que hace falta durante el reajuste— y
- * entreno a las 10:15. Las cinco horas que ocupaba el trabajo se reparten en
- * lo que él pidió: más tesis, más ruso y tres horas de noche que son suyas.
+ * El día es ahora diurno: sueño 00:00–08:00 (ocho horas justas, media más que
+ * antes) y entreno a las 10:45. Las cinco horas que ocupaba el trabajo se
+ * reparten en lo que él pidió: más tesis, más ruso y casi tres horas de noche
+ * que son suyas.
+ *
+ * EL INVIERNO ENTRA EN EL PLAN (2026-08-31)
+ * ----------------------------------------
+ * Sam avisó de que salir a meditar ya cuesta con el frío que empieza, y tiene
+ * toda la razón: en Novosibirsk en diciembre no amanece hasta las 9:20 y se
+ * hace de noche a las 16:15. Un bloque llamado «meditación con luz matinal» a
+ * las 08:30 describiría, medio año, una hora de oscuridad a −20 °C.
+ *
+ * La práctica no se toca; se mueve bajo techo. De noviembre a marzo se medita
+ * sentado en casa, misma hora y misma duración, y la dosis de luz natural se
+ * cobra a mediodía —en la caminata larga de martes y jueves, que a las 10:30
+ * ya cae con el sol arriba incluso en diciembre. El columpio era el envase,
+ * no el contenido.
  *
  * DECISIONES DE DISEÑO
  * --------------------
@@ -30,7 +42,7 @@
  *    Es el bloque más valioso del día y hace tres cosas a la vez. Ver la
  *    meditación 'columpio' en content.ts para la explicación completa.
  *
- * 3) SUEÑO CONSOLIDADO 8 h (23:30–07:30), NO BIFÁSICO.
+ * 3) SUEÑO CONSOLIDADO 8 h (00:00–08:00), NO BIFÁSICO.
  *    La hormona del crecimiento se libera sobre todo en los primeros ciclos de
  *    sueño profundo; fragmentar el sueño recorta esa ventana.
  *
@@ -115,7 +127,7 @@ function sumar(hhmm: string, min: number): string {
 // ─────────────────────────────────────────────────────────────
 
 /**
- * La cola de la noche: se duerme a las 23:30, así que el día empieza dormido.
+ * La cola de la noche: se duerme a medianoche, así que el día empieza dormido.
  *
  * REESCRITO 2026-08-31 — SE ACABÓ EL HORARIO NOCTURNO.
  * Todo este archivo estaba construido alrededor de la jornada 20:30–01:30
@@ -124,42 +136,41 @@ function sumar(hhmm: string, min: number): string {
  * mantener el horario habría sido lo peor de los dos mundos — el coste
  * circadiano de vivir de noche sin la razón que lo justificaba.
  *
- * El día pasa a horario diurno con OCHO horas de sueño (23:30–07:30) en vez
- * de 7.5. Todo se adelanta unas dos horas y el hueco de las cinco horas de
+ * El día pasa a horario diurno con OCHO horas de sueño (00:00–08:00) en vez
+ * de 7.5. Todo se adelanta hora y media, y el hueco de las cinco horas de
  * trabajo se reparte como él pidió: tesis, ruso y tiempo libre de verdad.
  */
 const colaDeLaNoche = (): Block[] => [
-  { start: '00:00', end: '07:30', kind: 'sueño', title: 'Sueño profundo · 8 h',
+  { start: '00:00', end: '08:00', kind: 'sueño', title: 'Sueño profundo · 8 h',
     detail: 'Aquí es donde crece el músculo, no en el entrenamiento. Media hora más que antes, y a una hora en que el cuerpo sí la aprovecha: dormir alineado con la oscuridad mejora la fase profunda, que es cuando se libera la hormona del crecimiento.' },
 ]
 
 /** El ritual matinal: despertar → parque → columpio → volver. */
 const ritualMatinal = (): Block[] => [
-  { start: '07:30', end: '07:45', kind: 'despertar', title: 'Despertar sin teléfono', avisar: 0,
+  { start: '08:00', end: '08:15', kind: 'despertar', title: 'Despertar sin teléfono', avisar: 0,
     detail: 'Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina D3. Nada de pantallas: lo primero que ven tus ojos hoy debe ser luz real, no una notificación.' },
-  { start: '07:45', end: '08:00', kind: 'caminata', title: 'Caminata al parque',
-    detail: 'Sin audífonos. El trayecto es parte de la práctica.' },
-  { start: '08:00', end: '08:30', kind: 'meditacion', title: 'Meditación en el columpio', avisar: 5,
-    detail: 'Luz matinal + balanceo rítmico. Ahora cae dos horas antes, y eso lo mejora: la luz de la mañana temprana es la señal más potente para fijar el ritmo circadiano, y es justo lo que necesitas mientras el cuerpo se reacomoda al horario nuevo.',
+  { start: '08:15', end: '08:30', kind: 'caminata', title: 'Salida al parque · SI EL CLIMA DEJA', flexible: true,
+    detail: 'Sin audífonos. REGLA DE FRÍO: por debajo de −10 °C, con viento fuerte o de noche cerrada, no sales — la práctica se hace en casa y no pasa nada. Lo que no puede fallar es la práctica; el columpio era el envase, no el contenido.' },
+  { start: '08:30', end: '09:00', kind: 'meditacion', title: 'Meditación · columpio o en casa', avisar: 5,
+    detail: 'De abril a octubre, en el columpio: luz de la mañana y balanceo rítmico. DE NOVIEMBRE A MARZO, adentro y sentado: en Novosibirsk en diciembre no amanece hasta las 9:20, así que a esta hora no hay luz que buscar y el frío hace el resto. Misma práctica, misma duración, junto a la ventana y con toda la luz de la casa encendida. La dosis de luz natural del invierno la das a mediodía, no ahora.',
     ref: { type: 'meditacion', id: 'columpio' } },
-  { start: '08:30', end: '08:45', kind: 'caminata', title: 'Regreso caminando' },
-  { start: '08:45', end: '09:15', kind: 'comida', title: 'Desayuno', ref: { type: 'receta', slot: 'desayuno' } },
-  { start: '09:15', end: '10:00', kind: 'ruso', title: 'Ruso · Anki + lección', avisar: 0,
-    detail: 'Aprovecha la digestión del desayuno. Cuando termines llevarás dos horas despierto y comido: momento ideal para entrenar.',
+  { start: '09:00', end: '09:15', kind: 'caminata', title: 'Regreso caminando', flexible: true },
+  { start: '09:15', end: '09:45', kind: 'comida', title: 'Desayuno', ref: { type: 'receta', slot: 'desayuno' } },
+  { start: '09:45', end: '10:30', kind: 'ruso', title: 'Ruso · Anki + lección', avisar: 0,
+    detail: 'Aprovecha la digestión del desayuno. Cuando termines llevarás dos horas y media despierto y comido: momento ideal para entrenar.',
     ref: { type: 'ruso' } },
 ]
 
 /** El cierre del día. Antes empezaba la jornada de trabajo; ahora empieza la noche. */
 const nocheLibre = (): Block[] => [
-  { start: '19:15', end: '20:00', kind: 'ruso', title: 'Ruso · escucha o repaso', flexible: true,
+  { start: '19:45', end: '20:30', kind: 'ruso', title: 'Ruso · escucha o repaso', flexible: true,
     detail: 'Segunda pasada del día, sin exigencia: podcast, música o repaso de las tarjetas falladas. Con el ruso lo que manda es la frecuencia, no la intensidad.',
     ref: { type: 'ruso' } },
-  { start: '20:00', end: '22:45', kind: 'libre', title: 'Tiempo personal', flexible: true,
-    detail: 'Tres horas tuyas, sin plan. Esto no es relleno: es la parte del día que el trabajo nocturno te quitaba, y descansar de verdad también construye músculo.' },
-  { start: '22:45', end: '23:30', kind: 'cierre', title: 'Ritual de cierre', avisar: 10,
-    detail: 'Magnesio 400 mg. Pantallas fuera desde ahora. Ducha tibia CORTA si te gusta dormir bañado — tibia, no fría: la fría activa el sistema nervioso. Cuarto a 18–20 °C y oscuridad total. Las primeras noches te vas a acostar sin sueño: no pasa nada, quédate en la cama a oscuras y en tres o cuatro días el cuerpo se acomoda.',
+  { start: '20:30', end: '23:15', kind: 'libre', title: 'Tiempo personal', flexible: true,
+    detail: 'Casi tres horas tuyas, sin plan. Esto no es relleno: es la parte del día que el trabajo nocturno te quitaba, y descansar de verdad también construye músculo.' },
+  { start: '23:15', end: '00:00', kind: 'cierre', title: 'Ritual de cierre', avisar: 10,
+    detail: 'Magnesio 400 mg. Pantallas fuera desde ahora. Ducha tibia CORTA si te gusta dormir bañado — tibia, no fría: la fría activa el sistema nervioso. Cuarto a 18–20 °C y oscuridad total. A las 00:00 en la cama: son ocho horas justas hasta las 08:00.',
     ref: { type: 'meditacion', id: 'cierre' } },
-  { start: '23:30', end: '00:00', kind: 'sueño', title: 'Sueño profundo · 8 h' },
 ]
 
 // ── DÍA DE ENTRENO (Lunes · Miércoles · Viernes) ─────────────
@@ -183,15 +194,15 @@ const diaEntreno = (
   nombre: string,
   madrugada: Block[],
   /** Fin del entreno. Fase 1 son 65 min en casa; Fase 2, 75 con el gimnasio. */
-  fin = '11:20',
+  fin = '11:50',
   /** 'dosDias': hoy se cocina para hoy y mañana. 'recalentado': la comida es el tupper de ayer. */
   cocina: 'dosDias' | 'recalentado' = 'dosDias',
 ): Block[] => [
   ...madrugada,
   ...ritualMatinal(),
-  { start: '10:00', end: '10:15', kind: 'prep', title: 'Traslado al parque + calentamiento',
+  { start: '10:30', end: '10:45', kind: 'prep', title: 'Traslado al parque + calentamiento',
     detail: 'Tus 1 200 m trotando SÍ sirven como calentamiento: están por debajo del umbral donde el aeróbico empieza a restar. Trota suave, sin sprints. Después: 10 bisagras de cadera, 10 círculos de hombro, y 2 series ligeras del primer ejercicio.' },
-  { start: '10:15', end: fin, kind: 'entreno', title: nombre, avisar: 10, ref: { type: 'entreno', workoutId } },
+  { start: '10:45', end: fin, kind: 'entreno', title: nombre, avisar: 10, ref: { type: 'entreno', workoutId } },
   { start: fin, end: sumar(fin, 30), kind: 'comida', title: 'Licuado de 900 + ducha', ref: { type: 'receta', slot: 'postEntreno' },
     detail: 'La ducha del día va aquí: acabas de sudar. Si te gusta el agua fría, este es su momento — despierta y no estorba al sueño de nadie.' },
   ...(cocina === 'dosDias'
@@ -206,7 +217,7 @@ const diaEntreno = (
         { start: sumar(fin, 255), end: sumar(fin, 345), kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2',
           detail: 'El bloque que antes se perdía los días de cocina. Con el horario nuevo cabe entero.',
           ref: { type: 'protocolo' as const, id: 'pomodoro' } },
-        { start: sumar(fin, 345), end: '18:30', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
+        { start: sumar(fin, 345), end: '19:00', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
       ]
     : [
         { start: sumar(fin, 30), end: sumar(fin, 50), kind: 'comida' as const, title: 'Comida · recalentar el tupper de ayer',
@@ -217,9 +228,9 @@ const diaEntreno = (
           ref: { type: 'protocolo' as const, id: 'ultradiano' } },
         { start: sumar(fin, 140), end: sumar(fin, 160), kind: 'libre' as const, title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
         { start: sumar(fin, 160), end: sumar(fin, 220), kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo' as const, id: 'pomodoro' } },
-        { start: sumar(fin, 220), end: '18:30', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
+        { start: sumar(fin, 220), end: '19:00', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
       ]),
-  { start: '18:30', end: '19:15', kind: 'comida', title: 'Cena · recalentar la segunda ración', ref: { type: 'receta', slot: 'cena' } },
+  { start: '19:00', end: '19:45', kind: 'comida', title: 'Cena · recalentar la segunda ración', ref: { type: 'receta', slot: 'cena' } },
   ...nocheLibre(),
 ]
 
@@ -232,44 +243,44 @@ const diaRecuperacion = (
 ): Block[] => [
   ...colaDeLaNoche(),
   ...ritualMatinal(),
-  { start: '10:00', end: '10:45', kind: 'caminata', title: 'Caminata larga · 45 min sin audífonos', avisar: 5,
-    detail: 'Esto REEMPLAZA a correr. Recupera sin interferir con la hipertrofia. Sin podcasts ni música: deja que la mente divague, ahí aparecen las ideas del proyecto. Lleva una libreta.',
+  { start: '10:30', end: '11:15', kind: 'caminata', title: 'Caminata larga · 45 min sin audífonos', avisar: 5,
+    detail: 'Esto REEMPLAZA a correr. Recupera sin interferir con la hipertrofia. Sin podcasts ni música: deja que la mente divague, ahí aparecen las ideas del proyecto. Lleva una libreta. EN INVIERNO ESTA CAMINATA ES TU DOSIS DE LUZ: a esta hora ya amaneció incluso en diciembre, y son los únicos minutos de sol real que vas a ver en todo el día. Abrígate y sal aunque estés a −15 °C; media hora basta.',
     ref: { type: 'protocolo', id: 'recuperacion' } },
-  { start: '10:45', end: '11:05', kind: 'movilidad', title: 'Movilidad',
+  { start: '11:15', end: '11:35', kind: 'movilidad', title: 'Movilidad',
     detail: 'Cadera, tobillo, columna torácica y hombro. 3 minutos por zona. Es lo que te mantendrá sin lesiones bailando.' },
   ...(cocina === 'recalentado'
     ? [
-        { start: '11:05', end: '11:25', kind: 'comida' as const, title: 'Comida · recalentar el tupper de ayer',
+        { start: '11:35', end: '11:55', kind: 'comida' as const, title: 'Comida · recalentar el tupper de ayer',
           detail: 'Ayer cocinaste doble. Hoy: 3 minutos de microondas. El tiempo que no cocinas se lo queda la tesis.',
           ref: { type: 'receta' as const, slot: 'comida' } },
-        { start: '11:25', end: '12:55', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
+        { start: '11:55', end: '13:25', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
           detail: 'Sin entreno hoy, este es tu día de mayor capacidad cognitiva. Úsalo en lo más difícil de la tesis.',
           ref: { type: 'protocolo' as const, id: 'ultradiano' } },
-        { start: '12:55', end: '13:15', kind: 'comida' as const, title: 'Licuado de 900 + descanso', avisar: 0,
+        { start: '13:25', end: '13:45', kind: 'comida' as const, title: 'Licuado de 900 + descanso', avisar: 0,
           detail: 'Los días sin entreno el licuado va aquí, entre bloques: lejos de la comida y lejos de la cena, que es donde SÍ te cabe. Sin pantallas mientras te lo tomas.',
           ref: { type: 'receta' as const, slot: 'postEntreno' } },
-        { start: '13:15', end: '14:45', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo' as const, id: 'ultradiano' } },
-        { start: '14:45', end: '15:05', kind: 'libre' as const, title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
-        { start: '15:05', end: '16:35', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 3', flexible: true,
+        { start: '13:45', end: '15:15', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo' as const, id: 'ultradiano' } },
+        { start: '15:15', end: '15:35', kind: 'libre' as const, title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
+        { start: '15:35', end: '17:05', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 3', flexible: true,
           detail: 'El tercero es OPCIONAL y flexible: existe porque hoy no entrenas ni cocinas. Si a esta hora ya no rinde, cámbialo por ruso o déjalo ir — tres bloques profundos es un día excelente, no un mínimo.',
           ref: { type: 'protocolo' as const, id: 'pomodoro' } },
-        { start: '16:35', end: '16:55', kind: 'meditacion' as const, title: 'Práctica de recuperación', ref: { type: 'meditacion' as const, id: medId } },
-        { start: '16:55', end: '18:30', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
+        { start: '17:05', end: '17:25', kind: 'meditacion' as const, title: 'Práctica de recuperación', ref: { type: 'meditacion' as const, id: medId } },
+        { start: '17:25', end: '19:00', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
       ]
     : [
-        { start: '11:05', end: '12:20', kind: 'prep' as const, title: 'Cocina para hoy y MAÑANA · 4 raciones', avisar: 5,
+        { start: '11:35', end: '12:50', kind: 'prep' as const, title: 'Cocina para hoy y MAÑANA · 4 raciones', avisar: 5,
           detail: 'Día sin entreno pero con cocina: 4 raciones que resuelven hoy y mañana. El agua arranca en el hervidor eléctrico, no en la parrilla; se lava sobre la marcha.' },
-        { start: '12:20', end: '13:00', kind: 'comida' as const, title: 'Comida · recién hecha', ref: { type: 'receta' as const, slot: 'comida' } },
-        { start: '13:00', end: '14:30', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
+        { start: '12:50', end: '13:30', kind: 'comida' as const, title: 'Comida · recién hecha', ref: { type: 'receta' as const, slot: 'comida' } },
+        { start: '13:30', end: '15:00', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
           ref: { type: 'protocolo' as const, id: 'ultradiano' } },
-        { start: '14:30', end: '14:50', kind: 'comida' as const, title: 'Licuado de 900 + descanso', avisar: 0,
+        { start: '15:00', end: '15:20', kind: 'comida' as const, title: 'Licuado de 900 + descanso', avisar: 0,
           detail: 'A media tarde, lejos de la comida y de la cena: es donde SÍ te cabe.',
           ref: { type: 'receta' as const, slot: 'postEntreno' } },
-        { start: '14:50', end: '16:20', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo' as const, id: 'pomodoro' } },
-        { start: '16:20', end: '16:40', kind: 'meditacion' as const, title: 'Práctica de recuperación', ref: { type: 'meditacion' as const, id: medId } },
-        { start: '16:40', end: '18:30', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
+        { start: '15:20', end: '16:50', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo' as const, id: 'pomodoro' } },
+        { start: '16:50', end: '17:10', kind: 'meditacion' as const, title: 'Práctica de recuperación', ref: { type: 'meditacion' as const, id: medId } },
+        { start: '17:10', end: '19:00', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
       ]),
-  { start: '18:30', end: '19:15', kind: 'comida', title: 'Cena · recalentar la segunda ración', ref: { type: 'receta', slot: 'cena' } },
+  { start: '19:00', end: '19:45', kind: 'comida', title: 'Cena · recalentar la segunda ración', ref: { type: 'receta', slot: 'cena' } },
   ...nocheLibre(),
 ]
 
@@ -278,24 +289,23 @@ const diaRecuperacion = (
 const VIERNES: Block[] = [
   ...colaDeLaNoche(),
   ...ritualMatinal(),
-  { start: '10:00', end: '10:15', kind: 'prep', title: 'Calentamiento dinámico' },
-  { start: '10:15', end: '11:20', kind: 'entreno', title: 'Entreno C · Full body volumen', avisar: 10, ref: { type: 'entreno', workoutId: 'f1c' } },
-  { start: '11:20', end: '11:50', kind: 'comida', title: 'Licuado post-entreno + ducha', ref: { type: 'receta', slot: 'postEntreno' },
+  { start: '10:30', end: '10:45', kind: 'prep', title: 'Calentamiento dinámico' },
+  { start: '10:45', end: '11:50', kind: 'entreno', title: 'Entreno C · Full body volumen', avisar: 10, ref: { type: 'entreno', workoutId: 'f1c' } },
+  { start: '11:50', end: '12:20', kind: 'comida', title: 'Licuado post-entreno + ducha', ref: { type: 'receta', slot: 'postEntreno' },
     detail: 'La ducha del día va aquí: acabas de sudar. Fría al final si quieres — hoy no estorba a nadie.' },
-  { start: '11:50', end: '12:50', kind: 'prep', title: 'Cocina solo para HOY · 2 raciones', avisar: 5,
+  { start: '12:20', end: '13:20', kind: 'prep', title: 'Cocina solo para HOY · 2 raciones', avisar: 5,
     detail: 'La cocinada corta de la semana: mañana y el domingo comes en la calle, así que hoy solo sale comida y cena de hoy. El agua arranca en el hervidor eléctrico; se lava sobre la marcha.' },
-  { start: '12:50', end: '13:30', kind: 'comida', title: 'Comida · recién hecha', ref: { type: 'receta', slot: 'comida' } },
-  { start: '13:30', end: '15:00', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5, ref: { type: 'protocolo', id: 'ultradiano' } },
-  { start: '15:00', end: '15:20', kind: 'libre', title: 'Descanso real' },
-  { start: '15:20', end: '16:50', kind: 'doctorado', title: 'Proyecto doctoral · bloque 2', flexible: true, ref: { type: 'protocolo', id: 'pomodoro' } },
-  { start: '16:50', end: '18:45', kind: 'libre', title: 'Tiempo libre', flexible: true },
-  { start: '18:45', end: '19:30', kind: 'comida', title: 'Cena · recalentar la segunda ración', ref: { type: 'receta', slot: 'cena' } },
-  { start: '19:30', end: '23:00', kind: 'libre', title: 'Noche de viernes',
+  { start: '13:20', end: '14:00', kind: 'comida', title: 'Comida · recién hecha', ref: { type: 'receta', slot: 'comida' } },
+  { start: '14:00', end: '15:30', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5, ref: { type: 'protocolo', id: 'ultradiano' } },
+  { start: '15:30', end: '15:50', kind: 'libre', title: 'Descanso real' },
+  { start: '15:50', end: '17:20', kind: 'doctorado', title: 'Proyecto doctoral · bloque 2', flexible: true, ref: { type: 'protocolo', id: 'pomodoro' } },
+  { start: '17:20', end: '19:15', kind: 'libre', title: 'Tiempo libre', flexible: true },
+  { start: '19:15', end: '20:00', kind: 'comida', title: 'Cena · recalentar la segunda ración', ref: { type: 'receta', slot: 'cena' } },
+  { start: '20:00', end: '23:15', kind: 'libre', title: 'Noche de viernes',
     detail: 'La noche en que sí puedes estirarte sin costo: mañana no entrenas y el camión sale a las 9:00, no antes. Social, cine, lo que quieras. Recuperar la vida también es parte del plan.' },
-  { start: '23:00', end: '23:45', kind: 'cierre', title: 'Ritual de cierre · DEJA LA MOCHILA LISTA', avisar: 0,
+  { start: '23:15', end: '00:00', kind: 'cierre', title: 'Ritual de cierre · DEJA LA MOCHILA LISTA', avisar: 0,
     detail: 'Mañana sales 8:50 al camión de las 9:00 y bailas dos horas seguidas. Mochila AHORA: la bebida de proteína (o el frasco casero de leche con avena, miel y cacahuate), 2 plátanos, pan con miel, botella de 700 ml con agua y una pizca de sal, ropa de cambio. Es el único paso del sábado que se hace la noche anterior, y sin él desayunas grasa a 45 minutos de bailar.',
     ref: { type: 'meditacion', id: 'cierre' } },
-  { start: '23:45', end: '00:00', kind: 'sueño', title: 'Sueño · 8 h' },
 ]
 
 // ── SÁBADO · Salsa 11–12 · Desayuno en el camión ─────────────
@@ -337,11 +347,10 @@ const SABADO: Block[] = [
   { start: '15:15', end: '16:45', kind: 'doctorado', title: 'Proyecto doctoral · bloque ligero', flexible: true, ref: { type: 'protocolo', id: 'pomodoro' } },
   { start: '16:45', end: '18:30', kind: 'libre', title: 'Tiempo personal / social', flexible: true },
   { start: '18:30', end: '19:30', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
-  { start: '19:30', end: '22:45', kind: 'libre', title: 'Noche libre', flexible: true },
-  { start: '22:45', end: '23:30', kind: 'cierre', title: 'Ritual de cierre · DEJA LA MOCHILA LISTA', avisar: 0,
+  { start: '19:30', end: '23:15', kind: 'libre', title: 'Noche libre', flexible: true },
+  { start: '23:15', end: '00:00', kind: 'cierre', title: 'Ritual de cierre · DEJA LA MOCHILA LISTA', avisar: 0,
     detail: 'Mañana es tu día más largo: sales 8:50 y no vuelves hasta las 17:10, con 3 h 30 de baile en medio. Mochila AHORA: la bebida de proteína (o el frasco casero), 2 plátanos, pan con miel, botella de 700 ml con agua y sal, ropa de cambio y dinero para la comida del mediodía. Si no la dejas hecha esta noche, mañana sales en ayunas.',
     ref: { type: 'meditacion', id: 'cierre' } },
-  { start: '23:30', end: '00:00', kind: 'sueño', title: 'Sueño · 8 h' },
 ]
 
 // ── DOMINGO · Salsa 11–13 y 14:30–17 · Día más exigente ──────
@@ -380,11 +389,10 @@ const DOMINGO: Block[] = [
   { start: '20:00', end: '20:40', kind: 'ruso', title: 'Ruso · auto-test semanal', ref: { type: 'ruso' } },
   { start: '20:40', end: '21:20', kind: 'metricas', title: 'Revisión semanal', avisar: 5,
     detail: 'Peso promedio de la semana, fotos si toca, adherencia. Planea la semana que entra. Aquí se ajusta el plan con datos, no con sensaciones.' },
-  { start: '21:20', end: '22:45', kind: 'libre', title: 'Tiempo personal', flexible: true },
-  { start: '22:45', end: '23:30', kind: 'cierre', title: 'Ritual de cierre', avisar: 10,
-    detail: 'Mañana arranca la semana con entreno a las 10:15. Magnesio, pantallas fuera, cuarto oscuro y fresco.',
+  { start: '21:20', end: '23:15', kind: 'libre', title: 'Tiempo personal', flexible: true },
+  { start: '23:15', end: '00:00', kind: 'cierre', title: 'Ritual de cierre', avisar: 10,
+    detail: 'Mañana arranca la semana con entreno a las 10:45. Magnesio, pantallas fuera, cuarto oscuro y fresco.',
     ref: { type: 'meditacion', id: 'cierre' } },
-  { start: '23:30', end: '00:00', kind: 'sueño', title: 'Sueño · 8 h' },
 ]
 
 // ─────────────────────────────────────────────────────────────

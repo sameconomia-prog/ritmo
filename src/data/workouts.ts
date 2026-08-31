@@ -635,6 +635,15 @@ export const WORKOUTS: Record<string, Workout> = {
  */
 export const EQUIPO_RECOMENDADO = [
   {
+    item: 'Lámpara de luz brillante (10 000 lux)',
+    ru: 'лампа для светотерапии 10000 люкс',
+    precio: '2 000–4 000 ₽',
+    donde: 'Ozon · Wildberries',
+    porque:
+      'AÑADIDA 2026-08-31, PENSANDO EN EL INVIERNO. En Novosibirsk, en diciembre, amanece a las 9:20 y anochece a las 16:15: siete horas de luz, y casi siempre con nubes. Tu meditación matinal se muda adentro esos meses, así que pierdes la señal de luz que ordena el reloj interno — y esa señal es la que sostiene la hora de dormir, el ánimo y la energía del día. Veinte o treinta minutos delante de una lámpara de 10 000 lux mientras desayunas hacen ese trabajo, y es la intervención con más respaldo para latitudes como la tuya. NO ES URGENTE mientras el presupuesto apriete: primero la báscula y la comida. Pero si el invierno se te hace cuesta arriba, esto es lo primero que compraría antes que cualquier suplemento.',
+    prioridad: 3,
+  },
+  {
     item: 'Báscula corporal digital',
     ru: 'напольные весы',
     precio: '700–1 800 ₽',

@@ -276,6 +276,7 @@ export const RECIPES: Record<string, Recipe> = {
       { item: 'Tvorog 5 %', qty: '100 g', ru: 'творог 5%' },
       { item: 'Plátano', qty: '1 grande', ru: 'банан' },
       { item: 'Miel', qty: '1 cda', ru: 'мёд' },
+      { item: 'Cacao en polvo sin azúcar', qty: '1 cdta', ru: 'какао-порошок' },
     ],
     steps: [
       'Todo a la licuadora, los líquidos primero: se licúa mejor y no se atasca.',
@@ -789,6 +790,8 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
       { item: 'Cacahuate', ru: 'арахис', qty: '500 g', rub: 230,
         nota: 'SUSTITUYE A LA CREMA DE CACAHUATE, que cuesta 1 285 ₽/kg contra 460 el cacahuate: casi tres veces más caro por lo mismo. Con la licuadora va entero al vaso. Y si quieres la crema, hazla: 300 g de cacahuate + 1 cda de aceite, licuadora 5 minutos, parando a bajar lo de las paredes. Sale medio kilo por 140 ₽.' },
       { item: 'Miel', ru: 'мёд', qty: 'ya tienes', rub: 0 },
+      { item: 'Cacao en polvo sin azúcar', ru: 'какао-порошок', qty: 'un bote de 200 g al mes', rub: 40,
+        nota: 'El bote cuesta ~150 ₽ y dura un mes, así que pesa ~40 ₽ por semana. No lo compras por los nutrientes (que los tiene: magnesio, hierro, flavanoles) sino porque hace que el licuado sepa a chocolate en vez de a papilla — y el licuado solo sirve si te lo tomas todos los días. Que sea без сахара: el que ya viene endulzado es azúcar con sabor a cacao.' },
     ],
   },
   {
@@ -808,6 +811,8 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
         nota: 'Para el desayuno del camión del fin de semana. Si no entra en el presupuesto, el relevo casero es gratis: un frasco con 400 ml de leche, 2 cdas de avena, 1 cda de miel y un puño de cacahuate, batido la noche anterior. Aguanta las tres horas de camión sin refrigerar en clima frío.' },
       { item: 'Atún en aceite', ru: 'тунец в масле', qty: '2-3 latas', rub: 360,
         nota: 'La cocinada de emergencia: pasta + atún + aceite en 12 minutos. Buena para el día que no hay tiempo, pero por 120 ₽ la lata es proteína cara — el pollo cuesta la mitad por gramo.' },
+      { item: 'Aceite de oliva', ru: 'оливковое масло', qty: '500 ml', rub: 600,
+        nota: 'Cuesta ~1 200 ₽/L contra 130 el de girasol, nueve veces más, y para lo que lo necesitas —calorías densas— los dos dan lo mismo: 9 kcal por gramo. Si algún día lo compras, ÚSALO EN CRUDO, nunca para freír: sus polifenoles se degradan con el calor alto, así que cocinar con él es pagar de más por tirar justo lo que lo hace bueno. Un chorro sobre el plato ya servido, que es donde el plan te pide el aceite de todas formas.' },
       { item: 'Pasta de cacahuate con chocolate', ru: 'паста арахисовая с шоколадом', qty: '1 frasco', rub: 450,
         nota: 'Excelente producto (610 kcal y 23 g de proteína por 100 g) pero es un lujo mientras el presupuesto apriete: el cacahuate solo hace lo mismo por un tercio. Si la compras, máximo 2-3 cucharadas al día — lleva maltitol e inulina, que en cantidad hinchan.' },
     ],
