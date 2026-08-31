@@ -17,9 +17,9 @@ TZNAME:+07
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:ritmo-0-2-0830@sameconomia-prog.github.io
+UID:ritmo-0-1-0800@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260809T083000
+DTSTART;TZID=Asia/Novosibirsk:20260809T080000
 DTEND;TZID=Asia/Novosibirsk:20260809T085000
 RRULE:FREQ=WEEKLY;BYDAY=SU
 SUMMARY:Despertar · el día más largo de tu semana
@@ -33,7 +33,7 @@ DESCRIPTION:Despertar · el día más largo de tu semana
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-3-0850@sameconomia-prog.github.io
+UID:ritmo-0-2-0850@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260809T085000
 DTEND;TZID=Asia/Novosibirsk:20260809T090000
@@ -49,7 +49,7 @@ DESCRIPTION:Salida al camión
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-4-0900@sameconomia-prog.github.io
+UID:ritmo-0-3-0900@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260809T090000
 DTEND;TZID=Asia/Novosibirsk:20260809T100000
@@ -65,7 +65,7 @@ DESCRIPTION:Camión · desayuno + Anki de ruso
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-6-1040@sameconomia-prog.github.io
+UID:ritmo-0-5-1040@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260809T104000
 DTEND;TZID=Asia/Novosibirsk:20260809T110000
@@ -80,7 +80,7 @@ DESCRIPTION:Segundo plátano y calentamiento
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-8-1200@sameconomia-prog.github.io
+UID:ritmo-0-7-1200@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260809T120000
 DTEND;TZID=Asia/Novosibirsk:20260809T130000
@@ -95,7 +95,7 @@ DESCRIPTION:Bachata · segunda hora seguida
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-9-1300@sameconomia-prog.github.io
+UID:ritmo-0-8-1300@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260809T130000
 DTEND;TZID=Asia/Novosibirsk:20260809T142000
@@ -112,7 +112,7 @@ DESCRIPTION:Comida en el camino · la que decide tu domingo
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-10-1420@sameconomia-prog.github.io
+UID:ritmo-0-9-1420@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260809T142000
 DTEND;TZID=Asia/Novosibirsk:20260809T144000
@@ -128,22 +128,22 @@ DESCRIPTION:Llegada a la academia 2 · plátano y movilidad
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-13-1710@sameconomia-prog.github.io
+UID:ritmo-0-12-1710@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260809T171000
 DTEND;TZID=Asia/Novosibirsk:20260809T174000
 RRULE:FREQ=WEEKLY;BYDAY=SU
-SUMMARY:Batido de recuperación
+SUMMARY:Licuado de 900 · recuperación
 DESCRIPTION:En cuanto llegues al dormitorio. Tras 3 h 30 min de baile\, e
  sta es la reposición más urgente del día.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
-DESCRIPTION:Batido de recuperación
+DESCRIPTION:Licuado de 900 · recuperación
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-15-1810@sameconomia-prog.github.io
+UID:ritmo-0-14-1810@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260809T181000
 DTEND;TZID=Asia/Novosibirsk:20260809T191000
@@ -160,7 +160,7 @@ DESCRIPTION:MEAL PREP de la semana
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-0-18-2040@sameconomia-prog.github.io
+UID:ritmo-0-17-2040@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260809T204000
 DTEND;TZID=Asia/Novosibirsk:20260809T212000
@@ -176,23 +176,25 @@ DESCRIPTION:Revisión semanal
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-1-1-0100@sameconomia-prog.github.io
+UID:ritmo-0-19-2315@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260803T010000
-DTEND;TZID=Asia/Novosibirsk:20260803T012000
-RRULE:FREQ=WEEKLY;BYDAY=MO
-SUMMARY:Snack nocturno de caseína
+DTSTART;TZID=Asia/Novosibirsk:20260809T231500
+DTEND;TZID=Asia/Novosibirsk:20260809T235900
+RRULE:FREQ=WEEKLY;BYDAY=SU
+SUMMARY:Ritual de cierre
+DESCRIPTION:Mañana arranca la semana con entreno a las 10:45. Magnesio\,
+  pantallas fuera\, cuarto oscuro y fresco.
 BEGIN:VALARM
 ACTION:DISPLAY
-TRIGGER:-PT0M
-DESCRIPTION:Snack nocturno de caseína
+TRIGGER:-PT10M
+DESCRIPTION:Ritual de cierre
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-1-4-0930@sameconomia-prog.github.io
+UID:ritmo-1-1-0800@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260803T093000
-DTEND;TZID=Asia/Novosibirsk:20260803T094500
+DTSTART;TZID=Asia/Novosibirsk:20260803T080000
+DTEND;TZID=Asia/Novosibirsk:20260803T081500
 RRULE:FREQ=WEEKLY;BYDAY=MO
 SUMMARY:Despertar sin teléfono
 DESCRIPTION:Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina
@@ -205,29 +207,33 @@ DESCRIPTION:Despertar sin teléfono
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-1-6-1000@sameconomia-prog.github.io
+UID:ritmo-1-3-0830@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260803T100000
-DTEND;TZID=Asia/Novosibirsk:20260803T103000
+DTSTART;TZID=Asia/Novosibirsk:20260803T083000
+DTEND;TZID=Asia/Novosibirsk:20260803T090000
 RRULE:FREQ=WEEKLY;BYDAY=MO
-SUMMARY:Meditación en el columpio
-DESCRIPTION:Luz matinal + balanceo rítmico. El bloque más valioso del d
- ía para alguien con horario nocturno.
+SUMMARY:Meditación · columpio o en casa
+DESCRIPTION:De abril a octubre\, en el columpio: luz de la mañana y bala
+ nceo rítmico. DE NOVIEMBRE A MARZO\, adentro y sentado: en Novosibirsk 
+ en diciembre no amanece hasta las 9:20\, así que a esta hora no hay luz
+  que buscar y el frío hace el resto. Misma práctica\, misma duración\
+ , junto a la ventana y con toda la luz de la casa encendida. La dosis de
+  luz natural del invierno la das a mediodía\, no ahora.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
-DESCRIPTION:Meditación en el columpio
+DESCRIPTION:Meditación · columpio o en casa
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-1-9-1115@sameconomia-prog.github.io
+UID:ritmo-1-6-0945@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260803T111500
-DTEND;TZID=Asia/Novosibirsk:20260803T120000
+DTSTART;TZID=Asia/Novosibirsk:20260803T094500
+DTEND;TZID=Asia/Novosibirsk:20260803T103000
 RRULE:FREQ=WEEKLY;BYDAY=MO
 SUMMARY:Ruso · Anki + lección
 DESCRIPTION:Aprovecha la digestión del desayuno. Cuando termines llevar
- ás una hora despierto y comido: momento ideal para entrenar.
+ ás dos horas y media despierto y comido: momento ideal para entrenar.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
@@ -235,10 +241,10 @@ DESCRIPTION:Ruso · Anki + lección
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-1-11-1215@sameconomia-prog.github.io
+UID:ritmo-1-8-1045@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260803T121500
-DTEND;TZID=Asia/Novosibirsk:20260803T132000
+DTSTART;TZID=Asia/Novosibirsk:20260803T104500
+DTEND;TZID=Asia/Novosibirsk:20260803T115000
 RRULE:FREQ=WEEKLY;BYDAY=MO
 SUMMARY:Entreno A · Empuje + Cuádriceps
 BEGIN:VALARM
@@ -248,10 +254,29 @@ DESCRIPTION:Entreno A · Empuje + Cuádriceps
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-1-14-1435@sameconomia-prog.github.io
+UID:ritmo-1-10-1220@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260803T143500
-DTEND;TZID=Asia/Novosibirsk:20260803T160500
+DTSTART;TZID=Asia/Novosibirsk:20260803T122000
+DTEND;TZID=Asia/Novosibirsk:20260803T133500
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:Cocina para hoy y MAÑANA · 4 raciones
+DESCRIPTION:El bloque que no existía y siempre existió. Hoy sales de aq
+ uí con 4 raciones: comida y cena de hoy\, comida y cena de mañana. Tru
+ cos que recortan tu hora y media: el agua SIEMPRE arranca en el hervidor
+  eléctrico (чайник)\, no en la parrilla lenta — son 15 minutos 
+ gratis\; las bolsitas de гречка se cuecen solas mientras haces el 
+ pollo por tandas\; y se lava sobre la marcha\, no al final.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Cocina para hoy y MAÑANA · 4 raciones
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-1-12-1415@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260803T141500
+DTEND;TZID=Asia/Novosibirsk:20260803T154500
 RRULE:FREQ=WEEKLY;BYDAY=MO
 SUMMARY:Proyecto doctoral · bloque profundo
 DESCRIPTION:Define el entregable ANTES de empezar. Sin clases que te estr
@@ -263,24 +288,27 @@ DESCRIPTION:Proyecto doctoral · bloque profundo
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-2-2-0130@sameconomia-prog.github.io
+UID:ritmo-1-19-2315@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260804T013000
-DTEND;TZID=Asia/Novosibirsk:20260804T015000
-RRULE:FREQ=WEEKLY;BYDAY=TU
-SUMMARY:Snack nocturno de caseína
-DESCRIPTION:El hábito que no se salta: trabaja mientras duermes.
+DTSTART;TZID=Asia/Novosibirsk:20260803T231500
+DTEND;TZID=Asia/Novosibirsk:20260803T235900
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:Ritual de cierre
+DESCRIPTION:Magnesio 400 mg. Pantallas fuera desde ahora. Ducha tibia COR
+ TA si te gusta dormir bañado — tibia\, no fría: la fría activa el s
+ istema nervioso. Cuarto a 18–20 °C y oscuridad total. A las 00:00 en 
+ la cama: son ocho horas justas hasta las 08:00.
 BEGIN:VALARM
 ACTION:DISPLAY
-TRIGGER:-PT0M
-DESCRIPTION:Snack nocturno de caseína
+TRIGGER:-PT10M
+DESCRIPTION:Ritual de cierre
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-2-5-0930@sameconomia-prog.github.io
+UID:ritmo-2-1-0800@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260804T093000
-DTEND;TZID=Asia/Novosibirsk:20260804T094500
+DTSTART;TZID=Asia/Novosibirsk:20260804T080000
+DTEND;TZID=Asia/Novosibirsk:20260804T081500
 RRULE:FREQ=WEEKLY;BYDAY=TU
 SUMMARY:Despertar sin teléfono
 DESCRIPTION:Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina
@@ -293,27 +321,33 @@ DESCRIPTION:Despertar sin teléfono
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-2-7-1000@sameconomia-prog.github.io
+UID:ritmo-2-3-0830@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260804T100000
-DTEND;TZID=Asia/Novosibirsk:20260804T103000
+DTSTART;TZID=Asia/Novosibirsk:20260804T083000
+DTEND;TZID=Asia/Novosibirsk:20260804T090000
 RRULE:FREQ=WEEKLY;BYDAY=TU
-SUMMARY:Meditación en el columpio
-DESCRIPTION:Luz matinal + balanceo rítmico. El bloque más valioso del d
- ía para alguien con horario nocturno.
+SUMMARY:Meditación · columpio o en casa
+DESCRIPTION:De abril a octubre\, en el columpio: luz de la mañana y bala
+ nceo rítmico. DE NOVIEMBRE A MARZO\, adentro y sentado: en Novosibirsk 
+ en diciembre no amanece hasta las 9:20\, así que a esta hora no hay luz
+  que buscar y el frío hace el resto. Misma práctica\, misma duración\
+ , junto a la ventana y con toda la luz de la casa encendida. La dosis de
+  luz natural del invierno la das a mediodía\, no ahora.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
-DESCRIPTION:Meditación en el columpio
+DESCRIPTION:Meditación · columpio o en casa
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-2-10-1115@sameconomia-prog.github.io
+UID:ritmo-2-6-0945@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260804T111500
-DTEND;TZID=Asia/Novosibirsk:20260804T120000
+DTSTART;TZID=Asia/Novosibirsk:20260804T094500
+DTEND;TZID=Asia/Novosibirsk:20260804T103000
 RRULE:FREQ=WEEKLY;BYDAY=TU
 SUMMARY:Ruso · Anki + lección
+DESCRIPTION:Aprovecha la digestión del desayuno. Cuando termines llevar
+ ás dos horas y media despierto y comido: momento ideal para entrenar.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
@@ -321,15 +355,18 @@ DESCRIPTION:Ruso · Anki + lección
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-2-11-1200@sameconomia-prog.github.io
+UID:ritmo-2-7-1030@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260804T120000
-DTEND;TZID=Asia/Novosibirsk:20260804T124500
+DTSTART;TZID=Asia/Novosibirsk:20260804T103000
+DTEND;TZID=Asia/Novosibirsk:20260804T111500
 RRULE:FREQ=WEEKLY;BYDAY=TU
 SUMMARY:Caminata larga · 45 min sin audífonos
 DESCRIPTION:Esto REEMPLAZA a correr. Recupera sin interferir con la hiper
  trofia. Sin podcasts ni música: deja que la mente divague\, ahí aparec
- en las ideas del proyecto. Lleva una libreta.
+ en las ideas del proyecto. Lleva una libreta. EN INVIERNO ESTA CAMINATA 
+ ES TU DOSIS DE LUZ: a esta hora ya amaneció incluso en diciembre\, y so
+ n los únicos minutos de sol real que vas a ver en todo el día. Abríga
+ te y sal aunque estés a −15 °C\; media hora basta.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
@@ -337,10 +374,10 @@ DESCRIPTION:Caminata larga · 45 min sin audífonos
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-2-14-1350@sameconomia-prog.github.io
+UID:ritmo-2-10-1155@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260804T135000
-DTEND;TZID=Asia/Novosibirsk:20260804T152000
+DTSTART;TZID=Asia/Novosibirsk:20260804T115500
+DTEND;TZID=Asia/Novosibirsk:20260804T132500
 RRULE:FREQ=WEEKLY;BYDAY=TU
 SUMMARY:Proyecto doctoral · bloque profundo
 DESCRIPTION:Sin entreno hoy\, este es tu día de mayor capacidad cognitiv
@@ -352,24 +389,43 @@ DESCRIPTION:Proyecto doctoral · bloque profundo
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-3-2-0130@sameconomia-prog.github.io
+UID:ritmo-2-11-1325@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260805T013000
-DTEND;TZID=Asia/Novosibirsk:20260805T015000
-RRULE:FREQ=WEEKLY;BYDAY=WE
-SUMMARY:Snack nocturno de caseína
-DESCRIPTION:El hábito que no se salta: trabaja mientras duermes.
+DTSTART;TZID=Asia/Novosibirsk:20260804T132500
+DTEND;TZID=Asia/Novosibirsk:20260804T134500
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:Licuado de 900 + descanso
+DESCRIPTION:Los días sin entreno el licuado va aquí\, entre bloques: le
+ jos de la comida y lejos de la cena\, que es donde SÍ te cabe. Sin pant
+ allas mientras te lo tomas.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
-DESCRIPTION:Snack nocturno de caseína
+DESCRIPTION:Licuado de 900 + descanso
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-3-5-0930@sameconomia-prog.github.io
+UID:ritmo-2-20-2315@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260805T093000
-DTEND;TZID=Asia/Novosibirsk:20260805T094500
+DTSTART;TZID=Asia/Novosibirsk:20260804T231500
+DTEND;TZID=Asia/Novosibirsk:20260804T235900
+RRULE:FREQ=WEEKLY;BYDAY=TU
+SUMMARY:Ritual de cierre
+DESCRIPTION:Magnesio 400 mg. Pantallas fuera desde ahora. Ducha tibia COR
+ TA si te gusta dormir bañado — tibia\, no fría: la fría activa el s
+ istema nervioso. Cuarto a 18–20 °C y oscuridad total. A las 00:00 en 
+ la cama: son ocho horas justas hasta las 08:00.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Ritual de cierre
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-3-1-0800@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260805T080000
+DTEND;TZID=Asia/Novosibirsk:20260805T081500
 RRULE:FREQ=WEEKLY;BYDAY=WE
 SUMMARY:Despertar sin teléfono
 DESCRIPTION:Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina
@@ -382,29 +438,33 @@ DESCRIPTION:Despertar sin teléfono
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-3-7-1000@sameconomia-prog.github.io
+UID:ritmo-3-3-0830@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260805T100000
-DTEND;TZID=Asia/Novosibirsk:20260805T103000
+DTSTART;TZID=Asia/Novosibirsk:20260805T083000
+DTEND;TZID=Asia/Novosibirsk:20260805T090000
 RRULE:FREQ=WEEKLY;BYDAY=WE
-SUMMARY:Meditación en el columpio
-DESCRIPTION:Luz matinal + balanceo rítmico. El bloque más valioso del d
- ía para alguien con horario nocturno.
+SUMMARY:Meditación · columpio o en casa
+DESCRIPTION:De abril a octubre\, en el columpio: luz de la mañana y bala
+ nceo rítmico. DE NOVIEMBRE A MARZO\, adentro y sentado: en Novosibirsk 
+ en diciembre no amanece hasta las 9:20\, así que a esta hora no hay luz
+  que buscar y el frío hace el resto. Misma práctica\, misma duración\
+ , junto a la ventana y con toda la luz de la casa encendida. La dosis de
+  luz natural del invierno la das a mediodía\, no ahora.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
-DESCRIPTION:Meditación en el columpio
+DESCRIPTION:Meditación · columpio o en casa
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-3-10-1115@sameconomia-prog.github.io
+UID:ritmo-3-6-0945@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260805T111500
-DTEND;TZID=Asia/Novosibirsk:20260805T120000
+DTSTART;TZID=Asia/Novosibirsk:20260805T094500
+DTEND;TZID=Asia/Novosibirsk:20260805T103000
 RRULE:FREQ=WEEKLY;BYDAY=WE
 SUMMARY:Ruso · Anki + lección
 DESCRIPTION:Aprovecha la digestión del desayuno. Cuando termines llevar
- ás una hora despierto y comido: momento ideal para entrenar.
+ ás dos horas y media despierto y comido: momento ideal para entrenar.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
@@ -412,10 +472,10 @@ DESCRIPTION:Ruso · Anki + lección
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-3-12-1215@sameconomia-prog.github.io
+UID:ritmo-3-8-1045@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260805T121500
-DTEND;TZID=Asia/Novosibirsk:20260805T132000
+DTSTART;TZID=Asia/Novosibirsk:20260805T104500
+DTEND;TZID=Asia/Novosibirsk:20260805T115000
 RRULE:FREQ=WEEKLY;BYDAY=WE
 SUMMARY:Entreno B · Tracción + Cadena posterior
 BEGIN:VALARM
@@ -425,10 +485,29 @@ DESCRIPTION:Entreno B · Tracción + Cadena posterior
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-3-15-1435@sameconomia-prog.github.io
+UID:ritmo-3-10-1220@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260805T143500
-DTEND;TZID=Asia/Novosibirsk:20260805T160500
+DTSTART;TZID=Asia/Novosibirsk:20260805T122000
+DTEND;TZID=Asia/Novosibirsk:20260805T133500
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:Cocina para hoy y MAÑANA · 4 raciones
+DESCRIPTION:El bloque que no existía y siempre existió. Hoy sales de aq
+ uí con 4 raciones: comida y cena de hoy\, comida y cena de mañana. Tru
+ cos que recortan tu hora y media: el agua SIEMPRE arranca en el hervidor
+  eléctrico (чайник)\, no en la parrilla lenta — son 15 minutos 
+ gratis\; las bolsitas de гречка se cuecen solas mientras haces el 
+ pollo por tandas\; y se lava sobre la marcha\, no al final.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Cocina para hoy y MAÑANA · 4 raciones
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-3-12-1415@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260805T141500
+DTEND;TZID=Asia/Novosibirsk:20260805T154500
 RRULE:FREQ=WEEKLY;BYDAY=WE
 SUMMARY:Proyecto doctoral · bloque profundo
 DESCRIPTION:Define el entregable ANTES de empezar. Sin clases que te estr
@@ -440,24 +519,27 @@ DESCRIPTION:Proyecto doctoral · bloque profundo
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-4-2-0130@sameconomia-prog.github.io
+UID:ritmo-3-19-2315@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260806T013000
-DTEND;TZID=Asia/Novosibirsk:20260806T015000
-RRULE:FREQ=WEEKLY;BYDAY=TH
-SUMMARY:Snack nocturno de caseína
-DESCRIPTION:El hábito que no se salta: trabaja mientras duermes.
+DTSTART;TZID=Asia/Novosibirsk:20260805T231500
+DTEND;TZID=Asia/Novosibirsk:20260805T235900
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:Ritual de cierre
+DESCRIPTION:Magnesio 400 mg. Pantallas fuera desde ahora. Ducha tibia COR
+ TA si te gusta dormir bañado — tibia\, no fría: la fría activa el s
+ istema nervioso. Cuarto a 18–20 °C y oscuridad total. A las 00:00 en 
+ la cama: son ocho horas justas hasta las 08:00.
 BEGIN:VALARM
 ACTION:DISPLAY
-TRIGGER:-PT0M
-DESCRIPTION:Snack nocturno de caseína
+TRIGGER:-PT10M
+DESCRIPTION:Ritual de cierre
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-4-5-0930@sameconomia-prog.github.io
+UID:ritmo-4-1-0800@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260806T093000
-DTEND;TZID=Asia/Novosibirsk:20260806T094500
+DTSTART;TZID=Asia/Novosibirsk:20260806T080000
+DTEND;TZID=Asia/Novosibirsk:20260806T081500
 RRULE:FREQ=WEEKLY;BYDAY=TH
 SUMMARY:Despertar sin teléfono
 DESCRIPTION:Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina
@@ -470,27 +552,33 @@ DESCRIPTION:Despertar sin teléfono
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-4-7-1000@sameconomia-prog.github.io
+UID:ritmo-4-3-0830@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260806T100000
-DTEND;TZID=Asia/Novosibirsk:20260806T103000
+DTSTART;TZID=Asia/Novosibirsk:20260806T083000
+DTEND;TZID=Asia/Novosibirsk:20260806T090000
 RRULE:FREQ=WEEKLY;BYDAY=TH
-SUMMARY:Meditación en el columpio
-DESCRIPTION:Luz matinal + balanceo rítmico. El bloque más valioso del d
- ía para alguien con horario nocturno.
+SUMMARY:Meditación · columpio o en casa
+DESCRIPTION:De abril a octubre\, en el columpio: luz de la mañana y bala
+ nceo rítmico. DE NOVIEMBRE A MARZO\, adentro y sentado: en Novosibirsk 
+ en diciembre no amanece hasta las 9:20\, así que a esta hora no hay luz
+  que buscar y el frío hace el resto. Misma práctica\, misma duración\
+ , junto a la ventana y con toda la luz de la casa encendida. La dosis de
+  luz natural del invierno la das a mediodía\, no ahora.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
-DESCRIPTION:Meditación en el columpio
+DESCRIPTION:Meditación · columpio o en casa
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-4-10-1115@sameconomia-prog.github.io
+UID:ritmo-4-6-0945@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260806T111500
-DTEND;TZID=Asia/Novosibirsk:20260806T120000
+DTSTART;TZID=Asia/Novosibirsk:20260806T094500
+DTEND;TZID=Asia/Novosibirsk:20260806T103000
 RRULE:FREQ=WEEKLY;BYDAY=TH
 SUMMARY:Ruso · Anki + lección
+DESCRIPTION:Aprovecha la digestión del desayuno. Cuando termines llevar
+ ás dos horas y media despierto y comido: momento ideal para entrenar.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
@@ -498,15 +586,18 @@ DESCRIPTION:Ruso · Anki + lección
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-4-11-1200@sameconomia-prog.github.io
+UID:ritmo-4-7-1030@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260806T120000
-DTEND;TZID=Asia/Novosibirsk:20260806T124500
+DTSTART;TZID=Asia/Novosibirsk:20260806T103000
+DTEND;TZID=Asia/Novosibirsk:20260806T111500
 RRULE:FREQ=WEEKLY;BYDAY=TH
 SUMMARY:Caminata larga · 45 min sin audífonos
 DESCRIPTION:Esto REEMPLAZA a correr. Recupera sin interferir con la hiper
  trofia. Sin podcasts ni música: deja que la mente divague\, ahí aparec
- en las ideas del proyecto. Lleva una libreta.
+ en las ideas del proyecto. Lleva una libreta. EN INVIERNO ESTA CAMINATA 
+ ES TU DOSIS DE LUZ: a esta hora ya amaneció incluso en diciembre\, y so
+ n los únicos minutos de sol real que vas a ver en todo el día. Abríga
+ te y sal aunque estés a −15 °C\; media hora basta.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
@@ -514,10 +605,10 @@ DESCRIPTION:Caminata larga · 45 min sin audífonos
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-4-14-1350@sameconomia-prog.github.io
+UID:ritmo-4-10-1155@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260806T135000
-DTEND;TZID=Asia/Novosibirsk:20260806T152000
+DTSTART;TZID=Asia/Novosibirsk:20260806T115500
+DTEND;TZID=Asia/Novosibirsk:20260806T132500
 RRULE:FREQ=WEEKLY;BYDAY=TH
 SUMMARY:Proyecto doctoral · bloque profundo
 DESCRIPTION:Sin entreno hoy\, este es tu día de mayor capacidad cognitiv
@@ -529,24 +620,43 @@ DESCRIPTION:Proyecto doctoral · bloque profundo
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-5-2-0130@sameconomia-prog.github.io
+UID:ritmo-4-11-1325@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260807T013000
-DTEND;TZID=Asia/Novosibirsk:20260807T015000
-RRULE:FREQ=WEEKLY;BYDAY=FR
-SUMMARY:Snack nocturno de caseína
-DESCRIPTION:El hábito que no se salta: trabaja mientras duermes.
+DTSTART;TZID=Asia/Novosibirsk:20260806T132500
+DTEND;TZID=Asia/Novosibirsk:20260806T134500
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:Licuado de 900 + descanso
+DESCRIPTION:Los días sin entreno el licuado va aquí\, entre bloques: le
+ jos de la comida y lejos de la cena\, que es donde SÍ te cabe. Sin pant
+ allas mientras te lo tomas.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
-DESCRIPTION:Snack nocturno de caseína
+DESCRIPTION:Licuado de 900 + descanso
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-5-5-0930@sameconomia-prog.github.io
+UID:ritmo-4-20-2315@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260807T093000
-DTEND;TZID=Asia/Novosibirsk:20260807T094500
+DTSTART;TZID=Asia/Novosibirsk:20260806T231500
+DTEND;TZID=Asia/Novosibirsk:20260806T235900
+RRULE:FREQ=WEEKLY;BYDAY=TH
+SUMMARY:Ritual de cierre
+DESCRIPTION:Magnesio 400 mg. Pantallas fuera desde ahora. Ducha tibia COR
+ TA si te gusta dormir bañado — tibia\, no fría: la fría activa el s
+ istema nervioso. Cuarto a 18–20 °C y oscuridad total. A las 00:00 en 
+ la cama: son ocho horas justas hasta las 08:00.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Ritual de cierre
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-5-1-0800@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T080000
+DTEND;TZID=Asia/Novosibirsk:20260807T081500
 RRULE:FREQ=WEEKLY;BYDAY=FR
 SUMMARY:Despertar sin teléfono
 DESCRIPTION:Siéntate en la cama. 600 ml de agua. Creatina 5 g + vitamina
@@ -559,27 +669,33 @@ DESCRIPTION:Despertar sin teléfono
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-5-7-1000@sameconomia-prog.github.io
+UID:ritmo-5-3-0830@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260807T100000
-DTEND;TZID=Asia/Novosibirsk:20260807T103000
+DTSTART;TZID=Asia/Novosibirsk:20260807T083000
+DTEND;TZID=Asia/Novosibirsk:20260807T090000
 RRULE:FREQ=WEEKLY;BYDAY=FR
-SUMMARY:Meditación en el columpio
-DESCRIPTION:Luz matinal + balanceo rítmico. El bloque más valioso del d
- ía para alguien con horario nocturno.
+SUMMARY:Meditación · columpio o en casa
+DESCRIPTION:De abril a octubre\, en el columpio: luz de la mañana y bala
+ nceo rítmico. DE NOVIEMBRE A MARZO\, adentro y sentado: en Novosibirsk 
+ en diciembre no amanece hasta las 9:20\, así que a esta hora no hay luz
+  que buscar y el frío hace el resto. Misma práctica\, misma duración\
+ , junto a la ventana y con toda la luz de la casa encendida. La dosis de
+  luz natural del invierno la das a mediodía\, no ahora.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
-DESCRIPTION:Meditación en el columpio
+DESCRIPTION:Meditación · columpio o en casa
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-5-10-1115@sameconomia-prog.github.io
+UID:ritmo-5-6-0945@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260807T111500
-DTEND;TZID=Asia/Novosibirsk:20260807T120000
+DTSTART;TZID=Asia/Novosibirsk:20260807T094500
+DTEND;TZID=Asia/Novosibirsk:20260807T103000
 RRULE:FREQ=WEEKLY;BYDAY=FR
 SUMMARY:Ruso · Anki + lección
+DESCRIPTION:Aprovecha la digestión del desayuno. Cuando termines llevar
+ ás dos horas y media despierto y comido: momento ideal para entrenar.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
@@ -587,10 +703,39 @@ DESCRIPTION:Ruso · Anki + lección
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-5-15-1435@sameconomia-prog.github.io
+UID:ritmo-5-8-1045@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260807T143500
-DTEND;TZID=Asia/Novosibirsk:20260807T160500
+DTSTART;TZID=Asia/Novosibirsk:20260807T104500
+DTEND;TZID=Asia/Novosibirsk:20260807T115000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Entreno C · Full body volumen
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Entreno C · Full body volumen
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-5-10-1220@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T122000
+DTEND;TZID=Asia/Novosibirsk:20260807T132000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Cocina solo para HOY · 2 raciones
+DESCRIPTION:La cocinada corta de la semana: mañana y el domingo comes en
+  la calle\, así que hoy solo sale comida y cena de hoy. El agua arranca
+  en el hervidor eléctrico\; se lava sobre la marcha.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Cocina solo para HOY · 2 raciones
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-5-12-1400@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T140000
+DTEND;TZID=Asia/Novosibirsk:20260807T153000
 RRULE:FREQ=WEEKLY;BYDAY=FR
 SUMMARY:Proyecto doctoral · bloque profundo
 BEGIN:VALARM
@@ -600,30 +745,18 @@ DESCRIPTION:Proyecto doctoral · bloque profundo
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-5-21-2330@sameconomia-prog.github.io
+UID:ritmo-5-18-2315@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260807T233000
-DTEND;TZID=Asia/Novosibirsk:20260807T235000
-RRULE:FREQ=WEEKLY;BYDAY=FR
-SUMMARY:Snack nocturno de caseína
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT0M
-DESCRIPTION:Snack nocturno de caseína
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:ritmo-5-22-2350@sameconomia-prog.github.io
-DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260807T235000
+DTSTART;TZID=Asia/Novosibirsk:20260807T231500
 DTEND;TZID=Asia/Novosibirsk:20260807T235900
 RRULE:FREQ=WEEKLY;BYDAY=FR
 SUMMARY:Ritual de cierre · DEJA LA MOCHILA LISTA
 DESCRIPTION:Mañana sales 8:50 al camión de las 9:00 y bailas dos horas 
- seguidas. Mochila AHORA: leche proteica\, 2 plátanos\, pan con miel\, b
- otella de 700 ml con agua y una pizca de sal\, ropa de cambio. Es el ún
- ico paso del sábado que se hace la noche anterior\, y sin él desayunas
-  grasa a 45 minutos de bailar.
+ seguidas. Mochila AHORA: la bebida de proteína (o el frasco casero de l
+ eche con avena\, miel y cacahuate)\, 2 plátanos\, pan con miel\, botell
+ a de 700 ml con agua y una pizca de sal\, ropa de cambio. Es el único p
+ aso del sábado que se hace la noche anterior\, y sin él desayunas gras
+ a a 45 minutos de bailar.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
@@ -631,22 +764,24 @@ DESCRIPTION:Ritual de cierre · DEJA LA MOCHILA LISTA
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-2-0830@sameconomia-prog.github.io
+UID:ritmo-6-1-0800@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260808T083000
+DTSTART;TZID=Asia/Novosibirsk:20260808T080000
 DTEND;TZID=Asia/Novosibirsk:20260808T085000
 RRULE:FREQ=WEEKLY;BYDAY=SA
-SUMMARY:Despertar · sales en 30 min
-DESCRIPTION:Agua\, creatina\, vitamina D3. NO intentes desayunar aquí: n
- o te da el tiempo y por eso llevas años saliendo en ayunas.
+SUMMARY:Despertar · sales en 50 min
+DESCRIPTION:Agua\, creatina\, vitamina D3. Con el horario nuevo despierta
+ s media hora antes que antes\, así que hoy SÍ te da tiempo de un plato
+  de avena en casa si te apetece — sin dejar de llevar lo del camión. 
+ Antes salías en ayunas porque no cabía\; ahora cabe.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
-DESCRIPTION:Despertar · sales en 30 min
+DESCRIPTION:Despertar · sales en 50 min
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-3-0850@sameconomia-prog.github.io
+UID:ritmo-6-2-0850@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260808T085000
 DTEND;TZID=Asia/Novosibirsk:20260808T090000
@@ -662,7 +797,7 @@ DESCRIPTION:Salida al camión
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-4-0900@sameconomia-prog.github.io
+UID:ritmo-6-3-0900@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260808T090000
 DTEND;TZID=Asia/Novosibirsk:20260808T100000
@@ -678,7 +813,7 @@ DESCRIPTION:Camión · desayuno + Anki de ruso
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-6-1040@sameconomia-prog.github.io
+UID:ritmo-6-5-1040@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260808T104000
 DTEND;TZID=Asia/Novosibirsk:20260808T110000
@@ -693,7 +828,7 @@ DESCRIPTION:Segundo plátano y calentamiento
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-8-1200@sameconomia-prog.github.io
+UID:ritmo-6-7-1200@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260808T120000
 DTEND;TZID=Asia/Novosibirsk:20260808T130000
@@ -710,7 +845,7 @@ DESCRIPTION:Bachata · segunda hora seguida
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-9-1300@sameconomia-prog.github.io
+UID:ritmo-6-8-1300@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
 DTSTART;TZID=Asia/Novosibirsk:20260808T130000
 DTEND;TZID=Asia/Novosibirsk:20260808T132000
@@ -726,30 +861,33 @@ DESCRIPTION:Al salir · come algo YA
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-16-2315@sameconomia-prog.github.io
+UID:ritmo-6-10-1420@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260808T231500
-DTEND;TZID=Asia/Novosibirsk:20260808T233500
+DTSTART;TZID=Asia/Novosibirsk:20260808T142000
+DTEND;TZID=Asia/Novosibirsk:20260808T145000
 RRULE:FREQ=WEEKLY;BYDAY=SA
-SUMMARY:Snack nocturno de caseína
+SUMMARY:Licuado de 900 + ducha
+DESCRIPTION:En cuanto llegues. Bailaste dos horas y comiste de tienda: es
+ ta es la toma que endereza el sábado\, y entra sin esfuerzo porque se b
+ ebe.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
-DESCRIPTION:Snack nocturno de caseína
+DESCRIPTION:Licuado de 900 + ducha
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:ritmo-6-17-2335@sameconomia-prog.github.io
+UID:ritmo-6-16-2315@sameconomia-prog.github.io
 DTSTAMP:20260807T000000Z
-DTSTART;TZID=Asia/Novosibirsk:20260808T233500
+DTSTART;TZID=Asia/Novosibirsk:20260808T231500
 DTEND;TZID=Asia/Novosibirsk:20260808T235900
 RRULE:FREQ=WEEKLY;BYDAY=SA
 SUMMARY:Ritual de cierre · DEJA LA MOCHILA LISTA
 DESCRIPTION:Mañana es tu día más largo: sales 8:50 y no vuelves hasta 
- las 17:10\, con 3 h 30 de baile en medio. Mochila AHORA: leche proteica\
- , 2 plátanos\, pan con miel\, botella de 700 ml con agua y sal\, ropa d
- e cambio y dinero para la comida del mediodía. Si no la dejas hecha est
- a noche\, mañana sales en ayunas.
+ las 17:10\, con 3 h 30 de baile en medio. Mochila AHORA: la bebida de pr
+ oteína (o el frasco casero)\, 2 plátanos\, pan con miel\, botella de 7
+ 00 ml con agua y sal\, ropa de cambio y dinero para la comida del mediod
+ ía. Si no la dejas hecha esta noche\, mañana sales en ayunas.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT0M
