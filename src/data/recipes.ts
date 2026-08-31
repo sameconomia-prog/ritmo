@@ -245,31 +245,46 @@ export const RECIPES: Record<string, Recipe> = {
   },
 
   // ══════════════ POST-ENTRENO ══════════════
+  // ══════════════ EL LICUADO — LA PIEZA QUE FALTABA ══════════════
+  // Reescrito 2026-08-28. Sam reportó el problema real del plan: come 3 de las
+  // 5 tomas y no termina las porciones porque se llena. Un plan de 3 200 kcal
+  // que solo se cumple al 60 % son 1 900 kcal reales: déficit, no superávit.
+  // La saciedad es SU cuello de botella, no la disciplina.
+  //
+  // La respuesta con más evidencia detrás es exactamente la que él propuso:
+  // CALORÍAS LÍQUIDAS. Los líquidos vacían el estómago más rápido y producen
+  // mucha menos saciedad por caloría que la misma comida sólida (DiMeglio &
+  // Mattes 2000; Mattes 2006). Para quien quiere adelgazar eso es una trampa;
+  // para un ectomorfo que no puede terminar el plato es la herramienta.
+  //
+  // Este batido pasa de 420 a 900 kcal sin ser más difícil de tomar. Se bebe
+  // en cinco minutos y no compite con la comida siguiente.
   p1: {
     id: 'p1',
     slot: 'postEntreno',
-    name: 'Batido de recuperación',
-    time: 3,
-    kcal: 420,
-    protein: 34,
-    carbs: 58,
-    fat: 8,
-    costRub: 110,
+    name: 'Licuado de 900 · el que sí cabe',
+    time: 4,
+    kcal: 900,
+    protein: 55,
+    carbs: 107,
+    fat: 29,
+    costRub: 230,
     ingredients: [
-      { item: 'Leche sin lactosa', qty: '350 ml', ru: 'безлактозное молоко' },
+      { item: 'Leche sin lactosa', qty: '400 ml', ru: 'безлактозное молоко' },
+      { item: 'Tvorog sin lactosa', qty: '150 g', ru: 'безлактозный творог' },
       { item: 'Plátano', qty: '1 grande', ru: 'банан' },
-      { item: 'Avena cruda', qty: '35 g', ru: 'овсяные хлопья' },
-      { item: 'Tvorog sin lactosa', qty: '100 g', ru: 'безлактозный творог' },
+      { item: 'Avena cruda', qty: '50 g', ru: 'овсяные хлопья' },
+      { item: 'Pasta de cacahuate con chocolate', qty: '2 cdas (30 g)', ru: 'паста арахисовая с шоколадом' },
       { item: 'Miel', qty: '1 cda', ru: 'мёд' },
-      { item: 'Cacao', qty: '1 cdta', ru: 'какао' },
     ],
     steps: [
-      'Todo a la licuadora.',
-      '40 segundos a velocidad alta.',
-      'Bébelo en los 45 minutos siguientes al entrenamiento.',
+      'Todo a la licuadora, los líquidos primero: se licúa mejor y no se atasca.',
+      '45 segundos a velocidad alta. La avena cruda se muele sola: no hay que cocerla.',
+      'Bébelo sin prisa, pero sin dejarlo para después: si se asienta 20 minutos, espesa y cuesta el doble.',
+      'SI TODAVÍA NO LLEGA LA LICUADORA: bátelo a mano en un frasco con tapa, sustituyendo la avena por 1 tetrapak de Neo o YoMilk. Queda con grumos de tvorog pero las calorías son las mismas.',
     ],
-    tip: 'Si compras proteína whey, sustituye el tvorog por 1 scoop y baja la leche a 300 ml. Sale más rápido y más barato por gramo de proteína.',
-    why: 'La "ventana anabólica" de 30 min es un mito (Aragon & Schoenfeld 2013): en realidad dura horas. Pero este batido cumple otra función real: te asegura una de tus 4 dosis de proteína del día en 3 minutos.',
+    tip: 'NO LE PONGAS HUEVO CRUDO, aunque el licuado de hace años lo llevara. Del huevo crudo solo absorbes ~51 % de la proteína contra ~91 % del cocido (Evenepoel et al. 1998): de 5 huevos crudos aprovechabas la mitad. Además la clara cruda tiene avidina, que bloquea la absorción de biotina si lo tomas a diario, y está el riesgo de salmonela. Los 150 g de tvorog dan la misma proteína, entera y sin riesgo. La otra advertencia es la pasta de cacahuate: lleva maltitol e inulina, y en cantidad grande los dos hinchan y dan gases — que es justo lo contrario de lo que buscas. Máximo 2-3 cucharadas al día.',
+    why: 'Tu licuado de hace años SÍ funcionó, pero no por los huevos: funcionó porque era líquido. Beber 900 kcal no te llena como comerlas — el estómago se vacía más rápido y la señal de saciedad es mucho menor (DiMeglio & Mattes 2000). Esta es la única toma del día que puedes meter cuando ya te sientes lleno, y por eso vale más que cualquier comida que dejes a la mitad.',
   },
 
   // ══════════════ CENA ══════════════
@@ -443,7 +458,7 @@ export const RECIPES: Record<string, Recipe> = {
       'FUERA del fuego, añade la crema agria. Si la hierves se corta.',
       'Una ración al plato: esa es la comida. El resto a tuppers y al refri: cada recalentada son 3 minutos de microondas. Lava la sartén AHORA, mientras está caliente — después cuesta el doble.',
     ],
-    tip: 'Las tandas de pollo no son manía: medio kilo de golpe suelta agua, la temperatura de la sartén cae y el pollo se cuece al vapor en vez de dorarse. Son minutos extra y es la diferencia entre comer bien cuatro veces o comer correoso cuatro veces.',
+    tip: 'Las tandas de pollo no son manía: medio kilo de golpe suelta agua, la temperatura de la sartén cae y el pollo se cuece al vapor en vez de dorarse. Son minutos extra y es la diferencia entre comer bien cuatro veces o comer correoso cuatro veces. TRUCO DE DENSIDAD (2026-08-28): si el plato te llena antes de terminarlo, no comas más volumen — hazlo más denso. Un chorro de aceite de oliva al servir son 120 kcal que no ocupan espacio, y una cucharada de mantequilla en la гречка, otras 100. Y no bebas agua durante la comida: llena el estómago con cero calorías. Bébela entre comidas.',
     why: 'El plato central de la despensa actual, cocinado para DOS días: en la parrilla eléctrica lenta de la residencia se cocina tres veces por semana, no cinco. El pollo cocido aguanta 2-3 días refrigerado sin problema. La гречка en bolsita elimina el único paso donde un principiante falla: la proporción de agua.',
   },
   p2b: {
@@ -633,10 +648,13 @@ export const RECIPES: Record<string, Recipe> = {
  * cero cocción (n3 es bowl de lata). La lista ideal sigue intacta esperando.
  */
 export const MENU_SEMANAL: Record<number, Partial<Record<MealSlot, string>>> = {
+  // El licuado (p1) está ahora TODOS los días, entrene o no: es la toma que
+  // Sam sí logra cuando ya se siente lleno, y sin ella el plan se queda en
+  // 3 comidas sólidas de las que además deja parte en el plato.
   1: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' }, // cocina 4 raciones
-  2: { desayuno: 'd2', comida: 'p1b', cena: 'p1b', nocturno: 's1' },                    // tupper de ayer
+  2: { desayuno: 'd2', comida: 'p1b', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' }, // tupper de ayer
   3: { desayuno: 'd1', comida: 'p2b', postEntreno: 'p1', cena: 'p2b', nocturno: 's2' }, // cocina 4 raciones
-  4: { desayuno: 'd2', comida: 'p2b', cena: 'p2b', nocturno: 's1' },                    // tupper de ayer
+  4: { desayuno: 'd2', comida: 'p2b', postEntreno: 'p1', cena: 'p2b', nocturno: 's1' }, // tupper de ayer
   5: { desayuno: 'd1', comida: 'p1b', postEntreno: 'p1', cena: 'p1b', nocturno: 's1' }, // cocina 2 raciones
   // Fin de semana: no cocina de día. Desayuna en el camión y come en la calle.
   6: { preBaile: 'b2', comida: 'k1', cena: 'p2b', nocturno: 's1' },
@@ -686,7 +704,7 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
       { item: 'Smetana sin lactosa 15 %', ru: 'безлактозная сметана', qty: '400 g', rub: 190 },
       { item: 'Queso curado (lactosa casi nula)', ru: 'сыр Российский', qty: '250 g', rub: 290 },
       { item: 'Leche proteica Neo High Protein', ru: 'Neo High Protein шоколад', qty: '2 tetrapaks (sáb y dom)', rub: 300,
-        nota: 'La del desayuno de camión. Confirmada el 2026-08-22: tetrapak azul oscuro con franja dorada, dice «30 г белка в порции» y «без добавления сахара». Búscala con la leche UHT y los batidos, no en refrigerados. Se compra el viernes: la mochila se arma esa noche. Si un finde no la hay, cualquier молочный коктейль con ≥25 г белка hace el mismo papel.' },
+        nota: 'La del desayuno de camión. Confirmada el 2026-08-22: tetrapak azul oscuro con franja dorada, dice «30 г белка в порции» y «без добавления сахара». Búscala con la leche UHT y los batidos, no en refrigerados. Se compra el viernes: la mochila se arma esa noche. El YoMilk Protein morado (2026-08-28) sirve de relevo pero es el plan B: 20 g de proteína contra 30, y solo 130 kcal por envase — es proteína casi pura, así que cubre la proteína pero no las calorías que te faltan. Entre los dos, la Neo.' },
     ],
   },
   // LO QUE NO ENTRÓ — каша infantil Nestlé (el «Nestum» de México), 2026-08-23.
@@ -708,6 +726,10 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
       { item: 'Papas', ru: 'картофель', qty: '3 kg', rub: 150 },
       { item: 'Pan de centeno', ru: 'хлеб ржаной', qty: '2 barras', rub: 120 },
       { item: 'Penne', ru: 'макароны пенне', qty: '500 g', rub: 90 },
+      { item: 'Granola Bionova de chocolate', ru: 'гранола Bionova шоколадная', qty: '1 paquete', rub: 350,
+        nota: 'Densa en calorías (450 por 100 g) pero con 8 g de fibra por 100 g, y la fibra es lo que MÁS llena. Úsala de topping —2 cdas sobre el tvorog o el licuado—, nunca como plato principal en tazón: un tazón grande te quita el hambre de la comida siguiente, que es justo lo que no te conviene.' },
+      { item: 'Barras Nut&Go de cacahuate y plátano', ru: 'батончик Nut&Go арахис-банан', qty: '6 barras', rub: 400,
+        nota: 'Confirmadas el 2026-08-28: 510 kcal y 23 g de proteína por 100 g. Son la toma portátil que no requiere cocina ni refrigerador: una en la mochila del baile, otra en el escritorio para la pausa de las 23:00. No sustituyen una comida — la rescatan cuando ya sabes que no vas a comer.' },
     ],
   },
   {
@@ -735,6 +757,8 @@ export const COMPRA_SEMANAL: { seccion: string; items: ItemCompra[] }[] = [
       { item: 'Aceite de oliva', ru: 'оливковое масло', qty: '500 ml', rub: 600 },
       { item: 'Aceite de girasol', ru: 'подсолнечное масло', qty: '1 L', rub: 130 },
       { item: 'Mantequilla de cacahuate', ru: 'арахисовая паста', qty: '350 g', rub: 350 },
+      { item: 'Pasta de cacahuate CON CHOCOLATE', ru: 'паста арахисовая с шоколадом', qty: '1 frasco', rub: 450,
+        nota: 'La del licuado, confirmada el 2026-08-28: 610 kcal y 23 g de proteína por 100 g — el producto más denso en calorías de toda tu despensa, y por eso el más útil para ti. OJO: lleva maltitol e inulina, que en cantidad grande hinchan y dan gases. Máximo 2-3 cucharadas al día y no de golpe.' },
       { item: 'Nueces de castilla', ru: 'грецкий орех', qty: '300 g', rub: 370 },
       { item: 'Miel', ru: 'мёд', qty: '500 g', rub: 350 },
       { item: 'Cacao en polvo', ru: 'какао-порошок', qty: '200 g', rub: 150 },

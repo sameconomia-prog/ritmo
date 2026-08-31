@@ -136,8 +136,8 @@ export default function Comida() {
                 <>
                   Objetivo ajustado a tu peso real:{' '}
                   <strong className="text-[var(--color-ink)]">{objetivo} kcal</strong>. Hoy el menú trae{' '}
-                  {total.kcal - objetivo} de más: recorta primero el batido, o baja 20 g de avena y 20 g de
-                  arroz.
+                  {total.kcal - objetivo} de más: baja 20 g de avena y 20 g de arroz. El licuado NO se
+                  recorta — es la toma que sí te cabe.
                 </>
               ) : (
                 <>
@@ -147,6 +147,27 @@ export default function Comida() {
                 </>
               )}
             </p>
+            {/*
+              Añadido 2026-08-28. Sam reportó que come 3 de las 5 tomas y deja
+              parte del plato: el número de arriba es un techo, no una promesa,
+              y sin este orden la app solo le enseñaba cuánto le faltaba.
+            */}
+            <div className="mt-3 rounded-xl bg-[var(--color-surface-2)] p-3">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-accent)]">
+                Si hoy no te cabe todo
+              </p>
+              <p className="mt-1 text-[12px] leading-relaxed text-[var(--color-ink-dim)]">
+                Ese número de arriba es el techo del día, no el mínimo para que cuente. Cuando te llenes antes
+                de terminar, come en este orden y deja caer lo último:{' '}
+                <strong className="text-[var(--color-ink)]">1) el licuado</strong> — líquido, siempre cabe;{' '}
+                <strong className="text-[var(--color-ink)]">2) la comida</strong>;{' '}
+                <strong className="text-[var(--color-ink)]">3) la cena</strong>;{' '}
+                <strong className="text-[var(--color-ink)]">4) el desayuno</strong>;{' '}
+                <strong className="text-[var(--color-ink)]">5) el snack nocturno</strong>. Y si el plato te
+                gana: no comas más volumen, hazlo más denso — un chorro de aceite de oliva son 120 kcal que no
+                ocupan espacio. Nada de agua durante la comida: llena sin alimentar.
+              </p>
+            </div>
             <div className="mt-3 grid grid-cols-3 gap-2 text-center">
               {[
                 ['Proteína', `${total.p} g`],
