@@ -1,0 +1,274 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Arturo Aguilar//Carril Mexico 2029//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Carril México 2029
+X-WR-CALDESC:Hitos, compuertas y revisiones del plan de carrera 2026-202
+ 9
+BEGIN:VEVENT
+UID:carril-2029-001@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20260911
+DTEND;VALUE=DATE:20260912
+SUMMARY:Inscribirse al ТРКИ-1 (НГТУ)
+DESCRIPTION:Centro de pruebas de la НГТУ\, пр. К. Маркса 20
+ \, корпус 1\, каб. 502-503. 6 000 ₽. rustest@corp.nstu.ru ·
+  +7 (383) 319-61-04.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-002@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20260918
+DTEND;VALUE=DATE:20260919
+SUMMARY:Reunión con Bekareva
+DESCRIPTION:Plaza en el laboratorio · coautoría del artículo · regla
+ s del consejo para publicaciones · exámenes de candidatura · prácti
+ ca pedagógica. Llevar la hoja de una página.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-003@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20260920
+DTEND;VALUE=DATE:20260921
+SUMMARY:Correo a Humanitas: autorización de datos
+DESCRIPTION:Pedir autorización escrita para publicar resultados anonimi
+ zados. Sin ella\, el artículo A se sustituye por C (IPEDS).
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-004@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20261010
+DTEND;VALUE=DATE:20261012
+SUMMARY:Sitio propio · fin de semana
+DESCRIPTION:Español e inglés\, nombre en cirílico\, CV\, líneas\, pu
+ blicaciones\, notas. Se termina el domingo y no se vuelve a tocar salvo
+  para publicar.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-005@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:Compuerta: autorización Humanitas
+DESCRIPTION:¿A con datos Humanitas o C con IPEDS? Decidir hoy.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-006@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Borrador completo del artículo · spec v2 tesis
+DESCRIPTION:Borrador de A (o C). Especificación v2 de la tesis y docume
+ nto maestro al pivote IPEDS. IPEDS descargado\, tabla de cierres.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-007@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:Cinco correos a investigadores mexicanos
+DESCRIPTION:IISUE-UNAM\, CIDE\, DIE-Cinvestav\, UAM-X\, ANUIES/RESU. Ofr
+ ecer datos o coautoría\, no pedir favores.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-008@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:Artículo sometido
+DESCRIPTION:Fecha del correo de sometimiento. «En dictamen» ya cuenta 
+ para SECIHTI.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-009@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Preprint + dataset con DOI · carta de motivos v1
+DESCRIPTION:MPRA (RePEc) y Zenodo. Carta SECIHTI con un párrafo por cri
+ terio.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-010@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:COMPUERTA 0
+DESCRIPTION:Siete criterios\; aprobado 4/7 con artículo sometido obliga
+ torio. Ver TABLERO.md.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-011@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270115
+DTEND;VALUE=DATE:20270116
+SUMMARY:Verificar convocatorias COMIE XIX y AMECIDER 32°
+DESCRIPTION:Elegir una. comie.org.mx · amecider.org.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-012@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Examen ТРКИ-1 (ventana ene-feb)
+DESCRIPTION:Convierte 804 h en credencial.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-013@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270228
+DTEND;VALUE=DATE:20270301
+SUMMARY:Reseña sometida a RESU
+DESCRIPTION:≤ 4 500 palabras\, arbitrada\, dictamen ≤ 4 meses.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-014@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270315
+DTEND;VALUE=DATE:20270316
+SUMMARY:Carta de interés de una institución mexicana
+DESCRIPTION:Para el plan de reincorporación de SECIHTI. Pedida en los c
+ orreos de noviembre.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-015@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270323
+DTEND;VALUE=DATE:20270324
+SUMMARY:Apertura esperada · SECIHTI Becas al Extranjero 2027
+DESCRIPTION:Referencia: convocatoria 2026 abrió el 23-mar. Verificar.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-016@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270415
+DTEND;VALUE=DATE:20270416
+SUMMARY:Artículo B sometido · resumen de ponencia
+DESCRIPTION:RIES sección Contornos (o RESU).
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-017@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270501
+SUMMARY:Solicitud SECIHTI Tipo 2 enviada
+DESCRIPTION:Tres semanas antes del cierre. Tipo 2 no se puede cambiar de
+ spués.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-018@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270522
+DTEND;VALUE=DATE:20270523
+SUMMARY:Cierre esperado · SECIHTI 2027
+DESCRIPTION:Referencia: convocatoria 2026 cerró el 22-may.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-019@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270531
+DTEND;VALUE=DATE:20270601
+SUMMARY:Seminario en el laboratorio · capítulos 1-2 entregados
+DESCRIPTION:Primera ponencia del expediente.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-020@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270630
+DTEND;VALUE=DATE:20270701
+SUMMARY:Policy brief 1 publicado y enviado
+DESCRIPTION:ANUIES\, SEP\, UNESCO-IESALC. Ponencia en extenso lista en j
+ ulio.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-021@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270803
+DTEND;VALUE=DATE:20270804
+SUMMARY:Resultados esperados · SECIHTI
+DESCRIPTION:Referencia: 2026 publicó el 3-ago.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-022@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20270831
+DTEND;VALUE=DATE:20270901
+SUMMARY:COMPUERTA 1
+DESCRIPTION:Seis criterios\; aprobado 5/6 con capítulos 1-2 aprobados o
+ bligatorio.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-023@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20271115
+DTEND;VALUE=DATE:20271116
+SUMMARY:Ponencia COMIE XIX / AMECIDER (fecha por confirmar)
+DESCRIPTION:Virtual si el viaje no se financia. Tres contactos con segui
+ miento en 72 h.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-024@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20271231
+DTEND;VALUE=DATE:20280101
+SUMMARY:Artículo C sometido · capítulos 3-4
+DESCRIPTION:Inglés\, IPEDS. Revisiones de A y B respondidas en ≤ 30 d
+ ías.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-025@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20280630
+DTEND;VALUE=DATE:20280701
+SUMMARY:COMPUERTA 2 · artículo D · brief 2 · borrador de tesis
+DESCRIPTION:Seis criterios\; aprobado 5/6 con borrador completo obligato
+ rio.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-026@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20281215
+DTEND;VALUE=DATE:20281216
+SUMMARY:Predefensa · solicitud de posdoc por México
+DESCRIPTION:Institución receptora IISUE o CIDE. Tres conversaciones con
+  organismos.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-027@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20290630
+DTEND;VALUE=DATE:20290701
+SUMMARY:Defensa
+DESCRIPTION:Кандидат экономических наук.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-028@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20290731
+DTEND;VALUE=DATE:20290801
+SUMMARY:COMPUERTA 3 · aterrizaje en México
+DESCRIPTION:Grado o defensa fijada · ≥ 2 ofertas o contratos · exped
+ iente SNII listo.
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-revision-semanal@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20260906
+DTEND;VALUE=DATE:20260907
+SUMMARY:Revisión semanal · 20:40 · 40 min
+DESCRIPTION:Tres preguntas: ¿avanzó la tesis? ¿se cumplió la cuota d
+ e exposición? ¿qué construí que no debía? Rellenar TABLERO.md.
+RRULE:FREQ=WEEKLY;BYDAY=SU;UNTIL=20290729
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-2029-revision-bimestral@nuevapuerta.arturoaguilar
+DTSTAMP:20260903T090000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Revisión bimestral del Carril México 2029
+DESCRIPTION:Protocolo: .claude/skills/revision-carril/SKILL.md. Compuert
+ a\, patrón\, convocatorias\, tres decisiones.
+RRULE:FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=1;UNTIL=20290701
+END:VEVENT
+END:VCALENDAR
