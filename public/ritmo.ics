@@ -166,9 +166,12 @@ DTSTART;TZID=Asia/Novosibirsk:20260809T204000
 DTEND;TZID=Asia/Novosibirsk:20260809T212000
 RRULE:FREQ=WEEKLY;BYDAY=SU
 SUMMARY:Revisión semanal
-DESCRIPTION:Peso promedio de la semana\, fotos si toca\, adherencia. Plan
- ea la semana que entra. Aquí se ajusta el plan con datos\, no con sensa
- ciones.
+DESCRIPTION:Peso promedio de la semana\, fotos si toca\, adherencia. Y de
+ sde el 2026-09-03\, las tres preguntas del plan de carrera: ¿avanzó la
+  tesis (palabras)? ¿hubo tres actos de exposición? ¿qué construí qu
+ e no debía? Las respuestas van a ~/Documents/Nueva Puerta/TABLERO.md. P
+ lanea la semana que entra. Aquí se ajusta el plan con datos\, no con se
+ nsaciones.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
@@ -279,8 +282,9 @@ DTSTART;TZID=Asia/Novosibirsk:20260803T141500
 DTEND;TZID=Asia/Novosibirsk:20260803T154500
 RRULE:FREQ=WEEKLY;BYDAY=MO
 SUMMARY:Proyecto doctoral · bloque profundo
-DESCRIPTION:Define el entregable ANTES de empezar. Sin clases que te estr
- ucturen\, este bloque es lo único que hace avanzar la tesis.
+DESCRIPTION:Primero 300 palabras nuevas de la tesis\; lo demás\, despué
+ s. Define el entregable ANTES de empezar. Sin clases que te estructuren\
+ , este bloque es lo único que hace avanzar la tesis.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
@@ -380,8 +384,9 @@ DTSTART;TZID=Asia/Novosibirsk:20260804T115500
 DTEND;TZID=Asia/Novosibirsk:20260804T132500
 RRULE:FREQ=WEEKLY;BYDAY=TU
 SUMMARY:Proyecto doctoral · bloque profundo
-DESCRIPTION:Sin entreno hoy\, este es tu día de mayor capacidad cognitiv
- a. Úsalo en lo más difícil de la tesis.
+DESCRIPTION:Primero 300 palabras nuevas de la tesis\; lo demás\, despué
+ s. Sin entreno hoy\, este es tu día de mayor capacidad cognitiva. Úsal
+ o en lo más difícil de la tesis.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
@@ -510,8 +515,9 @@ DTSTART;TZID=Asia/Novosibirsk:20260805T141500
 DTEND;TZID=Asia/Novosibirsk:20260805T154500
 RRULE:FREQ=WEEKLY;BYDAY=WE
 SUMMARY:Proyecto doctoral · bloque profundo
-DESCRIPTION:Define el entregable ANTES de empezar. Sin clases que te estr
- ucturen\, este bloque es lo único que hace avanzar la tesis.
+DESCRIPTION:Primero 300 palabras nuevas de la tesis\; lo demás\, despué
+ s. Define el entregable ANTES de empezar. Sin clases que te estructuren\
+ , este bloque es lo único que hace avanzar la tesis.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
@@ -611,8 +617,9 @@ DTSTART;TZID=Asia/Novosibirsk:20260806T115500
 DTEND;TZID=Asia/Novosibirsk:20260806T132500
 RRULE:FREQ=WEEKLY;BYDAY=TH
 SUMMARY:Proyecto doctoral · bloque profundo
-DESCRIPTION:Sin entreno hoy\, este es tu día de mayor capacidad cognitiv
- a. Úsalo en lo más difícil de la tesis.
+DESCRIPTION:Primero 300 palabras nuevas de la tesis\; lo demás\, despué
+ s. Sin entreno hoy\, este es tu día de mayor capacidad cognitiva. Úsal
+ o en lo más difícil de la tesis.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
@@ -738,10 +745,30 @@ DTSTART;TZID=Asia/Novosibirsk:20260807T140000
 DTEND;TZID=Asia/Novosibirsk:20260807T153000
 RRULE:FREQ=WEEKLY;BYDAY=FR
 SUMMARY:Proyecto doctoral · bloque profundo
+DESCRIPTION:Primero 300 palabras nuevas de la tesis\; lo demás\, despué
+ s. Define el entregable ANTES de empezar.
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT5M
 DESCRIPTION:Proyecto doctoral · bloque profundo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ritmo-5-14-1550@sameconomia-prog.github.io
+DTSTAMP:20260807T000000Z
+DTSTART;TZID=Asia/Novosibirsk:20260807T155000
+DTEND;TZID=Asia/Novosibirsk:20260807T180000
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:Producción y red · cuota de exposición
+DESCRIPTION:AÑADIDO 2026-09-03. El único bloque de la semana que no se 
+ puede sustituir por construir algo: un correo a un investigador o a un f
+ uncionario\, un texto sometido\, una nota publicada\, una reunión pedid
+ a. Tres actos por semana\, contados el domingo. Si no hay nada que envia
+ r\, se avanza el artículo\, no una app.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT5M
+DESCRIPTION:Producción y red · cuota de exposición
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT

@@ -28,6 +28,18 @@
  * ya cae con el sol arriba incluso en diciembre. El columpio era el envase,
  * no el contenido.
  *
+ * ENTRA EL PLAN DE CARRERA (2026-09-03)
+ * -------------------------------------
+ * Sam fijó su plan hasta 2029 (Carril México 2029, en Obsidian) y pidió una
+ * app nueva para seguir sus rutinas. No hace falta: esta app ya lleva el día
+ * con casillas y alarmas. Lo que cambia son datos, no código: los bloques
+ * profundos de doctorado arrancan con 300 palabras nuevas (30 días son un
+ * capítulo), el viernes por la tarde y el sábado después de bailar pasan a
+ * «Producción y red» —el único bloque de la semana donde se escriben correos
+ * a desconocidos, se someten textos y se publica— y la revisión del domingo
+ * suma tres preguntas (¿avanzó la tesis? ¿tres actos de exposición? ¿qué
+ * construí que no debía?) que se vuelcan en ~/Documents/Nueva Puerta/TABLERO.md.
+ *
  * DECISIONES DE DISEÑO
  * --------------------
  * 1) ENTRENAMIENTO POR LA MAÑANA.
@@ -62,7 +74,7 @@ import { MENU_SEMANAL, RECIPES } from './recipes'
 export type BlockKind =
   | 'sueño' | 'despertar' | 'comida' | 'entreno' | 'movilidad' | 'caminata'
   | 'universidad' | 'trabajo' | 'ruso' | 'doctorado' | 'baile'
-  | 'meditacion' | 'libre' | 'prep' | 'cierre' | 'metricas'
+  | 'meditacion' | 'libre' | 'prep' | 'cierre' | 'metricas' | 'red'
 
 export interface Block {
   /** "HH:MM" hora local de Novosibirsk (UTC+7). */
@@ -103,6 +115,7 @@ export const KIND_META: Record<BlockKind, { label: string; icon: string; color: 
   prep:         { label: 'Preparación',  icon: '🧺', color: 'stone' },
   cierre:       { label: 'Cierre',       icon: '🕯️', color: 'purple' },
   metricas:     { label: 'Métricas',     icon: '📊', color: 'blue' },
+  red:          { label: 'Producción y red', icon: '✉️', color: 'amber' },
 }
 
 /** Suma minutos a una hora "HH:MM". Mantiene los días cuadrados al cambiar de fase. */
@@ -211,7 +224,7 @@ const diaEntreno = (
           detail: 'El bloque que no existía y siempre existió. Hoy sales de aquí con 4 raciones: comida y cena de hoy, comida y cena de mañana. Trucos que recortan tu hora y media: el agua SIEMPRE arranca en el hervidor eléctrico (чайник), no en la parrilla lenta — son 15 minutos gratis; las bolsitas de гречка se cuecen solas mientras haces el pollo por tandas; y se lava sobre la marcha, no al final.' },
         { start: sumar(fin, 105), end: sumar(fin, 145), kind: 'comida' as const, title: 'Comida · recién hecha', ref: { type: 'receta' as const, slot: 'comida' } },
         { start: sumar(fin, 145), end: sumar(fin, 235), kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
-          detail: 'Define el entregable ANTES de empezar. Sin clases que te estructuren, este bloque es lo único que hace avanzar la tesis.',
+          detail: 'Primero 300 palabras nuevas de la tesis; lo demás, después. Define el entregable ANTES de empezar. Sin clases que te estructuren, este bloque es lo único que hace avanzar la tesis.',
           ref: { type: 'protocolo' as const, id: 'ultradiano' } },
         { start: sumar(fin, 235), end: sumar(fin, 255), kind: 'libre' as const, title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
         { start: sumar(fin, 255), end: sumar(fin, 345), kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2',
@@ -224,7 +237,7 @@ const diaEntreno = (
           detail: 'Ayer cocinaste esto en doble tanda. Hoy: 3 minutos de microondas y a comer. Por esto existe el bloque de cocina de ayer.',
           ref: { type: 'receta' as const, slot: 'comida' } },
         { start: sumar(fin, 50), end: sumar(fin, 140), kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
-          detail: 'Define el entregable ANTES de empezar. Hoy no se cocina: día de dos bloques completos de tesis.',
+          detail: 'Primero 300 palabras nuevas de la tesis; lo demás, después. Define el entregable ANTES de empezar. Hoy no se cocina: día de dos bloques completos de tesis.',
           ref: { type: 'protocolo' as const, id: 'ultradiano' } },
         { start: sumar(fin, 140), end: sumar(fin, 160), kind: 'libre' as const, title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
         { start: sumar(fin, 160), end: sumar(fin, 220), kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo' as const, id: 'pomodoro' } },
@@ -254,7 +267,7 @@ const diaRecuperacion = (
           detail: 'Ayer cocinaste doble. Hoy: 3 minutos de microondas. El tiempo que no cocinas se lo queda la tesis.',
           ref: { type: 'receta' as const, slot: 'comida' } },
         { start: '11:55', end: '13:25', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
-          detail: 'Sin entreno hoy, este es tu día de mayor capacidad cognitiva. Úsalo en lo más difícil de la tesis.',
+          detail: 'Primero 300 palabras nuevas de la tesis; lo demás, después. Sin entreno hoy, este es tu día de mayor capacidad cognitiva. Úsalo en lo más difícil de la tesis.',
           ref: { type: 'protocolo' as const, id: 'ultradiano' } },
         { start: '13:25', end: '13:45', kind: 'comida' as const, title: 'Licuado de 900 + descanso', avisar: 0,
           detail: 'Los días sin entreno el licuado va aquí, entre bloques: lejos de la comida y lejos de la cena, que es donde SÍ te cabe. Sin pantallas mientras te lo tomas.',
@@ -262,7 +275,7 @@ const diaRecuperacion = (
         { start: '13:45', end: '15:15', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 2', ref: { type: 'protocolo' as const, id: 'ultradiano' } },
         { start: '15:15', end: '15:35', kind: 'libre' as const, title: 'Descanso real', detail: 'Sin pantallas. Caminar, mirar por la ventana, estirarte.' },
         { start: '15:35', end: '17:05', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque 3', flexible: true,
-          detail: 'El tercero es OPCIONAL y flexible: existe porque hoy no entrenas ni cocinas. Si a esta hora ya no rinde, cámbialo por ruso o déjalo ir — tres bloques profundos es un día excelente, no un mínimo.',
+          detail: 'El tercero es OPCIONAL y flexible: existe porque hoy no entrenas ni cocinas. Si a esta hora ya no rinde, cámbialo por ruso, por producción y red (correos, artículo), o déjalo ir — tres bloques profundos es un día excelente, no un mínimo.',
           ref: { type: 'protocolo' as const, id: 'pomodoro' } },
         { start: '17:05', end: '17:25', kind: 'meditacion' as const, title: 'Práctica de recuperación', ref: { type: 'meditacion' as const, id: medId } },
         { start: '17:25', end: '19:00', kind: 'libre' as const, title: 'Recados / compras / personal', flexible: true },
@@ -272,6 +285,7 @@ const diaRecuperacion = (
           detail: 'Día sin entreno pero con cocina: 4 raciones que resuelven hoy y mañana. El agua arranca en el hervidor eléctrico, no en la parrilla; se lava sobre la marcha.' },
         { start: '12:50', end: '13:30', kind: 'comida' as const, title: 'Comida · recién hecha', ref: { type: 'receta' as const, slot: 'comida' } },
         { start: '13:30', end: '15:00', kind: 'doctorado' as const, title: 'Proyecto doctoral · bloque profundo', avisar: 5,
+          detail: 'Primero 300 palabras nuevas de la tesis; lo demás, después. Define el entregable ANTES de empezar.',
           ref: { type: 'protocolo' as const, id: 'ultradiano' } },
         { start: '15:00', end: '15:20', kind: 'comida' as const, title: 'Licuado de 900 + descanso', avisar: 0,
           detail: 'A media tarde, lejos de la comida y de la cena: es donde SÍ te cabe.',
@@ -296,10 +310,13 @@ const VIERNES: Block[] = [
   { start: '12:20', end: '13:20', kind: 'prep', title: 'Cocina solo para HOY · 2 raciones', avisar: 5,
     detail: 'La cocinada corta de la semana: mañana y el domingo comes en la calle, así que hoy solo sale comida y cena de hoy. El agua arranca en el hervidor eléctrico; se lava sobre la marcha.' },
   { start: '13:20', end: '14:00', kind: 'comida', title: 'Comida · recién hecha', ref: { type: 'receta', slot: 'comida' } },
-  { start: '14:00', end: '15:30', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5, ref: { type: 'protocolo', id: 'ultradiano' } },
+  { start: '14:00', end: '15:30', kind: 'doctorado', title: 'Proyecto doctoral · bloque profundo', avisar: 5,
+    detail: 'Primero 300 palabras nuevas de la tesis; lo demás, después. Define el entregable ANTES de empezar.',
+    ref: { type: 'protocolo', id: 'ultradiano' } },
   { start: '15:30', end: '15:50', kind: 'libre', title: 'Descanso real' },
-  { start: '15:50', end: '17:20', kind: 'doctorado', title: 'Proyecto doctoral · bloque 2', flexible: true, ref: { type: 'protocolo', id: 'pomodoro' } },
-  { start: '17:20', end: '19:15', kind: 'libre', title: 'Tiempo libre', flexible: true },
+  { start: '15:50', end: '18:00', kind: 'red', title: 'Producción y red · cuota de exposición', avisar: 5,
+    detail: 'AÑADIDO 2026-09-03. El único bloque de la semana que no se puede sustituir por construir algo: un correo a un investigador o a un funcionario, un texto sometido, una nota publicada, una reunión pedida. Tres actos por semana, contados el domingo. Si no hay nada que enviar, se avanza el artículo, no una app.' },
+  { start: '18:00', end: '19:15', kind: 'libre', title: 'Tiempo libre', flexible: true },
   { start: '19:15', end: '20:00', kind: 'comida', title: 'Cena · recalentar la segunda ración', ref: { type: 'receta', slot: 'cena' } },
   { start: '20:00', end: '23:15', kind: 'libre', title: 'Noche de viernes',
     detail: 'La noche en que sí puedes estirarte sin costo: mañana no entrenas y el camión sale a las 9:00, no antes. Social, cine, lo que quieras. Recuperar la vida también es parte del plan.' },
@@ -344,7 +361,8 @@ const SABADO: Block[] = [
     detail: 'En cuanto llegues. Bailaste dos horas y comiste de tienda: esta es la toma que endereza el sábado, y entra sin esfuerzo porque se bebe.',
     ref: { type: 'receta', slot: 'postEntreno' } },
   { start: '14:50', end: '15:15', kind: 'libre', title: 'Descanso', flexible: true },
-  { start: '15:15', end: '16:45', kind: 'doctorado', title: 'Proyecto doctoral · bloque ligero', flexible: true, ref: { type: 'protocolo', id: 'pomodoro' } },
+  { start: '15:15', end: '16:45', kind: 'red', title: 'Producción y red · segunda sesión', flexible: true,
+    detail: 'AÑADIDO 2026-09-03. Cierra lo que quedó del viernes: responder correos, pulir el artículo, publicar la nota quincenal. Flexible: si el sábado se va en la calle no pasa nada; lo que no puede fallar es el viernes.' },
   { start: '16:45', end: '18:30', kind: 'libre', title: 'Tiempo personal / social', flexible: true },
   { start: '18:30', end: '19:30', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
   { start: '19:30', end: '23:15', kind: 'libre', title: 'Noche libre', flexible: true },
@@ -388,7 +406,7 @@ const DOMINGO: Block[] = [
   { start: '19:10', end: '20:00', kind: 'comida', title: 'Cena', ref: { type: 'receta', slot: 'cena' } },
   { start: '20:00', end: '20:40', kind: 'ruso', title: 'Ruso · auto-test semanal', ref: { type: 'ruso' } },
   { start: '20:40', end: '21:20', kind: 'metricas', title: 'Revisión semanal', avisar: 5,
-    detail: 'Peso promedio de la semana, fotos si toca, adherencia. Planea la semana que entra. Aquí se ajusta el plan con datos, no con sensaciones.' },
+    detail: 'Peso promedio de la semana, fotos si toca, adherencia. Y desde el 2026-09-03, las tres preguntas del plan de carrera: ¿avanzó la tesis (palabras)? ¿hubo tres actos de exposición? ¿qué construí que no debía? Las respuestas van a ~/Documents/Nueva Puerta/TABLERO.md. Planea la semana que entra. Aquí se ajusta el plan con datos, no con sensaciones.' },
   { start: '21:20', end: '23:15', kind: 'libre', title: 'Tiempo personal', flexible: true },
   { start: '23:15', end: '00:00', kind: 'cierre', title: 'Ritual de cierre', avisar: 10,
     detail: 'Mañana arranca la semana con entreno a las 10:45. Magnesio, pantallas fuera, cuarto oscuro y fresco.',
