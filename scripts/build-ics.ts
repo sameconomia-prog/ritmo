@@ -13,6 +13,7 @@
  */
 import { writeFileSync } from 'node:fs'
 import { planDelDia, type Block } from '../src/data/plan'
+import { avisoDe, hitosOrdenados } from '../src/data/hitos'
 
 const DIAS_ICS = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA']
 
@@ -107,3 +108,57 @@ lineas.push('END:VCALENDAR')
 const ics = lineas.map(plegar).join('\r\n') + '\r\n'
 writeFileSync(new URL('../public/ritmo.ics', import.meta.url), ics, 'utf8')
 console.log(`  ✓ public/ritmo.ics — ${total} eventos recurrentes con alarma`)
+
+// ── CARRIL MÉXICO 2029 · los hitos con nombre del plan de carrera ────────────
+// (añadido 2026-09-03) Eventos de día completo con dos alarmas: N días antes a
+// las 9:00 y el mismo día a las 9:00. La fuente es src/data/hitos.ts —la misma
+// que ve la app en «Lo que se acerca»—; para reagendar un imprevisto se edita
+// ahí (Claude o Hermes), se regenera y se commitea.
+const fechaICS = (iso: string) => iso.replace(/-/g, '')
+const diaSiguiente = (iso: string) => {
+  const d = new Date(`${iso}T00:00:00Z`)
+  d.setUTCDate(d.getUTCDate() + 1)
+  return d.toISOString().slice(0, 10)
+}
+const carril: string[] = [
+  'BEGIN:VCALENDAR',
+  'VERSION:2.0',
+  'PRODID:-//RITMO//Carril Mexico 2029//ES',
+  'CALSCALE:GREGORIAN',
+  'METHOD:PUBLISH',
+  'X-WR-CALNAME:Carril México 2029',
+  'X-WR-TIMEZONE:Asia/Novosibirsk',
+  'X-PUBLISHED-TTL:PT12H',
+  'REFRESH-INTERVAL;VALUE=DURATION:PT12H',
+]
+let hitos = 0
+for (const h of hitosOrdenados()) {
+  const aviso = avisoDe(h)
+  carril.push(
+    'BEGIN:VEVENT',
+    `UID:carril-${h.id}@sameconomia-prog.github.io`,
+    'DTSTAMP:20260903T000000Z',
+    `DTSTART;VALUE=DATE:${fechaICS(h.fecha)}`,
+    `DTEND;VALUE=DATE:${fechaICS(diaSiguiente(h.fin ?? h.fecha))}`,
+    `SUMMARY:${esc(h.titulo)}`,
+  )
+  if (h.detalle) carril.push(`DESCRIPTION:${esc(h.detalle)}`)
+  carril.push(
+    'BEGIN:VALARM',
+    'ACTION:DISPLAY',
+    // El evento empieza a las 00:00: N días antes a las 9:00 son N−1 días y 15 h.
+    `TRIGGER:-P${aviso - 1}DT15H`,
+    `DESCRIPTION:${esc(`En ${aviso} días: ${h.titulo}`)}`,
+    'END:VALARM',
+    'BEGIN:VALARM',
+    'ACTION:DISPLAY',
+    'TRIGGER:PT9H',
+    `DESCRIPTION:${esc(`Hoy: ${h.titulo}`)}`,
+    'END:VALARM',
+    'END:VEVENT',
+  )
+  hitos++
+}
+carril.push('END:VCALENDAR')
+writeFileSync(new URL('../public/carril-2029.ics', import.meta.url), carril.map(plegar).join('\r\n') + '\r\n', 'utf8')
+console.log(`  ✓ public/carril-2029.ics — ${hitos} hitos con dos alarmas`)

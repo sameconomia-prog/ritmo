@@ -5,6 +5,7 @@ import { KIND_META, NOMBRE_DIA, RESUMEN_DIA, planDelDia, type Block } from '../d
 import { RECIPES, MENU_SEMANAL } from '../data/recipes'
 import { WORKOUTS } from '../data/workouts'
 import { MEDITACIONES, PROTOCOLOS_ESTUDIO, leccionDelDia, ANKI_URL } from '../data/content'
+import { TIPO_META, avisoDe, diasHasta, fechaCorta, hitosOrdenados } from '../data/hitos'
 import { asegurarInicio, db, hoyISO, setMeta, toggleBlock, toggleSupplement } from '../db'
 import { aMin, bloqueActual, duracionMin, esSemanaDeload, progresoBloque, proximoBloque, semanaDelPrograma, yaTermino } from '../lib'
 import { Btn, Card, Pill, Porque, Section } from '../ui'
@@ -88,6 +89,8 @@ export default function Hoy() {
       <AvisoCalendario />
 
       <RegistroRapido fecha={fecha} />
+
+      <Hitos fecha={fecha} />
 
       {/* AHORA */}
       {actual ? (
@@ -209,6 +212,81 @@ function AvisoCalendario() {
         calendario aparece pero nunca te avisa.
       </p>
     </Card>
+  )
+}
+
+/**
+ * LO QUE SE ACERCA (2026-09-03)
+ * El plan del día dice qué hacer a esta hora; esto dice qué viene y no se
+ * repite: compuertas, fechas de sometimiento, convocatorias, exámenes,
+ * reuniones. La fuente es src/data/hitos.ts —la única—, y de ahí sale también
+ * el calendario carril-2029.ics con alarmas. No hay formulario para reagendar:
+ * un imprevisto se le dice a Claude o a Hermes y ellos editan hitos.ts dejando
+ * el porqué en el historial. Hoy y mañana se resaltan; lo que entra en su
+ * ventana de aviso lleva la etiqueta ámbar; el resto se pliega detrás de «todo».
+ */
+function Hitos({ fecha }: { fecha: string }) {
+  const [todos, setTodos] = useState(false)
+  const vivos = hitosOrdenados()
+    .filter((h) => diasHasta(h.fin ?? h.fecha, fecha) >= 0)
+    .map((h) => ({ h, d: diasHasta(h.fecha, fecha) }))
+  if (!vivos.length) return null
+  const cerca = vivos.filter(({ h, d }) => d <= Math.max(14, avisoDe(h)))
+  const lista = todos ? vivos : cerca
+  const siguiente = vivos.find((x) => !cerca.includes(x))
+  const etiqueta = (d: number) => (d <= 0 ? 'HOY' : d === 1 ? 'MAÑANA' : `en ${d} días`)
+
+  return (
+    <Section
+      title="Lo que se acerca"
+      action={
+        <button
+          type="button"
+          onClick={() => setTodos((v) => !v)}
+          className="text-[11px] font-semibold text-[var(--color-accent)]"
+        >
+          {todos ? 'solo lo próximo' : `todo (${vivos.length})`}
+        </button>
+      }
+    >
+      <div className="space-y-1.5">
+        {lista.length === 0 && (
+          <p className="px-1 text-[12px] text-[var(--color-ink-dim)]">Nada en las próximas dos semanas.</p>
+        )}
+        {lista.map(({ h, d }) => {
+          const urgente = d <= 1
+          const aviso = d <= avisoDe(h)
+          return (
+            <Card
+              key={h.id}
+              className={`flex items-start gap-3 p-3 ${urgente ? 'border-[var(--color-accent)]/50 bg-[var(--color-accent)]/8' : ''}`}
+            >
+              <span className="text-lg">{TIPO_META[h.tipo].icon}</span>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-medium leading-snug">{h.titulo}</p>
+                <p className="text-[11px] text-[var(--color-ink-dim)]">
+                  {fechaCorta(h.fecha)}
+                  {h.fin ? ` → ${fechaCorta(h.fin)}` : ''} · {TIPO_META[h.tipo].label}
+                </p>
+                {(urgente || (aviso && !todos)) && h.detalle && (
+                  <p className="mt-1 text-[12px] leading-relaxed text-[var(--color-ink-dim)]">{h.detalle}</p>
+                )}
+              </div>
+              <Pill tone={urgente ? 'accent' : aviso ? 'warn' : 'neutral'}>{etiqueta(d)}</Pill>
+            </Card>
+          )
+        })}
+        {!todos && siguiente && (
+          <p className="px-1 text-[11px] text-[var(--color-ink-dim)]">
+            Después: {siguiente.h.titulo} · {fechaCorta(siguiente.h.fecha)}
+          </p>
+        )}
+      </div>
+      <p className="mt-2 px-1 text-[11px] leading-relaxed text-[var(--color-ink-dim)]">
+        ¿Un imprevisto? Escríbele a Claude o a Hermes «imprevisto: qué pasó → hito → nueva fecha» y
+        reagendan el plan y el calendario.
+      </p>
+    </Section>
   )
 }
 

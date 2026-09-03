@@ -1,274 +1,886 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Arturo Aguilar//Carril Mexico 2029//ES
+PRODID:-//RITMO//Carril Mexico 2029//ES
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Carril México 2029
-X-WR-CALDESC:Hitos, compuertas y revisiones del plan de carrera 2026-202
- 9
+X-WR-TIMEZONE:Asia/Novosibirsk
+X-PUBLISHED-TTL:PT12H
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
 BEGIN:VEVENT
-UID:carril-2029-001@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-trki-inscripcion@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20260911
 DTEND;VALUE=DATE:20260912
 SUMMARY:Inscribirse al ТРКИ-1 (НГТУ)
-DESCRIPTION:Centro de pruebas de la НГТУ\, пр. К. Маркса 20
- \, корпус 1\, каб. 502-503. 6 000 ₽. rustest@corp.nstu.ru ·
-  +7 (383) 319-61-04.
+DESCRIPTION:Centro de pruebas de la НГТУ\, пр. К. Маркса 20\
+ , edificio 1\, oficinas 502-503. 6 000 ₽. rustest@corp.nstu.ru · +7 (
+ 383) 319-61-04.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P2DT15H
+DESCRIPTION:En 3 días: Inscribirse al ТРКИ-1 (НГТУ)
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Inscribirse al ТРКИ-1 (НГТУ)
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-002@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-reunion-bekareva@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20260918
 DTEND;VALUE=DATE:20260919
 SUMMARY:Reunión con Bekareva
-DESCRIPTION:Plaza en el laboratorio · coautoría del artículo · regla
- s del consejo para publicaciones · exámenes de candidatura · prácti
- ca pedagógica. Llevar la hoja de una página.
+DESCRIPTION:Plaza en el laboratorio · coautoría del artículo · reglas
+  del consejo para publicaciones · exámenes de candidatura · práctica
+  pedagógica. Llevar la hoja de una página\, no el CV.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P4DT15H
+DESCRIPTION:En 5 días: Reunión con Bekareva
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Reunión con Bekareva
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-003@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-correo-humanitas@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20260920
 DTEND;VALUE=DATE:20260921
 SUMMARY:Correo a Humanitas: autorización de datos
-DESCRIPTION:Pedir autorización escrita para publicar resultados anonimi
- zados. Sin ella\, el artículo A se sustituye por C (IPEDS).
+DESCRIPTION:Pedir autorización escrita para publicar resultados anonimiz
+ ados. Sin ella\, el artículo A se sustituye por C (IPEDS).
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Correo a Humanitas: autorización de datos
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Correo a Humanitas: autorización de datos
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-004@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-sitio-propio@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20261010
 DTEND;VALUE=DATE:20261012
-SUMMARY:Sitio propio · fin de semana
-DESCRIPTION:Español e inglés\, nombre en cirílico\, CV\, líneas\, pu
- blicaciones\, notas. Se termina el domingo y no se vuelve a tocar salvo
-  para publicar.
+SUMMARY:Sitio propio · un fin de semana
+DESCRIPTION:Español e inglés\, nombre en cirílico\, CV\, líneas\, pub
+ licaciones\, notas. Se termina el domingo y no se vuelve a tocar salvo p
+ ara publicar.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Sitio propio · un fin de semana
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Sitio propio · un fin de semana
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-005@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-compuerta-humanitas@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20261015
 DTEND;VALUE=DATE:20261016
 SUMMARY:Compuerta: autorización Humanitas
-DESCRIPTION:¿A con datos Humanitas o C con IPEDS? Decidir hoy.
+DESCRIPTION:¿Artículo A con datos de Humanitas o C con IPEDS? Se decide
+  hoy\, con o sin respuesta.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Compuerta: autorización Humanitas
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Compuerta: autorización Humanitas
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-006@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-borrador-articulo@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20261031
 DTEND;VALUE=DATE:20261101
-SUMMARY:Borrador completo del artículo · spec v2 tesis
-DESCRIPTION:Borrador de A (o C). Especificación v2 de la tesis y docume
- nto maestro al pivote IPEDS. IPEDS descargado\, tabla de cierres.
+SUMMARY:Borrador completo del artículo · spec v2 de la tesis
+DESCRIPTION:Borrador de A (o C). Especificación v2 de la tesis y documen
+ to maestro al pivote IPEDS. IPEDS descargado y tabla de cierres construi
+ da.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Borrador completo del artículo · spec v2 de la 
+ tesis
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Borrador completo del artículo · spec v2 de la tesis
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-007@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-revision-2026-11-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-correos-investigadores@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20261115
 DTEND;VALUE=DATE:20261116
 SUMMARY:Cinco correos a investigadores mexicanos
-DESCRIPTION:IISUE-UNAM\, CIDE\, DIE-Cinvestav\, UAM-X\, ANUIES/RESU. Ofr
- ecer datos o coautoría\, no pedir favores.
+DESCRIPTION:IISUE-UNAM\, CIDE\, DIE-Cinvestav\, UAM-X\, ANUIES/RESU. Ofre
+ cer datos o coautoría\, no pedir favores.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Cinco correos a investigadores mexicanos
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Cinco correos a investigadores mexicanos
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-008@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-articulo-a-sometido@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20261130
 DTEND;VALUE=DATE:20261201
 SUMMARY:Artículo sometido
-DESCRIPTION:Fecha del correo de sometimiento. «En dictamen» ya cuenta 
- para SECIHTI.
+DESCRIPTION:Fecha del correo de sometimiento. «En dictamen» ya cuenta p
+ ara SECIHTI.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P9DT15H
+DESCRIPTION:En 10 días: Artículo sometido
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Artículo sometido
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-009@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-preprint-dataset@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20261215
 DTEND;VALUE=DATE:20261216
 SUMMARY:Preprint + dataset con DOI · carta de motivos v1
-DESCRIPTION:MPRA (RePEc) y Zenodo. Carta SECIHTI con un párrafo por cri
- terio.
+DESCRIPTION:MPRA (RePEc) y Zenodo. Carta SECIHTI con un párrafo por crit
+ erio.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Preprint + dataset con DOI · carta de motivos v1
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Preprint + dataset con DOI · carta de motivos v1
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-010@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-compuerta-0@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20261231
 DTEND;VALUE=DATE:20270101
 SUMMARY:COMPUERTA 0
-DESCRIPTION:Siete criterios\; aprobado 4/7 con artículo sometido obliga
- torio. Ver TABLERO.md.
+DESCRIPTION:Siete criterios\; aprobado 4 de 7 con artículo sometido obli
+ gatorio. Ver Nueva Puerta/TABLERO.md.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P13DT15H
+DESCRIPTION:En 14 días: COMPUERTA 0
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: COMPUERTA 0
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-011@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-revision-2027-01-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-verificar-congresos@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:Verificar convocatorias COMIE XIX y AMECIDER 32°
 DESCRIPTION:Elegir una. comie.org.mx · amecider.org.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Verificar convocatorias COMIE XIX y AMECIDER 32°
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Verificar convocatorias COMIE XIX y AMECIDER 32°
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-012@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-trki-examen@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270131
 DTEND;VALUE=DATE:20270201
-SUMMARY:Examen ТРКИ-1 (ventana ene-feb)
-DESCRIPTION:Convierte 804 h en credencial.
+SUMMARY:Examen ТРКИ-1 (ventana enero-febrero)
+DESCRIPTION:Convierte 804 horas de aula en credencial. Fecha exacta segú
+ n la sesión de la НГТУ.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P13DT15H
+DESCRIPTION:En 14 días: Examen ТРКИ-1 (ventana enero-febrero)
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Examen ТРКИ-1 (ventana enero-febrero)
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-013@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-resena-resu@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270228
 DTEND;VALUE=DATE:20270301
 SUMMARY:Reseña sometida a RESU
-DESCRIPTION:≤ 4 500 palabras\, arbitrada\, dictamen ≤ 4 meses.
+DESCRIPTION:Hasta 4 500 palabras\, arbitrada\, dictamen en máximo cuatro
+  meses.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Reseña sometida a RESU
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Reseña sometida a RESU
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-014@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-revision-2027-03-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-carta-interes@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270315
 DTEND;VALUE=DATE:20270316
 SUMMARY:Carta de interés de una institución mexicana
-DESCRIPTION:Para el plan de reincorporación de SECIHTI. Pedida en los c
- orreos de noviembre.
+DESCRIPTION:Para el plan de reincorporación de SECIHTI. Pedida en los co
+ rreos de noviembre.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Carta de interés de una institución mexicana
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Carta de interés de una institución mexicana
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-015@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-secihti-apertura@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270323
 DTEND;VALUE=DATE:20270324
 SUMMARY:Apertura esperada · SECIHTI Becas al Extranjero 2027
-DESCRIPTION:Referencia: convocatoria 2026 abrió el 23-mar. Verificar.
+DESCRIPTION:Referencia: la convocatoria 2026 abrió el 23 de marzo. Verif
+ icar en secihti.mx.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P13DT15H
+DESCRIPTION:En 14 días: Apertura esperada · SECIHTI Becas al Extranjero
+  2027
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Apertura esperada · SECIHTI Becas al Extranjero 2027
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-016@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-articulo-b-sometido@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270415
 DTEND;VALUE=DATE:20270416
 SUMMARY:Artículo B sometido · resumen de ponencia
 DESCRIPTION:RIES sección Contornos (o RESU).
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Artículo B sometido · resumen de ponencia
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Artículo B sometido · resumen de ponencia
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-017@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-secihti-solicitud@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270430
 DTEND;VALUE=DATE:20270501
 SUMMARY:Solicitud SECIHTI Tipo 2 enviada
-DESCRIPTION:Tres semanas antes del cierre. Tipo 2 no se puede cambiar de
- spués.
+DESCRIPTION:Tres semanas antes del cierre. Tipo 2 no se puede cambiar des
+ pués de firmar.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P13DT15H
+DESCRIPTION:En 14 días: Solicitud SECIHTI Tipo 2 enviada
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Solicitud SECIHTI Tipo 2 enviada
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-018@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-revision-2027-05-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-secihti-cierre@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270522
 DTEND;VALUE=DATE:20270523
 SUMMARY:Cierre esperado · SECIHTI 2027
-DESCRIPTION:Referencia: convocatoria 2026 cerró el 22-may.
+DESCRIPTION:Referencia: la convocatoria 2026 cerró el 22 de mayo.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Cierre esperado · SECIHTI 2027
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Cierre esperado · SECIHTI 2027
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-019@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-seminario-laboratorio@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270531
 DTEND;VALUE=DATE:20270601
 SUMMARY:Seminario en el laboratorio · capítulos 1-2 entregados
 DESCRIPTION:Primera ponencia del expediente.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Seminario en el laboratorio · capítulos 1-2 ent
+ regados
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Seminario en el laboratorio · capítulos 1-2 entregados
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-020@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-policy-brief-1@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270630
 DTEND;VALUE=DATE:20270701
 SUMMARY:Policy brief 1 publicado y enviado
-DESCRIPTION:ANUIES\, SEP\, UNESCO-IESALC. Ponencia en extenso lista en j
- ulio.
+DESCRIPTION:ANUIES\, SEP\, UNESCO-IESALC. Ponencia en extenso lista en ju
+ lio.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Policy brief 1 publicado y enviado
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Policy brief 1 publicado y enviado
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-021@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-revision-2027-07-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20270701
+DTEND;VALUE=DATE:20270702
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-secihti-resultados@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270803
 DTEND;VALUE=DATE:20270804
 SUMMARY:Resultados esperados · SECIHTI
-DESCRIPTION:Referencia: 2026 publicó el 3-ago.
+DESCRIPTION:Referencia: 2026 publicó el 3 de agosto.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P6DT15H
+DESCRIPTION:En 7 días: Resultados esperados · SECIHTI
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Resultados esperados · SECIHTI
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-022@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-compuerta-1@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20270831
 DTEND;VALUE=DATE:20270901
 SUMMARY:COMPUERTA 1
-DESCRIPTION:Seis criterios\; aprobado 5/6 con capítulos 1-2 aprobados o
- bligatorio.
+DESCRIPTION:Seis criterios\; aprobado 5 de 6 con capítulos 1-2 aprobados
+  obligatorio.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P13DT15H
+DESCRIPTION:En 14 días: COMPUERTA 1
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: COMPUERTA 1
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-023@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-revision-2027-09-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20270901
+DTEND;VALUE=DATE:20270902
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-revision-2027-11-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-ponencia@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20271115
 DTEND;VALUE=DATE:20271116
-SUMMARY:Ponencia COMIE XIX / AMECIDER (fecha por confirmar)
-DESCRIPTION:Virtual si el viaje no se financia. Tres contactos con segui
- miento en 72 h.
+SUMMARY:Ponencia COMIE XIX o AMECIDER (fecha por confirmar)
+DESCRIPTION:Virtual si el viaje no se financia. Tres contactos con seguim
+ iento en 72 horas.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P13DT15H
+DESCRIPTION:En 14 días: Ponencia COMIE XIX o AMECIDER (fecha por confirm
+ ar)
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Ponencia COMIE XIX o AMECIDER (fecha por confirmar)
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-024@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-articulo-c-sometido@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20271231
 DTEND;VALUE=DATE:20280101
 SUMMARY:Artículo C sometido · capítulos 3-4
-DESCRIPTION:Inglés\, IPEDS. Revisiones de A y B respondidas en ≤ 30 d
- ías.
+DESCRIPTION:Inglés\, IPEDS. Revisiones de A y B respondidas en menos de 
+ 30 días.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P13DT15H
+DESCRIPTION:En 14 días: Artículo C sometido · capítulos 3-4
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Artículo C sometido · capítulos 3-4
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-025@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-revision-2028-01-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20280101
+DTEND;VALUE=DATE:20280102
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-revision-2028-03-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20280301
+DTEND;VALUE=DATE:20280302
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-revision-2028-05-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20280501
+DTEND;VALUE=DATE:20280502
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-compuerta-2@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20280630
 DTEND;VALUE=DATE:20280701
 SUMMARY:COMPUERTA 2 · artículo D · brief 2 · borrador de tesis
-DESCRIPTION:Seis criterios\; aprobado 5/6 con borrador completo obligato
- rio.
+DESCRIPTION:Seis criterios\; aprobado 5 de 6 con borrador completo obliga
+ torio.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P13DT15H
+DESCRIPTION:En 14 días: COMPUERTA 2 · artículo D · brief 2 · borrado
+ r de tesis
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: COMPUERTA 2 · artículo D · brief 2 · borrador de tes
+ is
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-026@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-revision-2028-07-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20280701
+DTEND;VALUE=DATE:20280702
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-revision-2028-09-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20280901
+DTEND;VALUE=DATE:20280902
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-revision-2028-11-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20281101
+DTEND;VALUE=DATE:20281102
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-predefensa@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20281215
 DTEND;VALUE=DATE:20281216
 SUMMARY:Predefensa · solicitud de posdoc por México
-DESCRIPTION:Institución receptora IISUE o CIDE. Tres conversaciones con
-  organismos.
+DESCRIPTION:Institución receptora IISUE o CIDE. Tres conversaciones con 
+ organismos.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P29DT15H
+DESCRIPTION:En 30 días: Predefensa · solicitud de posdoc por México
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Predefensa · solicitud de posdoc por México
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-027@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-revision-2029-01-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20290101
+DTEND;VALUE=DATE:20290102
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-revision-2029-03-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20290301
+DTEND;VALUE=DATE:20290302
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-revision-2029-05-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20290501
+DTEND;VALUE=DATE:20290502
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-defensa@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20290630
 DTEND;VALUE=DATE:20290701
 SUMMARY:Defensa
 DESCRIPTION:Кандидат экономических наук.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P29DT15H
+DESCRIPTION:En 30 días: Defensa
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Defensa
+END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:carril-2029-028@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
+UID:carril-revision-2029-07-01@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
+DTSTART;VALUE=DATE:20290701
+DTEND;VALUE=DATE:20290702
+SUMMARY:Revisión bimestral del carril
+DESCRIPTION:Compuerta\, patrón (construir contra exponerse)\, convocator
+ ias con fecha\, tres decisiones. Protocolo: Nueva Puerta/.claude/skills/
+ revision-carril.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1DT15H
+DESCRIPTION:En 2 días: Revisión bimestral del carril
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: Revisión bimestral del carril
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:carril-compuerta-3@sameconomia-prog.github.io
+DTSTAMP:20260903T000000Z
 DTSTART;VALUE=DATE:20290731
 DTEND;VALUE=DATE:20290801
 SUMMARY:COMPUERTA 3 · aterrizaje en México
-DESCRIPTION:Grado o defensa fijada · ≥ 2 ofertas o contratos · exped
- iente SNII listo.
-END:VEVENT
-BEGIN:VEVENT
-UID:carril-2029-revision-semanal@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
-DTSTART;VALUE=DATE:20260906
-DTEND;VALUE=DATE:20260907
-SUMMARY:Revisión semanal · 20:40 · 40 min
-DESCRIPTION:Tres preguntas: ¿avanzó la tesis? ¿se cumplió la cuota d
- e exposición? ¿qué construí que no debía? Rellenar TABLERO.md.
-RRULE:FREQ=WEEKLY;BYDAY=SU;UNTIL=20290729
-END:VEVENT
-BEGIN:VEVENT
-UID:carril-2029-revision-bimestral@nuevapuerta.arturoaguilar
-DTSTAMP:20260903T090000Z
-DTSTART;VALUE=DATE:20261101
-DTEND;VALUE=DATE:20261102
-SUMMARY:Revisión bimestral del Carril México 2029
-DESCRIPTION:Protocolo: .claude/skills/revision-carril/SKILL.md. Compuert
- a\, patrón\, convocatorias\, tres decisiones.
-RRULE:FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=1;UNTIL=20290701
+DESCRIPTION:Grado o defensa fijada · dos o más ofertas o contratos · e
+ xpediente SNII listo.
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P13DT15H
+DESCRIPTION:En 14 días: COMPUERTA 3 · aterrizaje en México
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:PT9H
+DESCRIPTION:Hoy: COMPUERTA 3 · aterrizaje en México
+END:VALARM
 END:VEVENT
 END:VCALENDAR
